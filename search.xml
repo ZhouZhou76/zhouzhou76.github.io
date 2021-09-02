@@ -55,6 +55,16 @@
       </tags>
   </entry>
   <entry>
+    <title>JavaScript 面向对象</title>
+    <url>/2021/06/30/JS_Object_Oriented/</url>
+    <content><![CDATA[<pre><code>面向对象：继承(分类更加细分的构造函数),封装(封装构造函数),多态。
+
+面向对象是一个编程思想,支撑面向对象编程思想的语法是类(ECMA6)和对象,构造函数充当类的角色。
+构造函数和对象实现面向对象程序的时候,体现出继承,封装,多态的特点。
+</code></pre>
+<h1 id="继承与原型链"><a href="#继承与原型链" class="headerlink" title="继承与原型链"></a>继承与原型链</h1><h1 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h1>]]></content>
+  </entry>
+  <entry>
     <title>JavaScript ECMAScript 6.0</title>
     <url>/2021/06/28/JS_ES6/</url>
     <content><![CDATA[<p><img src="js_esls.PNG" alt="JavaScript ECMAScript"><br><a href="https://www.runoob.com/w3cnote/es6-tutorial.html">ES6 菜鸟教程</a></p>
@@ -120,14 +130,18 @@ findIndex
       </tags>
   </entry>
   <entry>
-    <title>JavaScript 面向对象</title>
-    <url>/2021/06/30/JS_Object_Oriented/</url>
-    <content><![CDATA[<pre><code>面向对象：继承(分类更加细分的构造函数),封装(封装构造函数),多态。
-
-面向对象是一个编程思想,支撑面向对象编程思想的语法是类(ECMA6)和对象,构造函数充当类的角色。
-构造函数和对象实现面向对象程序的时候,体现出继承,封装,多态的特点。
-</code></pre>
-<h1 id="继承与原型链"><a href="#继承与原型链" class="headerlink" title="继承与原型链"></a>继承与原型链</h1><h1 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h1>]]></content>
+    <title>JavaScript 遍历</title>
+    <url>/2021/06/30/JS_Traversal/</url>
+    <content><![CDATA[<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><h2 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">&quot;for循环：&quot;</span> + arr[i] + <span class="string">&quot;,&quot;</span> + i + <span class="string">&quot;&lt;br/&gt;&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="for…in"><a href="#for…in" class="headerlink" title="for…in"></a>for…in</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> arr) &#123;</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">&quot;for...in遍历：&quot;</span> + arr[i] + <span class="string">&quot;,&quot;</span> + i + <span class="string">&quot;&lt;br/&gt;&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="forEach"><a href="#forEach" class="headerlink" title="forEach"></a>forEach</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">arr.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">item, index</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">&quot;forEach遍历：&quot;</span> + arr[i] + <span class="string">&quot;,&quot;</span> + i + <span class="string">&quot;&lt;br/&gt;&quot;</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="for…of"><a href="#for…of" class="headerlink" title="for…of"></a>for…of</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> item <span class="keyword">of</span> arr) &#123;</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">&quot;for...of遍历：&quot;</span> + item + <span class="string">&quot;&lt;br/&gt;&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h1><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// for...in</span></span><br><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">    username: <span class="string">&quot;哪吒&quot;</span>,</span><br><span class="line">    age: <span class="number">20</span>,</span><br><span class="line">    sex: <span class="string">&quot;男&quot;</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> attr <span class="keyword">in</span> person) &#123;</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">&quot;对象：&quot;</span> + attr + person[attr] + <span class="string">&quot;&lt;br/&gt;&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h1><h2 id="set"><a href="#set" class="headerlink" title="set"></a>set</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> imgs.keys()) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(item);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> imgs.values()) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(item);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> imgs.entries()) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(item);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> [key, value] <span class="keyword">of</span> map) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(key, value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
   </entry>
   <entry>
     <title>JavaScript 正则表达式</title>
@@ -221,20 +235,6 @@ m   换行匹配
       <tags>
         <tag>JavaScript</tag>
         <tag>正则表达式</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JavaScript 遍历</title>
-    <url>/2021/06/30/JS_Traversal/</url>
-    <content><![CDATA[<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><h2 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">&quot;for循环：&quot;</span> + arr[i] + <span class="string">&quot;,&quot;</span> + i + <span class="string">&quot;&lt;br/&gt;&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="for…in"><a href="#for…in" class="headerlink" title="for…in"></a>for…in</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> arr) &#123;</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">&quot;for...in遍历：&quot;</span> + arr[i] + <span class="string">&quot;,&quot;</span> + i + <span class="string">&quot;&lt;br/&gt;&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="forEach"><a href="#forEach" class="headerlink" title="forEach"></a>forEach</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">arr.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">item, index</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">&quot;forEach遍历：&quot;</span> + arr[i] + <span class="string">&quot;,&quot;</span> + i + <span class="string">&quot;&lt;br/&gt;&quot;</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h2 id="for…of"><a href="#for…of" class="headerlink" title="for…of"></a>for…of</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> item <span class="keyword">of</span> arr) &#123;</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">&quot;for...of遍历：&quot;</span> + item + <span class="string">&quot;&lt;br/&gt;&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h1><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// for...in</span></span><br><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">    username: <span class="string">&quot;哪吒&quot;</span>,</span><br><span class="line">    age: <span class="number">20</span>,</span><br><span class="line">    sex: <span class="string">&quot;男&quot;</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> attr <span class="keyword">in</span> person) &#123;</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">&quot;对象：&quot;</span> + attr + person[attr] + <span class="string">&quot;&lt;br/&gt;&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h1><h2 id="set"><a href="#set" class="headerlink" title="set"></a>set</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> imgs.keys()) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(item);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> imgs.values()) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(item);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> imgs.entries()) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(item);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> [key, value] <span class="keyword">of</span> map) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(key, value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>JavaScript</tag>
       </tags>
   </entry>
   <entry>
@@ -373,16 +373,6 @@ json对象：
       <tags>
         <tag>bootstrap</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>HTML/CSS练习项目：PC端 博文尚美</title>
-    <url>/2021/05/26/bwxm-xm/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title>CSS+JS实现小功能之简约时钟</title>
-    <url>/2021/06/13/css-js-xxm/</url>
-    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>版本控制工具Git</title>
@@ -739,6 +729,31 @@ npm run lint  代码检测工具(自动修正)
 <h1 id="状态管理-Vuex"><a href="#状态管理-Vuex" class="headerlink" title="状态管理 Vuex"></a>状态管理 Vuex</h1><pre><code>Vuex是一个专为Vue.js应用程序开发的状态管理模式,采用集中式存储管理应用的所有组件的状态,并以相应的规则保证状态以一种可预测的方式方式变化。
    
 </code></pre>
+]]></content>
+      <tags>
+        <tag>Vue</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>vue2+vue3学习笔记</title>
+    <url>/2021/09/01/vue2-vue3-study/</url>
+    <content><![CDATA[<h1 id="Vue拦截的原理"><a href="#Vue拦截的原理" class="headerlink" title="Vue拦截的原理"></a>Vue拦截的原理</h1><blockquote><p>当你把一个普通的JavaScript对象传入Vue实例作为data选项，Vue将遍历此对象所有的属性，并使用Object.defineProperty把这些属性全部转为getter/setter。Object.defineProperty是ES5中一个无法shim的特性，这也就是Vue不支持IE8以及更低版本浏览器的原因。</p>
+<p>每个组件实例都对应一个watcher实例，它会在组件渲染的过程中把”接触”过的数据属性记录为依赖。之后当依赖的setter触发时,会通知watcher，从而使它关联的组件重新渲染。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;box&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var obj &#x3D; &#123;&#125;;</span><br><span class="line">    var oBox &#x3D; document.getElementById(&quot;box&quot;);</span><br><span class="line"></span><br><span class="line">    Object.defineProperty(obj,&quot;myname&quot;,&#123;</span><br><span class="line">        get()&#123;</span><br><span class="line">            console.log(&quot;被访问了&quot;);</span><br><span class="line">            return oBox.innerHTML</span><br><span class="line">        &#125;,</span><br><span class="line">        set(value)&#123;</span><br><span class="line">            console.log(&quot;修改为&quot;,value);</span><br><span class="line">            oBox.innerHTML &#x3D; value</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight console"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> obj.myname = <span class="string">&quot;vue拦截原理&quot;</span></span></span><br><span class="line">  修改为 vue拦截原理</span><br><span class="line">&lt; &quot;vue拦截原理&quot;</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> obj.myname = <span class="string">&quot;再次改变&quot;</span></span></span><br><span class="line">  修改为 再次改变</span><br><span class="line">&lt; &quot;再次改变&quot;</span><br></pre></td></tr></table></figure>
+<div class="note orange icon flat"><i class="note-icon fas fa fa-ban"></i><p>Object.defineProperty有以下缺点：</p>
+<ol>
+<li>无法监听ES6的Set，Map变化；</li>
+<li>无法监听Class类型的数据；</li>
+<li>属性的新加或者删除也无法监听；</li>
+<li>数组元素的增加和删除也无法监听；</li>
+</ol>
+<ul>
+<li>针对Object.defineProperty的缺点，ES6 Proxy都能够完美得解决，它唯一的缺点就是，对IE不友好，所以Vue3在检测到如果是使用IE的情况下(IE11都不支持Proxy)，会自动降级为Object.defineProperty的数据监听系统。</li>
+</ul>
+</div>
+<h1 id="模板语法"><a href="#模板语法" class="headerlink" title="模板语法"></a>模板语法</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;box&quot;&gt;</span><br><span class="line">    &lt;!-- &#123;&#123;&#125;&#125; 为Vue定义的标签内部绑定语法 --&gt;</span><br><span class="line">    &#123;&#123;myname&#125;&#125;</span><br><span class="line"></span><br><span class="line">    &lt;!-- @ 为Vue定义的事件绑定语法 v-on简写 --&gt;</span><br><span class="line">    &lt;button @click&#x3D;&quot;handleMyClick()&quot;&gt;click&lt;&#x2F;button&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- : 为Vue定义的标签属性绑定语法 v-bind简写 --&gt;</span><br><span class="line">    &lt;div :class&#x3D;&quot;mycolor&quot;&gt;动态切换class&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div :style&#x3D;&quot;isStyle ? &#39;color:red&#39;:&#39;color:blue&#39; &quot;&gt;动态切换style&lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- v- Vue封装的指令 --&gt;</span><br><span class="line">    &lt;div v-show&#x3D;&quot;isShow&quot;&gt;动态显示与隐藏&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div v-if&#x3D;&quot;isShow&quot;&gt;动态创建与删除&lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">        &lt;!-- datalist for in 循环遍历 --&gt;</span><br><span class="line">        &lt;li v-for&#x3D;&quot;(item,index) in datalist&quot;&gt;</span><br><span class="line">            &#123;&#123; item &#125;&#125;--&#123;&#123; index &#125;&#125;</span><br><span class="line">        &lt;&#x2F;li&gt;</span><br><span class="line">    &lt;&#x2F;ul&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line">&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2&#x2F;dist&#x2F;vue.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    new Vue(&#123;</span><br><span class="line">        el:&quot;#box&quot;,</span><br><span class="line">        &#x2F;&#x2F; 所有状态，状态改变页面自动更新</span><br><span class="line">        data:&#123;</span><br><span class="line">            myname:&quot;zhou&quot;,</span><br><span class="line">            mycolor:&quot;red&quot;,</span><br><span class="line">            isStyle:true,</span><br><span class="line">            isShow:true,</span><br><span class="line">            datalist:[&#39;1&#39;,&#39;2&#39;,&#39;3&#39;,&#39;4&#39;,&#39;5&#39;]</span><br><span class="line">        &#125;,</span><br><span class="line">        &#x2F;&#x2F; 事件处理函数</span><br><span class="line">        methods:&#123;</span><br><span class="line">            &#x2F;&#x2F; ES6对象简写</span><br><span class="line">            &#x2F;&#x2F; 定义的方法</span><br><span class="line">            handleMyClick()&#123;</span><br><span class="line">                this.myname &#x3D; &quot;link&quot;,</span><br><span class="line">                this.mycolor &#x3D; &quot;blue&quot;,</span><br><span class="line">                this.isStyle &#x3D; !this.isStyle,</span><br><span class="line">                this.isShow &#x3D; !this.isShow</span><br><span class="line">                &#x2F;&#x2F; console.log(&quot;click&quot;)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <tags>
         <tag>Vue</tag>
