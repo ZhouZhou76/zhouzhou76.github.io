@@ -882,7 +882,7 @@ npm run lint  代码检测工具(自动修正)
 </tr>
 <tr>
 <td align="center"><code>unset</code></td>
-<td align="center">设置positon的值为不设置。如果属性的默认属性是继承属性(例如字体相关的默认属性基本都是继承)，同于inherit如果该属性的默认属性不是继承属性(例如pisition的默认属性为static)，等同于initial。</td>
+<td align="center">设置positon的值为不设置。如果属性的默认属性是继承属性(例如字体相关的默认属性基本都是继承)，等同于inherit，如果该属性的默认属性不是继承属性(例如pisition的默认属性为static)，等同于initial。</td>
 </tr>
 </tbody></table>
 </div>
