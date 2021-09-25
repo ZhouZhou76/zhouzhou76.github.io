@@ -1,25 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>CSS新特性</title>
-    <url>/2021/06/09/CSS_New_features/</url>
-    <content><![CDATA[<h1 id="自定义属性"><a href="#自定义属性" class="headerlink" title="自定义属性"></a>自定义属性</h1><p>CSS自定义属性(也称为”CSS变量”),在目前所有的现代浏览器都得到了支持。</p>
-<h2 id="定义与使用"><a href="#定义与使用" class="headerlink" title="定义与使用"></a>定义与使用</h2><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span>&#123;</span><br><span class="line">    --<span class="attribute">color</span> : red;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#box</span>&#123;</span><br><span class="line">    <span class="attribute">background</span> : <span class="built_in">var</span>(--color);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="计算"><a href="#计算" class="headerlink" title="计算"></a>计算</h2><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span>&#123;</span><br><span class="line">    --number : <span class="number">100px</span>;</span><br><span class="line">    --number2 : <span class="number">100</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#box</span>&#123;</span><br><span class="line">    <span class="attribute">width</span> : <span class="built_in">var</span>(--number); // 正常显示</span><br><span class="line">    <span class="attribute">height</span> : <span class="built_in">calc</span>(<span class="built_in">var</span>(--number2) * <span class="number">1px</span>); // 需要配合calc使用</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="默认值"><a href="#默认值" class="headerlink" title="默认值"></a>默认值</h2><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span>&#123;</span><br><span class="line">    <span class="comment">/* --size : 50px; */</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#box</span>&#123;</span><br><span class="line">    <span class="attribute">font-size</span> : <span class="built_in">var</span>(--size , <span class="number">100px</span>); // 当size找不到会以<span class="number">100px</span>为默认值</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    --<span class="attribute">color</span> : yellow;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-pseudo">:root</span>&#123;</span><br><span class="line">    --<span class="attribute">color</span> : red;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#box</span>&#123;</span><br><span class="line">    --<span class="attribute">color</span> : blue;</span><br><span class="line">    <span class="attribute">background</span> : <span class="built_in">var</span>(--color); // 就近原则和选择器优先级</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="shapes"><a href="#shapes" class="headerlink" title="shapes"></a>shapes</h1><p>CSS shapes布局可以实现不规则的文字环绕效果,需要和浮动配合使用。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    #parent &#123;</span><br><span class="line">        width: 300px;</span><br><span class="line">        height: 300px;</span><br><span class="line">        border: 1px solid black;</span><br><span class="line">        margin: 20px;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    #shape &#123;</span><br><span class="line">        width: 100px;</span><br><span class="line">        height: 100px;</span><br><span class="line">        padding: 10px;</span><br><span class="line">        border: 10px solid black;</span><br><span class="line">        margin: 10px;</span><br><span class="line">        float: left;</span><br><span class="line">        background: red;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        clip-path: polygon(0 0, 0 100px, 100px 100px); &#x2F;&#x2F; 剪切路径</span><br><span class="line">        shape-outside: polygon(0 0, 0 100px, 100px 100px); &#x2F;&#x2F; 环绕效果 none margin-box border-box padding-box content-box</span><br><span class="line">        shape-margin: 15px; &#x2F;&#x2F; 环绕的距离</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;parent&quot;&gt;</span><br><span class="line">        &lt;div id&#x3D;&quot;shape&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">        CSS shapes布局可以实现不规则的文字环绕效果,需要和浮动配合使用。</span><br><span class="line">        CSS shapes布局可以实现不规则的文字环绕效果,需要和浮动配合使用。</span><br><span class="line">        CSS shapes布局可以实现不规则的文字环绕效果,需要和浮动配合使用。</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
-<h1 id="scrollbar"><a href="#scrollbar" class="headerlink" title="scrollbar"></a>scrollbar</h1><p>CSS scrollbar用于实现自定义滚动条</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">        <span class="attribute">height</span>: <span class="number">2000px</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="selector-tag">html</span>::-webkit-scrollbar &#123;</span><br><span class="line">        width: <span class="number">10px</span>;</span><br><span class="line">        <span class="comment">/* height: 1px; */</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="selector-tag">html</span>::-webkit-scrollbar-thumb &#123;</span><br><span class="line">        background: <span class="number">#f90</span>;</span><br><span class="line">        <span class="attribute">border-radius</span>: <span class="number">15px</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="selector-tag">html</span>::-webkit-scrollbar-track &#123;</span><br><span class="line">        background: <span class="number">#dedede</span>;</span><br><span class="line">        <span class="attribute">box-shadow</span>: inset <span class="number">0</span> <span class="number">0</span> <span class="number">5px</span> gray;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h1 id="Scroll-Snap"><a href="#Scroll-Snap" class="headerlink" title="Scroll Snap"></a>Scroll Snap</h1><p>CSS Scroll Snap(CSS 滚动捕捉)可以在用户完成滚动后多锁定特定的元素或位置。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    ul &#123;</span><br><span class="line">        list-style: none;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    #main &#123;</span><br><span class="line">        width: 600px;</span><br><span class="line">        height: 100px;</span><br><span class="line">        border: 1px black solid;</span><br><span class="line">        margin: 100px;</span><br><span class="line">        overflow: auto;</span><br><span class="line">        scroll-snap-type: x mandatory;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    #main ul &#123;</span><br><span class="line">        width: 4000px;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    #main li &#123;</span><br><span class="line">        width: 300px;</span><br><span class="line">        height: 100px;</span><br><span class="line">        background: red;</span><br><span class="line">        float: left;</span><br><span class="line">        margin: 0 100px;</span><br><span class="line">        scroll-snap-align: end;</span><br><span class="line">        &#x2F;* start center end *&#x2F;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;main&quot;&gt;</span><br><span class="line">        &lt;ul&gt;</span><br><span class="line">            &lt;li&gt;1&lt;&#x2F;li&gt;</span><br><span class="line">            &lt;li&gt;2&lt;&#x2F;li&gt;</span><br><span class="line">            &lt;li&gt;3&lt;&#x2F;li&gt;</span><br><span class="line">            &lt;li&gt;4&lt;&#x2F;li&gt;</span><br><span class="line">            &lt;li&gt;5&lt;&#x2F;li&gt;</span><br><span class="line">        &lt;&#x2F;ul&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <tags>
-        <tag>CSS</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>HTML+CSS练手小功能</title>
     <url>/2021/04/24/CSS%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%BA%9B%E6%95%88%E6%9E%9C/</url>
     <content><![CDATA[<h3 id="边框实现三角形"><a href="#边框实现三角形" class="headerlink" title="边框实现三角形"></a>边框实现三角形</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    div &#123;</span><br><span class="line">        width: 0px;</span><br><span class="line">        height: 0px;</span><br><span class="line">        border: 30px solid;</span><br><span class="line">        border-color: transparent transparent red;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div&gt;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
@@ -34,24 +15,6 @@
 ]]></content>
       <tags>
         <tag>练手项目</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>闭包</title>
-    <url>/2021/07/09/Closure/</url>
-    <content><![CDATA[<pre><code>满足以下特点的叫做闭包：
-    1.函数嵌套函数
-    2.内部函数使用外部函数的形参和变量
-    3.被引用的形参和变量不会被垃圾回收机制所回收
-好处：
-    1.可以让一个变量常驻在内存当中
-    2.避免全局变量污染和声明全局变量
-    3.可以声明私有成员
-</code></pre>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">show</span>(<span class="params">res</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> num = <span class="number">10</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(num + <span class="string">&quot;,&quot;</span> + res); <span class="comment">// 10,20</span></span><br><span class="line">&#125;</span><br><span class="line">show(<span class="number">20</span>);</span><br><span class="line"><span class="comment">// console.log(num); 报错：未定义</span></span><br><span class="line"><span class="comment">// console.log(res); 报错：未定义</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 闭包</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">aaa</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">bbb</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        a++;</span><br><span class="line">        <span class="built_in">console</span>.log(a);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> bbb;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> ccc = aaa();</span><br><span class="line">ccc(); <span class="comment">// 3</span></span><br><span class="line">ccc(); <span class="comment">// 4</span></span><br><span class="line"><span class="comment">// console.log(a); // 报错：未定义</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 立即执行函数写法,前面函数执行,后面函数调用</span></span><br><span class="line"><span class="keyword">var</span> ccc = (<span class="function"><span class="keyword">function</span> <span class="title">aaa</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="title">bbb</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        a++;</span><br><span class="line">        <span class="built_in">console</span>.log(a);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)();</span><br><span class="line">ccc(); <span class="comment">// 3</span></span><br><span class="line">ccc(); <span class="comment">// 4</span></span><br><span class="line"><span class="comment">// console.log(a); // 报错：未定义</span></span><br></pre></td></tr></table></figure>
-]]></content>
-      <tags>
-        <tag>JavaScript</tag>
       </tags>
   </entry>
   <entry>
@@ -120,14 +83,41 @@ findIndex
       </tags>
   </entry>
   <entry>
-    <title>JavaScript 面向对象</title>
-    <url>/2021/06/30/JS_Object_Oriented/</url>
-    <content><![CDATA[<pre><code>面向对象：继承(分类更加细分的构造函数),封装(封装构造函数),多态。
-
-面向对象是一个编程思想,支撑面向对象编程思想的语法是类(ECMA6)和对象,构造函数充当类的角色。
-构造函数和对象实现面向对象程序的时候,体现出继承,封装,多态的特点。
+    <title>CSS新特性</title>
+    <url>/2021/06/09/CSS_New_features/</url>
+    <content><![CDATA[<h1 id="自定义属性"><a href="#自定义属性" class="headerlink" title="自定义属性"></a>自定义属性</h1><p>CSS自定义属性(也称为”CSS变量”),在目前所有的现代浏览器都得到了支持。</p>
+<h2 id="定义与使用"><a href="#定义与使用" class="headerlink" title="定义与使用"></a>定义与使用</h2><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span>&#123;</span><br><span class="line">    --<span class="attribute">color</span> : red;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#box</span>&#123;</span><br><span class="line">    <span class="attribute">background</span> : <span class="built_in">var</span>(--color);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="计算"><a href="#计算" class="headerlink" title="计算"></a>计算</h2><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span>&#123;</span><br><span class="line">    --number : <span class="number">100px</span>;</span><br><span class="line">    --number2 : <span class="number">100</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#box</span>&#123;</span><br><span class="line">    <span class="attribute">width</span> : <span class="built_in">var</span>(--number); // 正常显示</span><br><span class="line">    <span class="attribute">height</span> : <span class="built_in">calc</span>(<span class="built_in">var</span>(--number2) * <span class="number">1px</span>); // 需要配合calc使用</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="默认值"><a href="#默认值" class="headerlink" title="默认值"></a>默认值</h2><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span>&#123;</span><br><span class="line">    <span class="comment">/* --size : 50px; */</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#box</span>&#123;</span><br><span class="line">    <span class="attribute">font-size</span> : <span class="built_in">var</span>(--size , <span class="number">100px</span>); // 当size找不到会以<span class="number">100px</span>为默认值</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    --<span class="attribute">color</span> : yellow;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-pseudo">:root</span>&#123;</span><br><span class="line">    --<span class="attribute">color</span> : red;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#box</span>&#123;</span><br><span class="line">    --<span class="attribute">color</span> : blue;</span><br><span class="line">    <span class="attribute">background</span> : <span class="built_in">var</span>(--color); // 就近原则和选择器优先级</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="shapes"><a href="#shapes" class="headerlink" title="shapes"></a>shapes</h1><p>CSS shapes布局可以实现不规则的文字环绕效果,需要和浮动配合使用。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    #parent &#123;</span><br><span class="line">        width: 300px;</span><br><span class="line">        height: 300px;</span><br><span class="line">        border: 1px solid black;</span><br><span class="line">        margin: 20px;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    #shape &#123;</span><br><span class="line">        width: 100px;</span><br><span class="line">        height: 100px;</span><br><span class="line">        padding: 10px;</span><br><span class="line">        border: 10px solid black;</span><br><span class="line">        margin: 10px;</span><br><span class="line">        float: left;</span><br><span class="line">        background: red;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        clip-path: polygon(0 0, 0 100px, 100px 100px); &#x2F;&#x2F; 剪切路径</span><br><span class="line">        shape-outside: polygon(0 0, 0 100px, 100px 100px); &#x2F;&#x2F; 环绕效果 none margin-box border-box padding-box content-box</span><br><span class="line">        shape-margin: 15px; &#x2F;&#x2F; 环绕的距离</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;parent&quot;&gt;</span><br><span class="line">        &lt;div id&#x3D;&quot;shape&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">        CSS shapes布局可以实现不规则的文字环绕效果,需要和浮动配合使用。</span><br><span class="line">        CSS shapes布局可以实现不规则的文字环绕效果,需要和浮动配合使用。</span><br><span class="line">        CSS shapes布局可以实现不规则的文字环绕效果,需要和浮动配合使用。</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="scrollbar"><a href="#scrollbar" class="headerlink" title="scrollbar"></a>scrollbar</h1><p>CSS scrollbar用于实现自定义滚动条</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">        <span class="attribute">height</span>: <span class="number">2000px</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="selector-tag">html</span>::-webkit-scrollbar &#123;</span><br><span class="line">        width: <span class="number">10px</span>;</span><br><span class="line">        <span class="comment">/* height: 1px; */</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="selector-tag">html</span>::-webkit-scrollbar-thumb &#123;</span><br><span class="line">        background: <span class="number">#f90</span>;</span><br><span class="line">        <span class="attribute">border-radius</span>: <span class="number">15px</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="selector-tag">html</span>::-webkit-scrollbar-track &#123;</span><br><span class="line">        background: <span class="number">#dedede</span>;</span><br><span class="line">        <span class="attribute">box-shadow</span>: inset <span class="number">0</span> <span class="number">0</span> <span class="number">5px</span> gray;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h1 id="Scroll-Snap"><a href="#Scroll-Snap" class="headerlink" title="Scroll Snap"></a>Scroll Snap</h1><p>CSS Scroll Snap(CSS 滚动捕捉)可以在用户完成滚动后多锁定特定的元素或位置。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    ul &#123;</span><br><span class="line">        list-style: none;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    #main &#123;</span><br><span class="line">        width: 600px;</span><br><span class="line">        height: 100px;</span><br><span class="line">        border: 1px black solid;</span><br><span class="line">        margin: 100px;</span><br><span class="line">        overflow: auto;</span><br><span class="line">        scroll-snap-type: x mandatory;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    #main ul &#123;</span><br><span class="line">        width: 4000px;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    #main li &#123;</span><br><span class="line">        width: 300px;</span><br><span class="line">        height: 100px;</span><br><span class="line">        background: red;</span><br><span class="line">        float: left;</span><br><span class="line">        margin: 0 100px;</span><br><span class="line">        scroll-snap-align: end;</span><br><span class="line">        &#x2F;* start center end *&#x2F;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;main&quot;&gt;</span><br><span class="line">        &lt;ul&gt;</span><br><span class="line">            &lt;li&gt;1&lt;&#x2F;li&gt;</span><br><span class="line">            &lt;li&gt;2&lt;&#x2F;li&gt;</span><br><span class="line">            &lt;li&gt;3&lt;&#x2F;li&gt;</span><br><span class="line">            &lt;li&gt;4&lt;&#x2F;li&gt;</span><br><span class="line">            &lt;li&gt;5&lt;&#x2F;li&gt;</span><br><span class="line">        &lt;&#x2F;ul&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>CSS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>闭包</title>
+    <url>/2021/07/09/Closure/</url>
+    <content><![CDATA[<pre><code>满足以下特点的叫做闭包：
+    1.函数嵌套函数
+    2.内部函数使用外部函数的形参和变量
+    3.被引用的形参和变量不会被垃圾回收机制所回收
+好处：
+    1.可以让一个变量常驻在内存当中
+    2.避免全局变量污染和声明全局变量
+    3.可以声明私有成员
 </code></pre>
-<h1 id="继承与原型链"><a href="#继承与原型链" class="headerlink" title="继承与原型链"></a>继承与原型链</h1><h1 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h1>]]></content>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">show</span>(<span class="params">res</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> num = <span class="number">10</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(num + <span class="string">&quot;,&quot;</span> + res); <span class="comment">// 10,20</span></span><br><span class="line">&#125;</span><br><span class="line">show(<span class="number">20</span>);</span><br><span class="line"><span class="comment">// console.log(num); 报错：未定义</span></span><br><span class="line"><span class="comment">// console.log(res); 报错：未定义</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 闭包</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">aaa</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">bbb</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        a++;</span><br><span class="line">        <span class="built_in">console</span>.log(a);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> bbb;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> ccc = aaa();</span><br><span class="line">ccc(); <span class="comment">// 3</span></span><br><span class="line">ccc(); <span class="comment">// 4</span></span><br><span class="line"><span class="comment">// console.log(a); // 报错：未定义</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 立即执行函数写法,前面函数执行,后面函数调用</span></span><br><span class="line"><span class="keyword">var</span> ccc = (<span class="function"><span class="keyword">function</span> <span class="title">aaa</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="title">bbb</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        a++;</span><br><span class="line">        <span class="built_in">console</span>.log(a);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)();</span><br><span class="line">ccc(); <span class="comment">// 3</span></span><br><span class="line">ccc(); <span class="comment">// 4</span></span><br><span class="line"><span class="comment">// console.log(a); // 报错：未定义</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
   </entry>
   <entry>
     <title>JavaScript 正则表达式</title>
@@ -224,64 +214,14 @@ m   换行匹配
       </tags>
   </entry>
   <entry>
-    <title>JavaScript 遍历</title>
-    <url>/2021/06/30/JS_Traversal/</url>
-    <content><![CDATA[<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><h2 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">&quot;for循环：&quot;</span> + arr[i] + <span class="string">&quot;,&quot;</span> + i + <span class="string">&quot;&lt;br/&gt;&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="for…in"><a href="#for…in" class="headerlink" title="for…in"></a>for…in</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> arr) &#123;</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">&quot;for...in遍历：&quot;</span> + arr[i] + <span class="string">&quot;,&quot;</span> + i + <span class="string">&quot;&lt;br/&gt;&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="forEach"><a href="#forEach" class="headerlink" title="forEach"></a>forEach</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">arr.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">item, index</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">&quot;forEach遍历：&quot;</span> + arr[i] + <span class="string">&quot;,&quot;</span> + i + <span class="string">&quot;&lt;br/&gt;&quot;</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h2 id="for…of"><a href="#for…of" class="headerlink" title="for…of"></a>for…of</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> item <span class="keyword">of</span> arr) &#123;</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">&quot;for...of遍历：&quot;</span> + item + <span class="string">&quot;&lt;br/&gt;&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h1><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// for...in</span></span><br><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">    username: <span class="string">&quot;哪吒&quot;</span>,</span><br><span class="line">    age: <span class="number">20</span>,</span><br><span class="line">    sex: <span class="string">&quot;男&quot;</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> attr <span class="keyword">in</span> person) &#123;</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">&quot;对象：&quot;</span> + attr + person[attr] + <span class="string">&quot;&lt;br/&gt;&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h1><h2 id="set"><a href="#set" class="headerlink" title="set"></a>set</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> imgs.keys()) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(item);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> imgs.values()) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(item);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> imgs.entries()) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(item);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> [key, value] <span class="keyword">of</span> map) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(key, value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>移动端响应式布局</title>
-    <url>/2021/06/03/Mobile_layout/</url>
-    <content><![CDATA[<h3 id="Viewport视口"><a href="#Viewport视口" class="headerlink" title="Viewport视口"></a>Viewport视口</h3><p>在移动端Viewport视口是浏览器显示页面内容的屏幕区域。在Viewport中有两种视口,分别表示为：visual viewport(可视视口)和layout viewport(布局视口)。</p>
-<p>visual viewport固定大小跟屏幕大小相同,在上面。而layout viewport可改变大小,在下面。layout viewport默认大小为980像素,可通过document.documentElement.clientWidth获取。</p>
-<p>网页需要将layout viewport设置成跟visual viewport等同大小,方便进行网页制作。</p>
-<p>通过<meta>标签进行设置,name属性指定viewport值,content属性进行视口配置。<br><img src="Viewport.PNG" alt="Viewport视口"></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0, user-scalable&#x3D;no&quot;&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="移动端适配方案"><a href="#移动端适配方案" class="headerlink" title="移动端适配方案"></a>移动端适配方案</h3><p>1.百分比布局,也叫流式布局。<br>    通过盒子的宽度设置成百分比来根据屏幕的宽度来进行伸缩，不受固定像素的限制，内容向两侧填充。<br>    流式布局方式是移动web开发使用的比较常见的布局方式。<br>    max-width 最大宽度(max-height最大高度)。<br>    min-width最小宽度（min-height最小高度）。<br>2.等比缩放布局,也叫rem布局。</p>
-<pre><code>单位：
-    em : 是一个相对单位,1em等于当前元素或父元素的font-size值。
-    rem : 是一个相对单位,1rem等于根元素的font-size值。
-    vw / vh : 把屏幕分为100份,1vw等于屏幕宽的1%。
+    <title>JavaScript 面向对象</title>
+    <url>/2021/06/30/JS_Object_Oriented/</url>
+    <content><![CDATA[<pre><code>面向对象：继承(分类更加细分的构造函数),封装(封装构造函数),多态。
 
-
-动态设置font-size(要给body重置一下font-size: 16px;)：
-    通过JS
-    <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    var fontsize &#x3D; document.documentElement.clientWidth &#x2F; 3.75;</span><br><span class="line">    document.documentElement.style.fontSize &#x3D; fontsize + &quot;px&quot;;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
-    通过VW
-    <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">html&#123;font-size: 26.666667vw;&#125;</span><br></pre></td></tr></table></figure>
+面向对象是一个编程思想,支撑面向对象编程思想的语法是类(ECMA6)和对象,构造函数充当类的角色。
+构造函数和对象实现面向对象程序的时候,体现出继承,封装,多态的特点。
 </code></pre>
-<h3 id="响应式布局"><a href="#响应式布局" class="headerlink" title="响应式布局"></a>响应式布局</h3><p>利用媒体查询,即media queries,可以针对不同媒体类型定义不同的样式,从而实现响应式布局。<br>媒体类型：<br><img src="mtlx.PNG" alt="Viewport视口"></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@media all and(min-width: 500px) and (max-width:700px) &#123;执行的CSS代码&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;*  </span><br><span class="line">@media ： 响应式标识</span><br><span class="line">and ：选择条件    not ： 取反</span><br><span class="line">min-width max-width 最小和最大宽度</span><br><span class="line">orientation:portrait ：纵屏</span><br><span class="line">orientation:landscape ：横屏</span><br><span class="line">*&#x2F;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 引入外部的css文件做响应式</span><br><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;.css&quot; media&#x3D;&quot;all and (min-width:400px)&quot;&gt;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <tags>
-        <tag>响应式</tag>
-        <tag>布局</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>开发工具VScode</title>
-    <url>/2021/04/19/Web%E5%BC%80%E5%8F%91%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6/</url>
-    <content><![CDATA[<h1 id="VScode"><a href="#VScode" class="headerlink" title="VScode"></a>VScode</h1><p>VScode官网下载地址：<a href="https://code.visualstudio.com/">点我下载</a><br>常用快捷键：<br>    ctrl + s : 保存 , ctrl + a : 全选<br>    ctrl + d : 选择选中的元素相同的下一个<br>    ctrl + z : 撤销 , ctrl + y : 前进<br>    ctrl+f ： 搜索本页 , ctrl+shift+f ： 全局搜索<br>    ctrl + / : 添加当前光标注释 , shift + alt + a : 选中的会注释,没选中的会添加一个空的注释<br>    shift + end : 从头选中一行 , shift + home : 从尾部选中一行 , shift + alt + ↓ ：快速复制一行<br>    alt + ↑或↓ ：快速移动一行<br>    tab : 向后缩进 , shift + tab ：向前缩进<br>    按住alt + 鼠标左键 ：多光标</p>
-<h1 id="中文语言包"><a href="#中文语言包" class="headerlink" title="中文语言包"></a>中文语言包</h1><p>按住 Ctrl+Shift+X 在插件里搜索 Chinese (Simplified) Language Pack for Visual Studio Code  点击install进行下载。</p>
-<p>下载完成后按住 Ctrl+Shift+P 搜索Language设置为zh-ch</p>
-<h1 id="在编辑器右键打开HTML文件"><a href="#在编辑器右键打开HTML文件" class="headerlink" title="在编辑器右键打开HTML文件"></a>在编辑器右键打开HTML文件</h1><p>菜单右键打开插件 open in browser<br>在浏览器中查看 view in browser</p>
-<h1 id="px单位自动转换rem单位"><a href="#px单位自动转换rem单位" class="headerlink" title="px单位自动转换rem单位"></a>px单位自动转换rem单位</h1><p>px to rem<br>设置里可定义fontsize的值,选中代码alt+z转换</p>
-<h1 id="Bootstrap-4-代码提示插件"><a href="#Bootstrap-4-代码提示插件" class="headerlink" title="Bootstrap 4 代码提示插件"></a>Bootstrap 4 代码提示插件</h1><p>Bootstrap 4, Font awesome 4, Font Awesome 5 Free &amp; Pro snippets</p>
-<h1 id="Sass和Less插件"><a href="#Sass和Less插件" class="headerlink" title="Sass和Less插件"></a>Sass和Less插件</h1><p>Easy LESS<br>Easy Sass</p>
-]]></content>
-      <tags>
-        <tag>VScode</tag>
-        <tag>开发工具</tag>
-      </tags>
+<h1 id="继承与原型链"><a href="#继承与原型链" class="headerlink" title="继承与原型链"></a>继承与原型链</h1><h1 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h1>]]></content>
   </entry>
   <entry>
     <title>ajax</title>
@@ -345,6 +285,20 @@ json对象：
       </tags>
   </entry>
   <entry>
+    <title>JavaScript 遍历</title>
+    <url>/2021/06/30/JS_Traversal/</url>
+    <content><![CDATA[<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><h2 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">&quot;for循环：&quot;</span> + arr[i] + <span class="string">&quot;,&quot;</span> + i + <span class="string">&quot;&lt;br/&gt;&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="for…in"><a href="#for…in" class="headerlink" title="for…in"></a>for…in</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> arr) &#123;</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">&quot;for...in遍历：&quot;</span> + arr[i] + <span class="string">&quot;,&quot;</span> + i + <span class="string">&quot;&lt;br/&gt;&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="forEach"><a href="#forEach" class="headerlink" title="forEach"></a>forEach</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">arr.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">item, index</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">&quot;forEach遍历：&quot;</span> + arr[i] + <span class="string">&quot;,&quot;</span> + i + <span class="string">&quot;&lt;br/&gt;&quot;</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="for…of"><a href="#for…of" class="headerlink" title="for…of"></a>for…of</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> item <span class="keyword">of</span> arr) &#123;</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">&quot;for...of遍历：&quot;</span> + item + <span class="string">&quot;&lt;br/&gt;&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h1><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// for...in</span></span><br><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">    username: <span class="string">&quot;哪吒&quot;</span>,</span><br><span class="line">    age: <span class="number">20</span>,</span><br><span class="line">    sex: <span class="string">&quot;男&quot;</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> attr <span class="keyword">in</span> person) &#123;</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">&quot;对象：&quot;</span> + attr + person[attr] + <span class="string">&quot;&lt;br/&gt;&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h1><h2 id="set"><a href="#set" class="headerlink" title="set"></a>set</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> imgs.keys()) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(item);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> imgs.values()) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(item);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> imgs.entries()) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(item);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> [key, value] <span class="keyword">of</span> map) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(key, value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>bootstrap框架</title>
     <url>/2021/06/05/bootstrap/</url>
     <content><![CDATA[<p>Bootstrap 是一个HTML CSS JS框架,用于开发响应式布局,移动设备的Web项目。<br>特色：<br>    1.响应式布局<br>    2.基于flex的栅格系统<br>    3.丰富的组件和工具方法<br>    4.常见交互使用<br>官网：<a href="https://www.bootcss.com/">Bootstrap中文文档</a></p>
@@ -355,6 +309,52 @@ json对象：
 ]]></content>
       <tags>
         <tag>bootstrap</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>移动端响应式布局</title>
+    <url>/2021/06/03/Mobile_layout/</url>
+    <content><![CDATA[<h3 id="Viewport视口"><a href="#Viewport视口" class="headerlink" title="Viewport视口"></a>Viewport视口</h3><p>在移动端Viewport视口是浏览器显示页面内容的屏幕区域。在Viewport中有两种视口,分别表示为：visual viewport(可视视口)和layout viewport(布局视口)。</p>
+<p>visual viewport固定大小跟屏幕大小相同,在上面。而layout viewport可改变大小,在下面。layout viewport默认大小为980像素,可通过document.documentElement.clientWidth获取。</p>
+<p>网页需要将layout viewport设置成跟visual viewport等同大小,方便进行网页制作。</p>
+<p>通过<meta>标签进行设置,name属性指定viewport值,content属性进行视口配置。<br><img src="Viewport.PNG" alt="Viewport视口"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0, user-scalable&#x3D;no&quot;&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="移动端适配方案"><a href="#移动端适配方案" class="headerlink" title="移动端适配方案"></a>移动端适配方案</h3><p>1.百分比布局,也叫流式布局。<br>    通过盒子的宽度设置成百分比来根据屏幕的宽度来进行伸缩，不受固定像素的限制，内容向两侧填充。<br>    流式布局方式是移动web开发使用的比较常见的布局方式。<br>    max-width 最大宽度(max-height最大高度)。<br>    min-width最小宽度（min-height最小高度）。<br>2.等比缩放布局,也叫rem布局。</p>
+<pre><code>单位：
+    em : 是一个相对单位,1em等于当前元素或父元素的font-size值。
+    rem : 是一个相对单位,1rem等于根元素的font-size值。
+    vw / vh : 把屏幕分为100份,1vw等于屏幕宽的1%。
+
+
+动态设置font-size(要给body重置一下font-size: 16px;)：
+    通过JS
+    <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    var fontsize &#x3D; document.documentElement.clientWidth &#x2F; 3.75;</span><br><span class="line">    document.documentElement.style.fontSize &#x3D; fontsize + &quot;px&quot;;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+    通过VW
+    <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">html&#123;font-size: 26.666667vw;&#125;</span><br></pre></td></tr></table></figure>
+</code></pre>
+<h3 id="响应式布局"><a href="#响应式布局" class="headerlink" title="响应式布局"></a>响应式布局</h3><p>利用媒体查询,即media queries,可以针对不同媒体类型定义不同的样式,从而实现响应式布局。<br>媒体类型：<br><img src="mtlx.PNG" alt="Viewport视口"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@media all and(min-width: 500px) and (max-width:700px) &#123;执行的CSS代码&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;*  </span><br><span class="line">@media ： 响应式标识</span><br><span class="line">and ：选择条件    not ： 取反</span><br><span class="line">min-width max-width 最小和最大宽度</span><br><span class="line">orientation:portrait ：纵屏</span><br><span class="line">orientation:landscape ：横屏</span><br><span class="line">*&#x2F;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 引入外部的css文件做响应式</span><br><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;.css&quot; media&#x3D;&quot;all and (min-width:400px)&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>响应式</tag>
+        <tag>布局</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>开发工具VScode</title>
+    <url>/2021/04/19/Web%E5%BC%80%E5%8F%91%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6/</url>
+    <content><![CDATA[<h1 id="VScode"><a href="#VScode" class="headerlink" title="VScode"></a>VScode</h1><p>VScode官网下载地址：<a href="https://code.visualstudio.com/">点我下载</a><br>常用快捷键：<br>    ctrl + s : 保存 , ctrl + a : 全选<br>    ctrl + d : 选择选中的元素相同的下一个<br>    ctrl + z : 撤销 , ctrl + y : 前进<br>    ctrl+f ： 搜索本页 , ctrl+shift+f ： 全局搜索<br>    ctrl + / : 添加当前光标注释 , shift + alt + a : 选中的会注释,没选中的会添加一个空的注释<br>    shift + end : 从头选中一行 , shift + home : 从尾部选中一行 , shift + alt + ↓ ：快速复制一行<br>    alt + ↑或↓ ：快速移动一行<br>    tab : 向后缩进 , shift + tab ：向前缩进<br>    按住alt + 鼠标左键 ：多光标</p>
+<h1 id="中文语言包"><a href="#中文语言包" class="headerlink" title="中文语言包"></a>中文语言包</h1><p>按住 Ctrl+Shift+X 在插件里搜索 Chinese (Simplified) Language Pack for Visual Studio Code  点击install进行下载。</p>
+<p>下载完成后按住 Ctrl+Shift+P 搜索Language设置为zh-ch</p>
+<h1 id="在编辑器右键打开HTML文件"><a href="#在编辑器右键打开HTML文件" class="headerlink" title="在编辑器右键打开HTML文件"></a>在编辑器右键打开HTML文件</h1><p>菜单右键打开插件 open in browser<br>在浏览器中查看 view in browser</p>
+<h1 id="px单位自动转换rem单位"><a href="#px单位自动转换rem单位" class="headerlink" title="px单位自动转换rem单位"></a>px单位自动转换rem单位</h1><p>px to rem<br>设置里可定义fontsize的值,选中代码alt+z转换</p>
+<h1 id="Bootstrap-4-代码提示插件"><a href="#Bootstrap-4-代码提示插件" class="headerlink" title="Bootstrap 4 代码提示插件"></a>Bootstrap 4 代码提示插件</h1><p>Bootstrap 4, Font awesome 4, Font Awesome 5 Free &amp; Pro snippets</p>
+<h1 id="Sass和Less插件"><a href="#Sass和Less插件" class="headerlink" title="Sass和Less插件"></a>Sass和Less插件</h1><p>Easy LESS<br>Easy Sass</p>
+]]></content>
+      <tags>
+        <tag>VScode</tag>
+        <tag>开发工具</tag>
       </tags>
   </entry>
   <entry>
@@ -526,6 +526,55 @@ github配置密匙
       </tags>
   </entry>
   <entry>
+    <title>项目工具Gulp</title>
+    <url>/2021/07/11/tool-Gulp/</url>
+    <content><![CDATA[<p>官网地址 <a href="https://www.gulpjs.com.cn/">gulp.js</a></p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>1.下载和安装<a href="https://nodejs.org/zh-cn/">Node.js</a></p>
+<pre><code>node -v 查看node.js的版本
+</code></pre>
+<p>2.启动Node.js控制台</p>
+<pre><code>npm     下载源是国外网站
+cnpm    [淘宝镜像](https://npm.taobao.org/)
+    安装：npm install cnpm -g --registry=https://registry.npm.taobao.org
+</code></pre>
+<p>3.安装gulp到本地</p>
+<pre><code>安装：cnpm install gulp -g
+gulp -v 查看gulp的版本
+</code></pre>
+<p>4.初始化当前目录,生成package.json文件,存放项目的配置信息</p>
+<pre><code>cnpm init
+</code></pre>
+<p>5.在项目里面安装gulp到本地</p>
+<pre><code>cnpm install gulp@3.9.1 --save-dev
+    --save   将文件安装到本地的文件夹
+    -dev    将安装gulp的信息保存在package.json里面
+
+简写：cnpm i gulp@3.9.1 -D
+</code></pre>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>6.创建一个gulpfile.js的文件来编写任务</p>
+<pre><code>gulp hello(第一个参数名字) 运行编写的任务
+</code></pre>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// require() 引入模块,使用模块函数</span></span><br><span class="line"><span class="keyword">const</span> gulp = <span class="built_in">require</span>(<span class="string">&quot;gulp&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// gulp.task() 编写任务</span></span><br><span class="line"><span class="comment">// 第一个参数：自定义的执行任务名字</span></span><br><span class="line"><span class="comment">// 第二个参数：回调函数,任务执行的功能</span></span><br><span class="line">gulp.task(<span class="string">&quot;hello&quot;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;hello world&quot;</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// gulp.src()      找到源文件路径</span></span><br><span class="line"><span class="comment">// gulp.dest()     找到目标文件路径,如果路径不存在,自动创建</span></span><br><span class="line"><span class="comment">// pipe()          理解程序运行管道</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 整理.html文件</span></span><br><span class="line">gulp.task(<span class="string">&quot;copy-html&quot;</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> gulp.src(<span class="string">&quot;index.html&quot;</span>)</span><br><span class="line">        .pipe(gulp.dest(<span class="string">&quot;dist/&quot;</span>))</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 拷贝图片</span></span><br><span class="line">gulp.task(<span class="string">&quot;images&quot;</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> gulp.src(<span class="string">&quot;img/**/*&quot;</span>).pipe(gulp.dest(<span class="string">&quot;dist/images&quot;</span>));</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 拷贝多个文件到一个目录</span></span><br><span class="line">gulp.task(<span class="string">&quot;data&quot;</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> gulp.src([<span class="string">&quot;json/*.json&quot;</span>, <span class="string">&quot;xml/*.xml&quot;</span>, <span class="string">&quot;!xml/06.xml&quot;</span>])</span><br><span class="line">        .pipe(gulp.dest(<span class="string">&quot;dist/data&quot;</span>))</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 一次执行多个任务</span></span><br><span class="line">gulp.task(<span class="string">&quot;build&quot;</span>, [<span class="string">&quot;copy-html&quot;</span>, <span class="string">&quot;images&quot;</span>, <span class="string">&quot;data&quot;</span>], <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;执行完毕&quot;</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h1 id="监听"><a href="#监听" class="headerlink" title="监听"></a>监听</h1><p>7.监听到文件有改变,会自动去执行对应的任务,更新数据</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// gulp.watch()</span></span><br><span class="line"><span class="comment">// 第一个参数,文件监听的路径 </span></span><br><span class="line"><span class="comment">// 第二个参数,执行的任务</span></span><br><span class="line">gulp.task(<span class="string">&quot;watch&quot;</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    gulp.watch(<span class="string">&quot;index.html&quot;</span>, [<span class="string">&quot;copy-html&quot;</span>]);</span><br><span class="line">    gulp.watch(<span class="string">&quot;img/**/*&quot;</span>, [<span class="string">&quot;images&quot;</span>]);</span><br><span class="line">    gulp.watch([<span class="string">&quot;json/*.json&quot;</span>, <span class="string">&quot;xml/*.xml&quot;</span>, <span class="string">&quot;!xml/06.xml&quot;</span>],[<span class="string">&quot;data&quot;</span>]);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h1 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h1><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 启动一个服务器 gulp-connect</span></span><br><span class="line"><span class="comment">// 需要在每一条任务后面加上 .pipe(connect.reload()); 来实时刷新</span></span><br><span class="line"><span class="keyword">const</span> GulpClient = <span class="built_in">require</span>(<span class="string">&quot;gulp&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> connect = <span class="built_in">require</span>(<span class="string">&quot;gulp-connect&quot;</span>);</span><br><span class="line">GulpClient.task(<span class="string">&quot;server&quot;</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    connect.server(&#123;</span><br><span class="line">        root: <span class="string">&quot;dist&quot;</span>,</span><br><span class="line">        port: <span class="number">8887</span>,  <span class="comment">//0~65535</span></span><br><span class="line">        livereload: <span class="literal">true</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 启动一个默认的任务,同时启动监听和服务器,直接使用gulp命令启动</span></span><br><span class="line">gulp.task(<span class="string">&quot;default&quot;</span>, [<span class="string">&quot;watch&quot;</span>, <span class="string">&quot;server&quot;</span>]);</span><br></pre></td></tr></table></figure>
+<h1 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h1><p><a href="https://gulpjs.com/plugins/">gulp插件</a></p>
+<pre><code>commonJS规范：
+    1.安装插件
+        cnpm install 插件名字 --save-dev
+        cnpm i 插件名字 -D
+
+    2.通过require()引入文件
+
+    3.查阅文档,插件的用法
+</code></pre>
+]]></content>
+      <tags>
+        <tag>项目工具</tag>
+        <tag>Gulp</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>项目工具PostCss</title>
     <url>/2021/06/08/postcss/</url>
     <content><![CDATA[<p>PostCss是一个功能单一的工具,提供了使用JavaScript代码来处理CSS,利用PostCss可以实现工程化操作。<br>如：自动添加浏览器前缀,代码合并,代码压缩等。<br>官方网址：<a href="https://postcss.org/">PostCss</a></p>
@@ -540,8 +589,8 @@ github配置密匙
 <p>6 . postcss-sprites ： 自动生成精灵图<br>安装：cnpm install postcss-sprites</p>
 ]]></content>
       <tags>
-        <tag>PostCss</tag>
         <tag>项目工具</tag>
+        <tag>PostCss</tag>
       </tags>
   </entry>
   <entry>
@@ -620,52 +669,84 @@ npm i babel-standalone --s
       </tags>
   </entry>
   <entry>
-    <title>项目工具Gulp</title>
-    <url>/2021/07/11/tool-Gulp/</url>
-    <content><![CDATA[<p>官网地址 <a href="https://www.gulpjs.com.cn/">gulp.js</a></p>
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>1.下载和安装<a href="https://nodejs.org/zh-cn/">Node.js</a></p>
-<pre><code>node -v 查看node.js的版本
-</code></pre>
-<p>2.启动Node.js控制台</p>
-<pre><code>npm     下载源是国外网站
-cnpm    [淘宝镜像](https://npm.taobao.org/)
-    安装：npm install cnpm -g --registry=https://registry.npm.taobao.org
-</code></pre>
-<p>3.安装gulp到本地</p>
-<pre><code>安装：cnpm install gulp -g
-gulp -v 查看gulp的版本
-</code></pre>
-<p>4.初始化当前目录,生成package.json文件,存放项目的配置信息</p>
-<pre><code>cnpm init
-</code></pre>
-<p>5.在项目里面安装gulp到本地</p>
-<pre><code>cnpm install gulp@3.9.1 --save-dev
-    --save   将文件安装到本地的文件夹
-    -dev    将安装gulp的信息保存在package.json里面
+    <title>vue2+vue3学习笔记</title>
+    <url>/2021/09/01/vue2-vue3-study/</url>
+    <content><![CDATA[<h1 id="模板语法"><a href="#模板语法" class="headerlink" title="模板语法"></a>模板语法</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;box&quot;&gt;</span><br><span class="line">    &lt;!-- &#123;&#123;&#125;&#125; 为Vue定义的标签内部绑定语法 --&gt;</span><br><span class="line">    &#123;&#123;myname&#125;&#125;</span><br><span class="line"></span><br><span class="line">    &lt;!-- @ 为Vue定义的事件绑定语法 v-on简写 --&gt;</span><br><span class="line">    &lt;button @click&#x3D;&quot;handleMyClick()&quot;&gt;click&lt;&#x2F;button&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- : 为Vue定义的标签属性绑定语法 v-bind简写 --&gt;</span><br><span class="line">    &lt;div :class&#x3D;&quot;mycolor&quot;&gt;动态切换class&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div :style&#x3D;&quot;isStyle ? &#39;color:red&#39;:&#39;color:blue&#39; &quot;&gt;动态切换style&lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- v- Vue封装的指令 --&gt;</span><br><span class="line">    &lt;div v-show&#x3D;&quot;isShow&quot;&gt;动态显示与隐藏&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div v-if&#x3D;&quot;isShow&quot;&gt;动态创建与删除&lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">        &lt;!-- n for in&#x2F;of 循环遍历 --&gt;</span><br><span class="line">        &lt;!-- key值是每项都有且唯一的ID(data.id),跟踪每个节点的身份,从而重用和重新排序现有元素 --&gt;</span><br><span class="line">        &lt;li v-for&#x3D;&quot;(item,index) in datalist&quot; :key&#x3D;&quot;item&quot;&gt;</span><br><span class="line">            &#123;&#123; item &#125;&#125;--&#123;&#123; index &#125;&#125;</span><br><span class="line">        &lt;&#x2F;li&gt;</span><br><span class="line">    &lt;&#x2F;ul&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- Vue提供的包装元素节点,不会创建在页面上 --&gt;</span><br><span class="line">    &lt;template&gt;&lt;&#x2F;template&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line">&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2&#x2F;dist&#x2F;vue.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    new Vue(&#123;</span><br><span class="line">        el:&quot;#box&quot;,</span><br><span class="line">        &#x2F;&#x2F; 所有状态，状态改变页面自动更新</span><br><span class="line">        data:&#123;</span><br><span class="line">            myname:&quot;zhou&quot;,</span><br><span class="line">            mycolor:&quot;red&quot;,</span><br><span class="line">            isStyle:true,</span><br><span class="line">            isShow:true,</span><br><span class="line">            datalist:[&#39;1&#39;,&#39;2&#39;,&#39;3&#39;,&#39;4&#39;,&#39;5&#39;]</span><br><span class="line">        &#125;,</span><br><span class="line">        &#x2F;&#x2F; 事件处理函数</span><br><span class="line">        methods:&#123;</span><br><span class="line">            &#x2F;&#x2F; ES6对象简写</span><br><span class="line">            &#x2F;&#x2F; 定义的方法</span><br><span class="line">            handleMyClick()&#123;</span><br><span class="line">                this.myname &#x3D; &quot;link&quot;,</span><br><span class="line">                this.mycolor &#x3D; &quot;blue&quot;,</span><br><span class="line">                this.isStyle &#x3D; !this.isStyle,</span><br><span class="line">                this.isShow &#x3D; !this.isShow</span><br><span class="line">                &#x2F;&#x2F; console.log(&quot;click&quot;)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="Vue常用指令"><a href="#Vue常用指令" class="headerlink" title="Vue常用指令"></a>Vue常用指令</h1><table>
+<thead>
+<tr>
+<th align="center">Vue常用指令</th>
+<th align="center">作用</th>
+<th align="center">简写</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">v-show</td>
+<td align="center">动态显示/隐藏</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">v-if</td>
+<td align="center">动态创建/删除</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">v-else</td>
+<td align="center">配合v-if使用，相当于if(){}else{}</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">v-else-if</td>
+<td align="center">多条件情况下配合v-if和v-else使用</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">v-for</td>
+<td align="center">根据遍历数组来进行渲染</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">v-bind</td>
+<td align="center">动态绑定属性</td>
+<td align="center">v-bind:src =&gt; :src</td>
+</tr>
+<tr>
+<td align="center">v-on</td>
+<td align="center">绑定事件</td>
+<td align="center">@事件名=”表达式”</td>
+</tr>
+<tr>
+<td align="center">v-model</td>
+<td align="center">双向绑定表单</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">v-text</td>
+<td align="center">给元素的innerText赋值</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">v-html</td>
+<td align="center">给元素的innerHTML赋值，能解析标签</td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<h1 id="vue2和vue3的变化"><a href="#vue2和vue3的变化" class="headerlink" title="vue2和vue3的变化"></a>vue2和vue3的变化</h1><h2 id="声明式渲染"><a href="#声明式渲染" class="headerlink" title="声明式渲染"></a>声明式渲染</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    &#x2F;* vue2</span><br><span class="line">    new Vue(&#123;</span><br><span class="line">        el:&quot;#box&quot;,</span><br><span class="line">        data:&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;) </span><br><span class="line">    *&#x2F;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; vue3</span><br><span class="line">   var obj &#x3D; &#123;</span><br><span class="line">    &#x2F;&#x2F; 函数式</span><br><span class="line">    data() &#123;</span><br><span class="line">        return &#123;</span><br><span class="line">            property: &#39;value&#39;,</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;,</span><br><span class="line">    methods:&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   Vue.createApp(obj).mount(&quot;#box&quot;)</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="数组更新检测"><a href="#数组更新检测" class="headerlink" title="数组更新检测"></a>数组更新检测</h2><pre><code>可以直接检测变动的方法：
+    push() pop() shift() unshift() splice() sort() reverse()
 
-简写：cnpm i gulp@3.9.1 -D
-</code></pre>
-<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>6.创建一个gulpfile.js的文件来编写任务</p>
-<pre><code>gulp hello(第一个参数名字) 运行编写的任务
-</code></pre>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// require() 引入模块,使用模块函数</span></span><br><span class="line"><span class="keyword">const</span> gulp = <span class="built_in">require</span>(<span class="string">&quot;gulp&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// gulp.task() 编写任务</span></span><br><span class="line"><span class="comment">// 第一个参数：自定义的执行任务名字</span></span><br><span class="line"><span class="comment">// 第二个参数：回调函数,任务执行的功能</span></span><br><span class="line">gulp.task(<span class="string">&quot;hello&quot;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;hello world&quot;</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// gulp.src()      找到源文件路径</span></span><br><span class="line"><span class="comment">// gulp.dest()     找到目标文件路径,如果路径不存在,自动创建</span></span><br><span class="line"><span class="comment">// pipe()          理解程序运行管道</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 整理.html文件</span></span><br><span class="line">gulp.task(<span class="string">&quot;copy-html&quot;</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> gulp.src(<span class="string">&quot;index.html&quot;</span>)</span><br><span class="line">        .pipe(gulp.dest(<span class="string">&quot;dist/&quot;</span>))</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 拷贝图片</span></span><br><span class="line">gulp.task(<span class="string">&quot;images&quot;</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> gulp.src(<span class="string">&quot;img/**/*&quot;</span>).pipe(gulp.dest(<span class="string">&quot;dist/images&quot;</span>));</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 拷贝多个文件到一个目录</span></span><br><span class="line">gulp.task(<span class="string">&quot;data&quot;</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> gulp.src([<span class="string">&quot;json/*.json&quot;</span>, <span class="string">&quot;xml/*.xml&quot;</span>, <span class="string">&quot;!xml/06.xml&quot;</span>])</span><br><span class="line">        .pipe(gulp.dest(<span class="string">&quot;dist/data&quot;</span>))</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 一次执行多个任务</span></span><br><span class="line">gulp.task(<span class="string">&quot;build&quot;</span>, [<span class="string">&quot;copy-html&quot;</span>, <span class="string">&quot;images&quot;</span>, <span class="string">&quot;data&quot;</span>], <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;执行完毕&quot;</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h1 id="监听"><a href="#监听" class="headerlink" title="监听"></a>监听</h1><p>7.监听到文件有改变,会自动去执行对应的任务,更新数据</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// gulp.watch()</span></span><br><span class="line"><span class="comment">// 第一个参数,文件监听的路径 </span></span><br><span class="line"><span class="comment">// 第二个参数,执行的任务</span></span><br><span class="line">gulp.task(<span class="string">&quot;watch&quot;</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    gulp.watch(<span class="string">&quot;index.html&quot;</span>, [<span class="string">&quot;copy-html&quot;</span>]);</span><br><span class="line">    gulp.watch(<span class="string">&quot;img/**/*&quot;</span>, [<span class="string">&quot;images&quot;</span>]);</span><br><span class="line">    gulp.watch([<span class="string">&quot;json/*.json&quot;</span>, <span class="string">&quot;xml/*.xml&quot;</span>, <span class="string">&quot;!xml/06.xml&quot;</span>],[<span class="string">&quot;data&quot;</span>]);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h1 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h1><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 启动一个服务器 gulp-connect</span></span><br><span class="line"><span class="comment">// 需要在每一条任务后面加上 .pipe(connect.reload()); 来实时刷新</span></span><br><span class="line"><span class="keyword">const</span> GulpClient = <span class="built_in">require</span>(<span class="string">&quot;gulp&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> connect = <span class="built_in">require</span>(<span class="string">&quot;gulp-connect&quot;</span>);</span><br><span class="line">GulpClient.task(<span class="string">&quot;server&quot;</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    connect.server(&#123;</span><br><span class="line">        root: <span class="string">&quot;dist&quot;</span>,</span><br><span class="line">        port: <span class="number">8887</span>,  <span class="comment">//0~65535</span></span><br><span class="line">        livereload: <span class="literal">true</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 启动一个默认的任务,同时启动监听和服务器,直接使用gulp命令启动</span></span><br><span class="line">gulp.task(<span class="string">&quot;default&quot;</span>, [<span class="string">&quot;watch&quot;</span>, <span class="string">&quot;server&quot;</span>]);</span><br></pre></td></tr></table></figure>
-<h1 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h1><p><a href="https://gulpjs.com/plugins/">gulp插件</a></p>
-<pre><code>commonJS规范：
-    1.安装插件
-        cnpm install 插件名字 --save-dev
-        cnpm i 插件名字 -D
+需要使用新数组替换旧数组的方法：
+    filter() concat() slice() map()
 
-    2.通过require()引入文件
-
-    3.查阅文档,插件的用法
+vue2不能检测以下变动的数组，vue3支持检测以下变动的数组
+    vm.items[下标] = newValue
+        vue2的解决方案：
+            1.Vue.set(example1.items, indexOfItem, newValue)
+            2.splice
 </code></pre>
 ]]></content>
       <tags>
-        <tag>项目工具</tag>
-        <tag>Gulp</tag>
+        <tag>Vue</tag>
       </tags>
   </entry>
   <entry>
@@ -767,75 +848,6 @@ npm run lint  代码检测工具(自动修正)
 <h1 id="状态管理-Vuex"><a href="#状态管理-Vuex" class="headerlink" title="状态管理 Vuex"></a>状态管理 Vuex</h1><pre><code>Vuex是一个专为Vue.js应用程序开发的状态管理模式,采用集中式存储管理应用的所有组件的状态,并以相应的规则保证状态以一种可预测的方式方式变化。
    
 </code></pre>
-]]></content>
-      <tags>
-        <tag>Vue</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>vue2+vue3学习笔记</title>
-    <url>/2021/09/01/vue2-vue3-study/</url>
-    <content><![CDATA[<h1 id="模板语法"><a href="#模板语法" class="headerlink" title="模板语法"></a>模板语法</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;box&quot;&gt;</span><br><span class="line">    &lt;!-- &#123;&#123;&#125;&#125; 为Vue定义的标签内部绑定语法 --&gt;</span><br><span class="line">    &#123;&#123;myname&#125;&#125;</span><br><span class="line"></span><br><span class="line">    &lt;!-- @ 为Vue定义的事件绑定语法 v-on简写 --&gt;</span><br><span class="line">    &lt;button @click&#x3D;&quot;handleMyClick()&quot;&gt;click&lt;&#x2F;button&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- : 为Vue定义的标签属性绑定语法 v-bind简写 --&gt;</span><br><span class="line">    &lt;div :class&#x3D;&quot;mycolor&quot;&gt;动态切换class&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div :style&#x3D;&quot;isStyle ? &#39;color:red&#39;:&#39;color:blue&#39; &quot;&gt;动态切换style&lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- v- Vue封装的指令 --&gt;</span><br><span class="line">    &lt;div v-show&#x3D;&quot;isShow&quot;&gt;动态显示与隐藏&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div v-if&#x3D;&quot;isShow&quot;&gt;动态创建与删除&lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">        &lt;!-- n for in&#x2F;of 循环遍历 --&gt;</span><br><span class="line">        &lt;!-- key值是每项都有且唯一的ID(data.id),跟踪每个节点的身份,从而重用和重新排序现有元素 --&gt;</span><br><span class="line">        &lt;li v-for&#x3D;&quot;(item,index) in datalist&quot; :key&#x3D;&quot;item&quot;&gt;</span><br><span class="line">            &#123;&#123; item &#125;&#125;--&#123;&#123; index &#125;&#125;</span><br><span class="line">        &lt;&#x2F;li&gt;</span><br><span class="line">    &lt;&#x2F;ul&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- Vue提供的包装元素节点,不会创建在页面上 --&gt;</span><br><span class="line">    &lt;template&gt;&lt;&#x2F;template&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line">&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue@2&#x2F;dist&#x2F;vue.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    new Vue(&#123;</span><br><span class="line">        el:&quot;#box&quot;,</span><br><span class="line">        &#x2F;&#x2F; 所有状态，状态改变页面自动更新</span><br><span class="line">        data:&#123;</span><br><span class="line">            myname:&quot;zhou&quot;,</span><br><span class="line">            mycolor:&quot;red&quot;,</span><br><span class="line">            isStyle:true,</span><br><span class="line">            isShow:true,</span><br><span class="line">            datalist:[&#39;1&#39;,&#39;2&#39;,&#39;3&#39;,&#39;4&#39;,&#39;5&#39;]</span><br><span class="line">        &#125;,</span><br><span class="line">        &#x2F;&#x2F; 事件处理函数</span><br><span class="line">        methods:&#123;</span><br><span class="line">            &#x2F;&#x2F; ES6对象简写</span><br><span class="line">            &#x2F;&#x2F; 定义的方法</span><br><span class="line">            handleMyClick()&#123;</span><br><span class="line">                this.myname &#x3D; &quot;link&quot;,</span><br><span class="line">                this.mycolor &#x3D; &quot;blue&quot;,</span><br><span class="line">                this.isStyle &#x3D; !this.isStyle,</span><br><span class="line">                this.isShow &#x3D; !this.isShow</span><br><span class="line">                &#x2F;&#x2F; console.log(&quot;click&quot;)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
-<h1 id="Vue常用指令"><a href="#Vue常用指令" class="headerlink" title="Vue常用指令"></a>Vue常用指令</h1><table>
-<thead>
-<tr>
-<th align="center">Vue常用指令</th>
-<th align="center">作用</th>
-<th align="center">简写</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">v-show</td>
-<td align="center">动态显示/隐藏</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">v-if</td>
-<td align="center">动态创建/删除</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">v-else</td>
-<td align="center">配合v-if使用，相当于if(){}else{}</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">v-else-if</td>
-<td align="center">多条件情况下配合v-if和v-else使用</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">v-for</td>
-<td align="center">根据遍历数组来进行渲染</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">v-bind</td>
-<td align="center">动态绑定属性</td>
-<td align="center">v-bind:src =&gt; :src</td>
-</tr>
-<tr>
-<td align="center">v-on</td>
-<td align="center">绑定事件</td>
-<td align="center">@事件名=”表达式”</td>
-</tr>
-<tr>
-<td align="center">v-model</td>
-<td align="center">双向绑定表单</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">v-text</td>
-<td align="center">给元素的innerText赋值</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">v-html</td>
-<td align="center">给元素的innerHTML赋值，能解析标签</td>
-<td align="center"></td>
-</tr>
-</tbody></table>
-<h1 id="vue2和vue3的变化"><a href="#vue2和vue3的变化" class="headerlink" title="vue2和vue3的变化"></a>vue2和vue3的变化</h1><h2 id="声明式渲染"><a href="#声明式渲染" class="headerlink" title="声明式渲染"></a>声明式渲染</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    &#x2F;* vue2</span><br><span class="line">    new Vue(&#123;</span><br><span class="line">        el:&quot;#box&quot;,</span><br><span class="line">        data:&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;) </span><br><span class="line">    *&#x2F;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; vue3</span><br><span class="line">   var obj &#x3D; &#123;</span><br><span class="line">    &#x2F;&#x2F; 函数式</span><br><span class="line">    data() &#123;</span><br><span class="line">        return &#123;</span><br><span class="line">            property: &#39;value&#39;,</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;,</span><br><span class="line">    methods:&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   Vue.createApp(obj).mount(&quot;#box&quot;)</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <tags>
         <tag>Vue</tag>
