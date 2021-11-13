@@ -2211,7 +2211,61 @@ removeEventListener()
 <td align="center">事件的默认行为立即执行，无需等待事件回调执行完毕</td>
 </tr>
 </tbody></table>
-<h2 id="按键修饰符"><a href="#按键修饰符" class="headerlink" title="按键修饰符"></a>按键修饰符</h2><!-- # Vue-cli -->
+<pre><code>注：修饰符可以连着写，例：@click.prevent.stop
+</code></pre>
+<h2 id="按键修饰符"><a href="#按键修饰符" class="headerlink" title="按键修饰符"></a>按键修饰符</h2><table>
+<thead>
+<tr>
+<th align="center">Vue常用的按键修饰符</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">.enter</td>
+</tr>
+<tr>
+<td align="center">.tab</td>
+</tr>
+<tr>
+<td align="center">.delete</td>
+</tr>
+<tr>
+<td align="center">.esc</td>
+</tr>
+<tr>
+<td align="center">.space</td>
+</tr>
+<tr>
+<td align="center">.up</td>
+</tr>
+<tr>
+<td align="center">.down</td>
+</tr>
+<tr>
+<td align="center">.left</td>
+</tr>
+<tr>
+<td align="center">.right</td>
+</tr>
+</tbody></table>
+<pre><code>注：
+    1.Vue未提供别名的按键，可以使用按键原始的key值去绑定，但要转为kebab-case(短横线命名)。
+    2.系统修饰符（用法特殊）：ctrl alt shift meta tab
+        1.配合keyup使用：按下修饰符的同时，再按下其他键，随后释放其他键。事件才被触发。
+        2.配合keydown使用，正常触发事件。
+    3.Vue.config.keyCodes.自定义键名 = 键码   可以自定义按键别名。
+</code></pre>
+<h2 id="计算属性"><a href="#计算属性" class="headerlink" title="计算属性"></a>计算属性</h2><pre><code>1.定义：要用的属性不存在，要通过已有属性计算得来。
+2.原理：底层借助Objcet.defineproperty方法提供的getter和setter。
+3.get函数什么时候执行：
+    1.初次读取时会执行一次。
+    2.当依赖的数据发送改变时会被再次调用。
+4.优势：与methods实现相比，内部有缓存机制（复用），效率更高，调试方便。
+5.备注：
+    1.计算属性最终会出现在vm上，直接读取使用。
+    2.如果计算属性要被修改，那必须写set函数去响应修改，且set中要引起计算时依赖的数据发生改变。
+</code></pre>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!-- 一个容器 root --&gt;</span><br><span class="line">&lt;div id&#x3D;&quot;root&quot;&gt;</span><br><span class="line">    姓：&lt;input type&#x3D;&quot;text&quot; v-model&#x3D;&quot;firstName&quot;&gt; &lt;br&gt;</span><br><span class="line">    名：&lt;input type&#x3D;&quot;text&quot; v-model&#x3D;&quot;lastName&quot;&gt; &lt;br&gt;</span><br><span class="line">    全名：&lt;span&gt;&#123;&#123; fullName &#125;&#125;&lt;&#x2F;span&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">    Vue.config.productionTip &#x3D; false; &#x2F;&#x2F; 阻止vue在启动时生成生产提示。</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 创建vue实例</span><br><span class="line">    const vm &#x3D; new Vue(&#123;</span><br><span class="line">        el: &quot;#root&quot;,</span><br><span class="line">        data:&#123;</span><br><span class="line">            firstName:&quot;张&quot;,</span><br><span class="line">            lastName:&quot;三&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        computed:&#123;</span><br><span class="line">            fullName:&#123;</span><br><span class="line">                &#x2F;&#x2F; get的作用:当读取fullName时，get就会被调用，且返回值就作为fullName的值</span><br><span class="line">                &#x2F;&#x2F; get什么时候调用：1.初次读取fullName时。2.所依赖的数据发生变化时。</span><br><span class="line">                get()&#123;</span><br><span class="line">                    &#x2F;&#x2F; console.log(this); &#x2F;&#x2F; this指向vm</span><br><span class="line">                    return this.firstName + &quot;-&quot; + this.lastName</span><br><span class="line">                &#125;,</span><br><span class="line">                &#x2F;&#x2F; set什么时候调用：当fullName被修改时。</span><br><span class="line">                set(value)&#123;</span><br><span class="line">                    console.log(&#39;set&#39;,value);</span><br><span class="line">                    const arr &#x3D; value.split(&#39;-&#39;);</span><br><span class="line">                    this.firstName &#x3D; arr[0];</span><br><span class="line">                    this.lastName &#x3D; arr[1];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            &#x2F;&#x2F; 只考虑读取不考虑修改可使用简写</span><br><span class="line">            &#x2F;* fullName()&#123;</span><br><span class="line">                return this.firstName + &quot;-&quot; + this.lastName</span><br><span class="line">            &#125; *&#x2F;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="监视属性"><a href="#监视属性" class="headerlink" title="监视属性"></a>监视属性</h2><!-- # Vue-cli -->
 
 <h1 id="样式绑定"><a href="#样式绑定" class="headerlink" title="样式绑定"></a>样式绑定</h1><h2 id="class绑定"><a href="#class绑定" class="headerlink" title="class绑定"></a>class绑定</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script src=<span class="string">&quot;https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id=<span class="string">&quot;box&quot;</span>&gt;</span><br><span class="line">        &lt;div style=<span class="string">&quot;background: yellow;&quot;</span>&gt;<span class="number">111111</span>&lt;/div&gt;</span><br><span class="line">        &lt;button @click=<span class="string">&quot;handleClick()&quot;</span>&gt;click&lt;/button&gt;</span><br><span class="line">        &lt;div :<span class="class"><span class="keyword">class</span></span>=<span class="string">&quot;isActive?&#x27;red&#x27;:&#x27;yellow&#x27;&quot;</span>&gt;动态绑定<span class="class"><span class="keyword">class</span>-三目写法&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">        &lt;div :class=&quot;classobj&quot;&gt;动态绑定class-对象写法&lt;/div&gt;</span><br><span class="line">        &lt;div :<span class="class"><span class="keyword">class</span></span>=<span class="string">&quot;classarr&quot;</span>&gt;动态绑定<span class="class"><span class="keyword">class</span>-数组写法&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class">    &lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class">    &lt;<span class="title">script</span>&gt;</span></span><br><span class="line"><span class="class">        <span class="title">var</span> <span class="title">vm</span> </span>= <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">            el: <span class="string">&quot;#box&quot;</span>,</span><br><span class="line">            data: &#123;</span><br><span class="line">                isActive: <span class="literal">true</span>,</span><br><span class="line">                classobj: &#123;</span><br><span class="line">                    <span class="comment">// 增加类名a和b</span></span><br><span class="line">                    a: <span class="literal">true</span>,</span><br><span class="line">                    b: <span class="literal">true</span></span><br><span class="line">                &#125;,</span><br><span class="line">                classarr: [<span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>]</span><br><span class="line">            &#125;,</span><br><span class="line">            methods: &#123;</span><br><span class="line">                <span class="function"><span class="title">handleClick</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">                    <span class="built_in">this</span>.isActive = !<span class="built_in">this</span>.isActive</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
 <h2 id="style绑定"><a href="#style绑定" class="headerlink" title="style绑定"></a>style绑定</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script src=<span class="string">&quot;https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id=<span class="string">&quot;box&quot;</span>&gt;</span><br><span class="line">        &lt;button @click=<span class="string">&quot;handleClick()&quot;</span>&gt;click&lt;/button&gt;</span><br><span class="line">        &lt;div :style=<span class="string">&quot;&#x27;background:&#x27; + (isActive?&#x27;red&#x27;:&#x27;yellow&#x27;)&quot;</span>&gt;动态绑定style-三目写法&lt;/div&gt;</span><br><span class="line">        &lt;div :style=<span class="string">&quot;styleobj&quot;</span>&gt;动态绑定style-对象写法&lt;/div&gt;</span><br><span class="line">        &lt;div :style=<span class="string">&quot;stylearr&quot;</span>&gt;动态绑定style-数组写法&lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        <span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">            el: <span class="string">&quot;#box&quot;</span>,</span><br><span class="line">            data: &#123;</span><br><span class="line">                isActive: <span class="literal">true</span>,</span><br><span class="line">                styleobj: &#123;</span><br><span class="line">                    backgroundColor: <span class="string">&quot;red&quot;</span></span><br><span class="line">                &#125;,</span><br><span class="line">                stylearr: []</span><br><span class="line">            &#125;,</span><br><span class="line">            methods: &#123;</span><br><span class="line">                <span class="function"><span class="title">handleClick</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">                    <span class="built_in">this</span>.isActive = !<span class="built_in">this</span>.isActive</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
@@ -2261,7 +2315,7 @@ key
 Fetch请求默认不带cookie,需要设置fetch(url,&#123;credrntials:&quot;include&quot;&#125;)
 </code></pre>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id=<span class="string">&quot;box&quot;</span>&gt;</span><br><span class="line">        &lt;button @click=<span class="string">&quot;handleClick()&quot;</span>&gt;获取数据&lt;/button&gt;</span><br><span class="line">        &lt;ul&gt;</span><br><span class="line">            &lt;li v-<span class="keyword">for</span>=<span class="string">&quot;data in datalist&quot;</span>&gt;</span><br><span class="line">                &lt;h1&gt;城市名：&#123;&#123;data.properties.name&#125;&#125;&lt;/h1&gt;</span><br><span class="line">                &lt;h2&gt;城市编码:&#123;&#123;data.properties.adcode&#125;&#125;&lt;/h2&gt;</span><br><span class="line"></span><br><span class="line">            &lt;/li&gt;</span><br><span class="line">        &lt;/ul&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">            el: <span class="string">&quot;#box&quot;</span>,</span><br><span class="line">            data: &#123;</span><br><span class="line">                datalist: []</span><br><span class="line">            &#125;,</span><br><span class="line">            methods: &#123;</span><br><span class="line">                <span class="function"><span class="title">handleClick</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">                    fetch(<span class="string">&quot;https://geo.datav.aliyun.com/areas_v3/bound/440000_full.json&quot;</span>).then(<span class="function"><span class="params">res</span> =&gt;</span> res.json()).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">                        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; res.features.length; i++) &#123;</span><br><span class="line">                            <span class="built_in">console</span>.log(res.features[i].properties.name)</span><br><span class="line">                        &#125;</span><br><span class="line">                        <span class="built_in">this</span>.datalist = res.features</span><br><span class="line"></span><br><span class="line">                    &#125;)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
-<h1 id="计算属性"><a href="#计算属性" class="headerlink" title="计算属性"></a>计算属性</h1><pre><code>计算缓存
+<h1 id="计算属性-1"><a href="#计算属性-1" class="headerlink" title="计算属性"></a>计算属性</h1><pre><code>计算缓存
     计算属性基于它们的依赖进行缓存
     计算属性只有在它的相关依赖发生改变时才会重新求值
 </code></pre>
