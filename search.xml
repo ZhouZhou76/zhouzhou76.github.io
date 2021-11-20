@@ -2335,7 +2335,35 @@ v-show:
     1.最好使用每条数据的唯一标识作为key，比如id，手机号，身份证号，学号等唯一值。
     2.如果不存在对数据的逆序添加，逆序删除等破坏顺序操作，仅用于渲染列表用于展示，使用index作为key是没有问题的。
 </code></pre>
-<h2 id="列表过滤"><a href="#列表过滤" class="headerlink" title="列表过滤"></a>列表过滤</h2><!-- # Vue-cli -->
+<h2 id="监测数据原理"><a href="#监测数据原理" class="headerlink" title="监测数据原理"></a>监测数据原理</h2><pre><code>1.Vue会监测data中所有层次的数据。
+2.如何监测对象中的数据？
+    通过setter实现监视，且要在new Vue时就传入要监测的数据。
+        （1）对象中后追加的属性，Vue默认不做响应式处理。
+        （2）如需给后添加的属性做响应式，使用如下API：
+            Vue.set(target, propertyName/index, value)
+            vm.$set(target, propertyName/index, value)
+3.如何监测数组中的数据？
+    通过包裹数组更新元素的方法实现，本质就是做了两件事：
+        （1）调用原生对应的方法对数组进行更新。
+        （2）重新解析模板，进而更新页面。
+4.在Vue修改数组中的某个元素使用如下方法：
+    1.数组API：push() pop() shift() unshift splice() sort() reverse()
+    2.Vue.set() 或 vm.$set()
+注：Vue.set() 和 vm.$set() 不能给vm 或 vm的根数据对象添加属性!
+</code></pre>
+<h2 id="数据表单收集"><a href="#数据表单收集" class="headerlink" title="数据表单收集"></a>数据表单收集</h2><pre><code>若：&lt;input type=&quot;text&quot; /&gt;，则v-model收集的是value值，用户输入的就是value值。
+若：&lt;input type=&quot;radio&quot; /&gt;，则v-model收集的是value值，且要给标签配置value值。
+若：&lt;input type=&quot;checkbox&quot; /&gt;
+    1.没有配置input的value属性，那么收集的就是checked（勾选 or 未勾选，是布尔值）。
+    2.配置input的value属性：
+        （1）v-model的初始值是非数组，那么收集的就是checked（勾选 or 未勾选，是布尔值）。
+        （2）v-model的初始值是数组，那么收集的就是value组成的数组。
+v-model的三个修饰符：
+    lazy: 失去焦点再收集数据。
+    number: 输入字符串转为有效的数字。
+    trim: 输入首尾空格过滤。
+</code></pre>
+<!-- # Vue-cli -->
 
 
 <h1 id="表单控件绑定-双向数据绑定"><a href="#表单控件绑定-双向数据绑定" class="headerlink" title="表单控件绑定/双向数据绑定"></a>表单控件绑定/双向数据绑定</h1><pre><code>v-model
