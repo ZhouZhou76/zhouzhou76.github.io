@@ -2363,12 +2363,92 @@ v-model的三个修饰符：
     number: 输入字符串转为有效的数字。
     trim: 输入首尾空格过滤。
 </code></pre>
-<!-- # Vue-cli -->
-
-
-<h1 id="表单控件绑定-双向数据绑定"><a href="#表单控件绑定-双向数据绑定" class="headerlink" title="表单控件绑定/双向数据绑定"></a>表单控件绑定/双向数据绑定</h1><pre><code>v-model
+<h2 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h2><pre><code>定义：对要显示的数据进行特定格式化后再显示（适用于一些简单逻辑的处理）。
+语法：
+    1.注册过滤器：Vue.filter(name, callback) 或 new Vue&#123;filters:&#123;&#125;&#125;
+    2.使用过滤器：&#123;&#123; xxx | 过滤器名 &#125;&#125; 或 v-bind:属性 = &quot;xxx | 过滤器名&quot;
+注：
+    1.过滤器也可以接收额外参数，多个过滤器也可以串联。
+    2.并没有改变原本的数据，是产生新的对应的数据。
 </code></pre>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script src=<span class="string">&quot;https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id=<span class="string">&quot;box&quot;</span>&gt;</span><br><span class="line">        &lt;input type=<span class="string">&quot;text&quot;</span> v-model=<span class="string">&quot;mytext&quot;</span> /&gt;</span><br><span class="line">        &#123;&#123;mytext&#125;&#125;</span><br><span class="line"></span><br><span class="line">        &lt;textarea v-model=<span class="string">&quot;mytext&quot;</span>&gt;&lt;/textarea&gt;</span><br><span class="line">        &lt;br /&gt;</span><br><span class="line">        &lt;input type=<span class="string">&quot;checkbox&quot;</span> v-model=<span class="string">&quot;isChecked&quot;</span> /&gt;记录用户名</span><br><span class="line"></span><br><span class="line">        &lt;br /&gt;</span><br><span class="line"></span><br><span class="line">        &lt;p&gt;你喜欢的冬奥会运动?</span><br><span class="line">            &lt;input type=<span class="string">&quot;checkbox&quot;</span> v-model=<span class="string">&quot;checkgroup&quot;</span> value=<span class="string">&quot;短道速滑&quot;</span> /&gt;短道速滑</span><br><span class="line">            &lt;input type=<span class="string">&quot;checkbox&quot;</span> v-model=<span class="string">&quot;checkgroup&quot;</span> value=<span class="string">&quot;速度滑冰&quot;</span> /&gt;速度滑冰</span><br><span class="line">            &lt;input type=<span class="string">&quot;checkbox&quot;</span> v-model=<span class="string">&quot;checkgroup&quot;</span> value=<span class="string">&quot;花样滑冰&quot;</span> /&gt;花样滑冰</span><br><span class="line">        &lt;/p&gt;</span><br><span class="line">        &#123;&#123;checkgroup&#125;&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        &lt;p&gt;你喜欢的奥运会运动?</span><br><span class="line">            &lt;input type=<span class="string">&quot;radio&quot;</span> v-model=<span class="string">&quot;picked&quot;</span> value=<span class="string">&quot;跑步&quot;</span> /&gt;跑步</span><br><span class="line">            &lt;input type=<span class="string">&quot;radio&quot;</span> v-model=<span class="string">&quot;picked&quot;</span> value=<span class="string">&quot;篮球&quot;</span> /&gt;篮球</span><br><span class="line">            &lt;input type=<span class="string">&quot;radio&quot;</span> v-model=<span class="string">&quot;picked&quot;</span> value=<span class="string">&quot;乒乓&quot;</span> /&gt;乒乓</span><br><span class="line">        &lt;/p&gt;</span><br><span class="line">        &#123;&#123;picked&#125;&#125;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        <span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">            el: <span class="string">&quot;#box&quot;</span>,</span><br><span class="line">            data: &#123;</span><br><span class="line">                mytext: <span class="string">&quot;&quot;</span>,</span><br><span class="line">                isChecked: <span class="literal">true</span>,</span><br><span class="line">                checkgroup: [],</span><br><span class="line">                picked: <span class="string">&quot;&quot;</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="内置指令"><a href="#内置指令" class="headerlink" title="内置指令"></a>内置指令</h2><table>
+<thead>
+<tr>
+<th align="center">Vue常用指令</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">v-show</td>
+<td align="center">条件渲染（动态控制节点是否展示）</td>
+</tr>
+<tr>
+<td align="center">v-if</td>
+<td align="center">条件渲染（动态控制节点是否存在）</td>
+</tr>
+<tr>
+<td align="center">v-else</td>
+<td align="center">条件渲染（动态控制节点是否存在）</td>
+</tr>
+<tr>
+<td align="center">v-else-if</td>
+<td align="center">多条件情况下配合v-if和v-else使用</td>
+</tr>
+<tr>
+<td align="center">v-for</td>
+<td align="center">遍历数组/对象/字符串</td>
+</tr>
+<tr>
+<td align="center">v-bind</td>
+<td align="center">单向绑定解析表达式，可简写为 :xxx</td>
+</tr>
+<tr>
+<td align="center">v-on</td>
+<td align="center">绑定事件监听，可简写为@</td>
+</tr>
+<tr>
+<td align="center">v-model</td>
+<td align="center">双向数据绑定</td>
+</tr>
+<tr>
+<td align="center">v-text</td>
+<td align="center">向其所在的节点中渲染文本内容。v-text会替换掉节点中的内容，插值语法不会</td>
+</tr>
+<tr>
+<td align="center">v-html</td>
+<td align="center">向指定节点中渲染包含html结构的内容，可以识别html结构。v-html会替换掉节点中所有的内容，插值语法不会。在网站上动态渲染任意HTML结构会导致XSS攻击，需要在可信的内容上使用v-html，不要用在用户提交的内容上。</td>
+</tr>
+<tr>
+<td align="center">v-cloak</td>
+<td align="center">特殊属性，Vue实例创建完毕并接管容器后，会删掉v-cloak属性。使用css配合v-cloak可以解决网速慢时页面展示出插值语法的问题。</td>
+</tr>
+<tr>
+<td align="center">v-once</td>
+<td align="center">v-once所在节点在初次动态渲染后，就视为静态内容了。以后数据的改变不会引起v-once所在结构的更新，可以用于优化性能。</td>
+</tr>
+<tr>
+<td align="center">v-pre</td>
+<td align="center">跳过其所在节点的编译过程。可利用它跳过没有使用指令语法，没有使用插值语法的节点，会加快编译。</td>
+</tr>
+</tbody></table>
+<h2 id="自定义指令"><a href="#自定义指令" class="headerlink" title="自定义指令"></a>自定义指令</h2><pre><code>定义语法：
+    1.局部指令：
+        （1）new Vue(&#123;directives:&#123;指令名:配置对象&#125;&#125;)  
+        （2）new Vue(&#123;directives()&#123; &#125;&#125;)  
+    2.全局指令：
+        （1）Vue.directive(指令名,配置对象)
+        （2）Vue.directive(指令名,回调函数)
+配置对象中常用的3个回调：
+    1.bind: 指令与元素成功绑定时调用。
+    2.inserted: 指令所在元素被插入页面时调用。
+    3.update: 指令所在模板结构被重新解析时调用。
+注：
+    1.指令定义时不加v-，但使用时要加v-。
+    2.指令名如果是多个单词，要使用kebab-case命名方式，不要用camelCase命名。
+</code></pre>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!-- 一个容器 root --&gt;</span><br><span class="line">&lt;div id&#x3D;&quot;root&quot;&gt;</span><br><span class="line">    &lt;h2&gt;当前的n值是：&lt;span v-text&#x3D;&quot;n&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;h2&gt;</span><br><span class="line">    &lt;h2&gt;乘于10倍后n的值是：&lt;span v-big&#x3D;&quot;n&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;h2&gt;</span><br><span class="line">    &lt;button @click&#x3D;&quot;n++&quot;&gt;点我n+1&lt;&#x2F;button&gt;   &lt;hr&gt;</span><br><span class="line">    &lt;input type&#x3D;&quot;text&quot; v-fbind:value&#x3D;&quot;n&quot; &#x2F;&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">    Vue.config.productionTip &#x3D; false; &#x2F;&#x2F; 阻止vue在启动时生成生产提示。</span><br><span class="line"></span><br><span class="line">    &#x2F;* &#x2F;&#x2F; 定义全局指令</span><br><span class="line">    Vue.directive(&#39;fbind&#39;,&#123;</span><br><span class="line">        &#x2F;&#x2F; 指令与元素成功绑定时被调用</span><br><span class="line">        bind(element, binding)&#123;</span><br><span class="line">            element.value &#x3D; binding.value</span><br><span class="line">        &#125;,</span><br><span class="line">        &#x2F;&#x2F; 指令所在元素被插入页面时被调用</span><br><span class="line">        inserted(element, binding)&#123;</span><br><span class="line">            element.focus()</span><br><span class="line">        &#125;,</span><br><span class="line">        &#x2F;&#x2F; 指令所在的模板被重新解析时被调用</span><br><span class="line">        update(element, binding)&#123;</span><br><span class="line">            element.value &#x3D; binding.value</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;) *&#x2F;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 创建vue实例</span><br><span class="line">    const vm &#x3D; new Vue(&#123;</span><br><span class="line">        el: &quot;#root&quot;,</span><br><span class="line">        data:&#123;</span><br><span class="line">            n: 1</span><br><span class="line">        &#125;,</span><br><span class="line">        directives:&#123;</span><br><span class="line">            &#x2F;&#x2F; big函数在指令与元素成功绑定时和指令所在的模板被重新解析时会被调用。</span><br><span class="line">            big(element, binding)&#123;</span><br><span class="line">                element.innerText &#x3D; binding.value * 10</span><br><span class="line">            &#125;,</span><br><span class="line">            fbind:&#123;</span><br><span class="line">                &#x2F;&#x2F; 指令与元素成功绑定时被调用</span><br><span class="line">                bind(element, binding)&#123;</span><br><span class="line">                    element.value &#x3D; binding.value</span><br><span class="line">                &#125;,</span><br><span class="line">                &#x2F;&#x2F; 指令所在元素被插入页面时被调用</span><br><span class="line">                inserted(element, binding)&#123;</span><br><span class="line">                    element.focus()</span><br><span class="line">                &#125;,</span><br><span class="line">                &#x2F;&#x2F; 指令所在的模板被重新解析时被调用</span><br><span class="line">                update(element, binding)&#123;</span><br><span class="line">                    element.value &#x3D; binding.value</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h2><!-- # Vue-cli -->
+
 <h1 id="axios与fetch实现数据请求"><a href="#axios与fetch实现数据请求" class="headerlink" title="axios与fetch实现数据请求"></a>axios与fetch实现数据请求</h1><pre><code>[axios](https://github.com/axios/axios)
     返回的数据会被包装
     data:真实后端数据
@@ -2376,12 +2456,6 @@ v-model的三个修饰符：
 Fetch请求默认不带cookie,需要设置fetch(url,&#123;credrntials:&quot;include&quot;&#125;)
 </code></pre>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id=<span class="string">&quot;box&quot;</span>&gt;</span><br><span class="line">        &lt;button @click=<span class="string">&quot;handleClick()&quot;</span>&gt;获取数据&lt;/button&gt;</span><br><span class="line">        &lt;ul&gt;</span><br><span class="line">            &lt;li v-<span class="keyword">for</span>=<span class="string">&quot;data in datalist&quot;</span>&gt;</span><br><span class="line">                &lt;h1&gt;城市名：&#123;&#123;data.properties.name&#125;&#125;&lt;/h1&gt;</span><br><span class="line">                &lt;h2&gt;城市编码:&#123;&#123;data.properties.adcode&#125;&#125;&lt;/h2&gt;</span><br><span class="line"></span><br><span class="line">            &lt;/li&gt;</span><br><span class="line">        &lt;/ul&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">            el: <span class="string">&quot;#box&quot;</span>,</span><br><span class="line">            data: &#123;</span><br><span class="line">                datalist: []</span><br><span class="line">            &#125;,</span><br><span class="line">            methods: &#123;</span><br><span class="line">                <span class="function"><span class="title">handleClick</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">                    fetch(<span class="string">&quot;https://geo.datav.aliyun.com/areas_v3/bound/440000_full.json&quot;</span>).then(<span class="function"><span class="params">res</span> =&gt;</span> res.json()).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">                        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; res.features.length; i++) &#123;</span><br><span class="line">                            <span class="built_in">console</span>.log(res.features[i].properties.name)</span><br><span class="line">                        &#125;</span><br><span class="line">                        <span class="built_in">this</span>.datalist = res.features</span><br><span class="line"></span><br><span class="line">                    &#125;)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
-<h1 id="计算属性-1"><a href="#计算属性-1" class="headerlink" title="计算属性"></a>计算属性</h1><pre><code>计算缓存
-    计算属性基于它们的依赖进行缓存
-    计算属性只有在它的相关依赖发生改变时才会重新求值
-</code></pre>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id=<span class="string">&quot;box&quot;</span>&gt;</span><br><span class="line">        &lt;!-- myname的值从下标<span class="number">0</span>到<span class="number">1</span>改变为大写拼接myname下标<span class="number">1</span>后面的值 --&gt;</span><br><span class="line">        &#123;&#123;myname.substring(<span class="number">0</span>, <span class="number">1</span>).toUpperCase() + myname.substring(<span class="number">1</span>)&#125;&#125;</span><br><span class="line"></span><br><span class="line">        &lt;!-- </span><br><span class="line">        普通方法每执行一次都要调用一次,计算属性计算一次后,会把计算结果缓存到内存中</span><br><span class="line">        计算属性只执行一次,方法多次调用多次执行 </span><br><span class="line">        --&gt;</span><br><span class="line">        &lt;p&gt;计算属性：&#123;&#123;getMyName&#125;&#125;&lt;/p&gt;</span><br><span class="line">        &lt;p&gt;普通方法：&#123;&#123;getMyNameMethod()&#125;&#125;&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">        &lt;div&gt;</span><br><span class="line">            &lt;p&gt;计算属性：&#123;&#123;getMyName&#125;&#125;&lt;/p&gt;</span><br><span class="line">            &lt;p&gt;普通方法：&#123;&#123;getMyNameMethod()&#125;&#125;&lt;/p&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        <span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">            el: <span class="string">&quot;#box&quot;</span>,</span><br><span class="line">            data: &#123;</span><br><span class="line">                myname: <span class="string">&quot;xiaoming&quot;</span></span><br><span class="line">            &#125;,</span><br><span class="line">            methods: &#123;</span><br><span class="line">                <span class="function"><span class="title">getMyNameMethod</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">                    <span class="built_in">console</span>.log(<span class="string">&quot;getMyNameMethod-方法调用&quot;</span>)</span><br><span class="line">                    <span class="keyword">return</span> <span class="built_in">this</span>.myname.substring(<span class="number">0</span>, <span class="number">1</span>).toUpperCase() + <span class="built_in">this</span>.myname.substring(<span class="number">1</span>)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            computed: &#123;</span><br><span class="line">                <span class="function"><span class="title">getMyName</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">                    <span class="built_in">console</span>.log(<span class="string">&quot;getMyName-计算属性调用&quot;</span>)</span><br><span class="line">                    <span class="keyword">return</span> <span class="built_in">this</span>.myname.substring(<span class="number">0</span>, <span class="number">1</span>).toUpperCase() + <span class="built_in">this</span>.myname.substring(<span class="number">1</span>)</span><br><span class="line">                &#125; <span class="comment">// 依赖的状态改变了,计算属性会重新计算一遍</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">    &lt;script src=<span class="string">&quot;https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id=<span class="string">&quot;box&quot;</span>&gt;</span><br><span class="line">        &lt;input type=<span class="string">&quot;text&quot;</span> v-model=<span class="string">&quot;mytext&quot;</span>&gt;</span><br><span class="line">        &lt;ul&gt;</span><br><span class="line">            &lt;li v-<span class="keyword">for</span>=<span class="string">&quot;data in getMyDatalist&quot;</span>&gt;</span><br><span class="line">                &#123;&#123;data&#125;&#125;</span><br><span class="line">            &lt;/li&gt;</span><br><span class="line">        &lt;/ul&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        <span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">            el: <span class="string">&quot;#box&quot;</span>,</span><br><span class="line">            data: &#123;</span><br><span class="line">                mytext: <span class="string">&quot;&quot;</span>,</span><br><span class="line">                datalist: [<span class="string">&quot;aaa&quot;</span>, <span class="string">&quot;bbb&quot;</span>, <span class="string">&quot;ccc&quot;</span>, <span class="string">&quot;ddd&quot;</span>, <span class="string">&quot;add&quot;</span>]</span><br><span class="line">            &#125;,</span><br><span class="line">            computed: &#123;</span><br><span class="line">                <span class="function"><span class="title">getMyDatalist</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="built_in">this</span>.datalist.filter(<span class="function"><span class="params">item</span> =&gt;</span> item.indexOf(<span class="built_in">this</span>.mytext) &gt; -<span class="number">1</span>)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
 <h1 id="Mixins"><a href="#Mixins" class="headerlink" title="Mixins"></a>Mixins</h1><pre><code>混入(Mixins)是一种分发Vue组件中可复用功能的非常灵活的方式
 混入对象可以包含任意组件选项
 当组件使用混入对象时,所有混入对象的选项将被混入该组件本身的选项
