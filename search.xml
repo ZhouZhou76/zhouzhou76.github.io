@@ -252,6 +252,22 @@ m   换行匹配
       </tags>
   </entry>
   <entry>
+    <title>开发工具VScode</title>
+    <url>/2021/04/19/Web%E5%BC%80%E5%8F%91%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6/</url>
+    <content><![CDATA[<h1 id="VScode"><a href="#VScode" class="headerlink" title="VScode"></a>VScode</h1><p>VScode官网下载地址：<a href="https://code.visualstudio.com/">点我下载</a><br>常用快捷键：<br>    ctrl + s : 保存 , ctrl + a : 全选<br>    ctrl + d : 选择选中的元素相同的下一个<br>    ctrl + z : 撤销 , ctrl + y : 前进<br>    ctrl+f ： 搜索本页 , ctrl+shift+f ： 全局搜索<br>    ctrl + / : 添加当前光标注释 , shift + alt + a : 选中的会注释,没选中的会添加一个空的注释<br>    shift + end : 从头选中一行 , shift + home : 从尾部选中一行 , shift + alt + ↓ ：快速复制一行<br>    alt + ↑或↓ ：快速移动一行<br>    tab : 向后缩进 , shift + tab ：向前缩进<br>    按住alt + 鼠标左键 ：多光标</p>
+<h1 id="中文语言包"><a href="#中文语言包" class="headerlink" title="中文语言包"></a>中文语言包</h1><p>按住 Ctrl+Shift+X 在插件里搜索 Chinese (Simplified) Language Pack for Visual Studio Code  点击install进行下载。</p>
+<p>下载完成后按住 Ctrl+Shift+P 搜索Language设置为zh-ch</p>
+<h1 id="在编辑器右键打开HTML文件"><a href="#在编辑器右键打开HTML文件" class="headerlink" title="在编辑器右键打开HTML文件"></a>在编辑器右键打开HTML文件</h1><p>菜单右键打开插件 open in browser<br>在浏览器中查看 view in browser</p>
+<h1 id="px单位自动转换rem单位"><a href="#px单位自动转换rem单位" class="headerlink" title="px单位自动转换rem单位"></a>px单位自动转换rem单位</h1><p>px to rem<br>设置里可定义fontsize的值,选中代码alt+z转换</p>
+<h1 id="Bootstrap-4-代码提示插件"><a href="#Bootstrap-4-代码提示插件" class="headerlink" title="Bootstrap 4 代码提示插件"></a>Bootstrap 4 代码提示插件</h1><p>Bootstrap 4, Font awesome 4, Font Awesome 5 Free &amp; Pro snippets</p>
+<h1 id="Sass和Less插件"><a href="#Sass和Less插件" class="headerlink" title="Sass和Less插件"></a>Sass和Less插件</h1><p>Easy LESS<br>Easy Sass</p>
+]]></content>
+      <tags>
+        <tag>VScode</tag>
+        <tag>开发工具</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>移动端响应式布局</title>
     <url>/2021/06/03/Mobile_layout/</url>
     <content><![CDATA[<h3 id="Viewport视口"><a href="#Viewport视口" class="headerlink" title="Viewport视口"></a>Viewport视口</h3><p>在移动端Viewport视口是浏览器显示页面内容的屏幕区域。在Viewport中有两种视口,分别表示为：visual viewport(可视视口)和layout viewport(布局视口)。</p>
@@ -279,22 +295,6 @@ m   换行匹配
       <tags>
         <tag>响应式</tag>
         <tag>布局</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>开发工具VScode</title>
-    <url>/2021/04/19/Web%E5%BC%80%E5%8F%91%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6/</url>
-    <content><![CDATA[<h1 id="VScode"><a href="#VScode" class="headerlink" title="VScode"></a>VScode</h1><p>VScode官网下载地址：<a href="https://code.visualstudio.com/">点我下载</a><br>常用快捷键：<br>    ctrl + s : 保存 , ctrl + a : 全选<br>    ctrl + d : 选择选中的元素相同的下一个<br>    ctrl + z : 撤销 , ctrl + y : 前进<br>    ctrl+f ： 搜索本页 , ctrl+shift+f ： 全局搜索<br>    ctrl + / : 添加当前光标注释 , shift + alt + a : 选中的会注释,没选中的会添加一个空的注释<br>    shift + end : 从头选中一行 , shift + home : 从尾部选中一行 , shift + alt + ↓ ：快速复制一行<br>    alt + ↑或↓ ：快速移动一行<br>    tab : 向后缩进 , shift + tab ：向前缩进<br>    按住alt + 鼠标左键 ：多光标</p>
-<h1 id="中文语言包"><a href="#中文语言包" class="headerlink" title="中文语言包"></a>中文语言包</h1><p>按住 Ctrl+Shift+X 在插件里搜索 Chinese (Simplified) Language Pack for Visual Studio Code  点击install进行下载。</p>
-<p>下载完成后按住 Ctrl+Shift+P 搜索Language设置为zh-ch</p>
-<h1 id="在编辑器右键打开HTML文件"><a href="#在编辑器右键打开HTML文件" class="headerlink" title="在编辑器右键打开HTML文件"></a>在编辑器右键打开HTML文件</h1><p>菜单右键打开插件 open in browser<br>在浏览器中查看 view in browser</p>
-<h1 id="px单位自动转换rem单位"><a href="#px单位自动转换rem单位" class="headerlink" title="px单位自动转换rem单位"></a>px单位自动转换rem单位</h1><p>px to rem<br>设置里可定义fontsize的值,选中代码alt+z转换</p>
-<h1 id="Bootstrap-4-代码提示插件"><a href="#Bootstrap-4-代码提示插件" class="headerlink" title="Bootstrap 4 代码提示插件"></a>Bootstrap 4 代码提示插件</h1><p>Bootstrap 4, Font awesome 4, Font Awesome 5 Free &amp; Pro snippets</p>
-<h1 id="Sass和Less插件"><a href="#Sass和Less插件" class="headerlink" title="Sass和Less插件"></a>Sass和Less插件</h1><p>Easy LESS<br>Easy Sass</p>
-]]></content>
-      <tags>
-        <tag>VScode</tag>
-        <tag>开发工具</tag>
       </tags>
   </entry>
   <entry>
@@ -2492,9 +2492,26 @@ v-model的三个修饰符：
         （2）全局注册：靠Vue.component(&quot;组件名&quot;,组件)
     3.使用组件（组件标签）
         &lt;组件名&gt;&lt;/组件名&gt;
+注意点：
+    1.关于组件名：
+        一个单词组成：
+            第一种写法（首字母小写）：hello
+            第二种写法（首字母大写）：Hello
+        多个单词组成：
+            第一种写法（kebab-case命名）：my-Hello
+            第二种写法（CamelCase命名，需要Vue脚手架支持）：MyHello
+        注：
+            （1）组件名尽可能回避HTML中已有的元素名称，例如：h2 H2等。
+            （2）可以使用name配置项指定组件在开发者工具中呈现的名字。
+    2.关于组件标签：
+        第一种写法：&lt;hello&gt;&lt;/hello&gt;
+        第二种写法：&lt;hello/&gt;
+        注：不使用脚手架时，&lt;hello/&gt;会导致后续组件不能渲染。
+    3.一个简写方式：
+        const hello = Vue.extend(options) 可简写为：const hello = options
 </code></pre>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!-- 一个容器 root --&gt;</span><br><span class="line">&lt;div id&#x3D;&quot;root&quot;&gt;</span><br><span class="line">    &lt;!-- 第三步：编写组件标签 --&gt;</span><br><span class="line">    &lt;hello&gt;&lt;&#x2F;hello&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">    Vue.config.productionTip &#x3D; false; &#x2F;&#x2F; 阻止vue在启动时生成生产提示。</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 第一步：创建组件</span><br><span class="line">    const hello &#x3D; Vue.extend(&#123;</span><br><span class="line">        template:&#96;</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                &lt;h2&gt;&#123;&#123; goodMorning &#125;&#125;&lt;&#x2F;h2&gt;</span><br><span class="line">                &lt;button @click&#x3D;&quot;tipsTime&quot;&gt;几点了&lt;&#x2F;button&gt;</span><br><span class="line">            &lt;&#x2F;div&gt;</span><br><span class="line">        &#96;,</span><br><span class="line">        &#x2F;&#x2F; 组件定义时，el不用写，因为最终所有的组件都要经过一个vm的管理，由vm中的el决定服务哪个容器。</span><br><span class="line">        &#x2F;&#x2F; el: &quot;#root&quot;,</span><br><span class="line">        data()&#123;</span><br><span class="line">            return &#123;</span><br><span class="line">                goodMorning : &#39;早&#39;,</span><br><span class="line">                nine : &#39;9点了&#39;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        methods: &#123;</span><br><span class="line">            tipsTime()&#123;</span><br><span class="line">                alert(this.nine)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 第二步：注册组件（全局注册）</span><br><span class="line">    &#x2F;&#x2F; Vue.component(&#39;hello&#39;,hello)</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 创建vue实例</span><br><span class="line">    const vm &#x3D; new Vue(&#123;</span><br><span class="line">        el: &quot;#root&quot;,</span><br><span class="line">        &#x2F;&#x2F; 第二步：注册组件（局部注册）</span><br><span class="line">        components:&#123;</span><br><span class="line">            hello:hello</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
-
+<h3 id="嵌套"><a href="#嵌套" class="headerlink" title="嵌套"></a>嵌套</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!-- 一个容器 root --&gt;</span><br><span class="line">&lt;div id&#x3D;&quot;root&quot;&gt;</span><br><span class="line">    </span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">    Vue.config.productionTip &#x3D; false; &#x2F;&#x2F; 阻止vue在启动时生成生产提示。</span><br><span class="line"></span><br><span class="line">    const hi &#x3D; Vue.extend(&#123;</span><br><span class="line">        template:&#96;</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                &lt;h2&gt;早&lt;&#x2F;h2&gt;</span><br><span class="line">            &lt;&#x2F;div&gt;</span><br><span class="line">        &#96;,</span><br><span class="line">    &#125;)</span><br><span class="line">    const hello &#x3D; Vue.extend(&#123;</span><br><span class="line">        template:&#96;</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                &lt;h2&gt;</span><br><span class="line">                    &#123;&#123; msg &#125;&#125;</span><br><span class="line">                    &lt;hi&gt;&lt;&#x2F;hi&gt;</span><br><span class="line">                &lt;&#x2F;h2&gt;</span><br><span class="line">            &lt;&#x2F;div&gt;</span><br><span class="line">        &#96;,</span><br><span class="line">        data()&#123;</span><br><span class="line">            return &#123;</span><br><span class="line">                msg:&quot;你好&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        components:&#123;</span><br><span class="line">            hi</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    const study &#x3D; Vue.extend(&#123;</span><br><span class="line">        template:&#96;</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                &lt;h2&gt;Vue&lt;&#x2F;h2&gt;</span><br><span class="line">            &lt;&#x2F;div&gt;</span><br><span class="line">        &#96;,</span><br><span class="line">    &#125;)</span><br><span class="line">    const app &#x3D; Vue.extend(&#123;</span><br><span class="line">        components:&#123;</span><br><span class="line">            hello,</span><br><span class="line">            study</span><br><span class="line">        &#125;,</span><br><span class="line">        template:&#96;</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                &lt;hello&gt;&lt;&#x2F;hello&gt;</span><br><span class="line">                &lt;study&gt;&lt;&#x2F;study&gt;</span><br><span class="line">            &lt;&#x2F;div&gt;</span><br><span class="line">        &#96;,</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 创建vue实例</span><br><span class="line">    const vm &#x3D; new Vue(&#123;</span><br><span class="line">        template:&quot;&lt;app&gt;&lt;&#x2F;app&gt;&quot;,</span><br><span class="line">        el: &quot;#root&quot;,</span><br><span class="line">        &#x2F;&#x2F; 注册组件（局部）</span><br><span class="line">        components:&#123;app&#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
 
 
 
