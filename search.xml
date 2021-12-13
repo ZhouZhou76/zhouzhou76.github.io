@@ -144,6 +144,20 @@ map和object的区别：
 <h1 id="继承与原型链"><a href="#继承与原型链" class="headerlink" title="继承与原型链"></a>继承与原型链</h1><h1 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h1>]]></content>
   </entry>
   <entry>
+    <title>JavaScript 遍历</title>
+    <url>/2021/06/30/JS_Traversal/</url>
+    <content><![CDATA[<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><h2 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">&quot;for循环：&quot;</span> + arr[i] + <span class="string">&quot;,&quot;</span> + i + <span class="string">&quot;&lt;br/&gt;&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="for…in"><a href="#for…in" class="headerlink" title="for…in"></a>for…in</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> arr) &#123;</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">&quot;for...in遍历：&quot;</span> + arr[i] + <span class="string">&quot;,&quot;</span> + i + <span class="string">&quot;&lt;br/&gt;&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="forEach"><a href="#forEach" class="headerlink" title="forEach"></a>forEach</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">arr.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">item, index</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">&quot;forEach遍历：&quot;</span> + arr[i] + <span class="string">&quot;,&quot;</span> + i + <span class="string">&quot;&lt;br/&gt;&quot;</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="for…of"><a href="#for…of" class="headerlink" title="for…of"></a>for…of</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> item <span class="keyword">of</span> arr) &#123;</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">&quot;for...of遍历：&quot;</span> + item + <span class="string">&quot;&lt;br/&gt;&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h1><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// for...in</span></span><br><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">    username: <span class="string">&quot;哪吒&quot;</span>,</span><br><span class="line">    age: <span class="number">20</span>,</span><br><span class="line">    sex: <span class="string">&quot;男&quot;</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> attr <span class="keyword">in</span> person) &#123;</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">&quot;对象：&quot;</span> + attr + person[attr] + <span class="string">&quot;&lt;br/&gt;&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h1><h2 id="set"><a href="#set" class="headerlink" title="set"></a>set</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> imgs.keys()) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(item);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> imgs.values()) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(item);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> imgs.entries()) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(item);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> [key, value] <span class="keyword">of</span> map) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(key, value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JavaScript 正则表达式</title>
     <url>/2021/06/27/JS_RE/</url>
     <content><![CDATA[<h1 id="正则表达式概念"><a href="#正则表达式概念" class="headerlink" title="正则表达式概念"></a>正则表达式概念</h1><pre><code>正则表达式（Regular Expression）是一个描述字符模式的对象。
@@ -235,20 +249,6 @@ m   换行匹配
       <tags>
         <tag>JavaScript</tag>
         <tag>正则表达式</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JavaScript 遍历</title>
-    <url>/2021/06/30/JS_Traversal/</url>
-    <content><![CDATA[<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><h2 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">&quot;for循环：&quot;</span> + arr[i] + <span class="string">&quot;,&quot;</span> + i + <span class="string">&quot;&lt;br/&gt;&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="for…in"><a href="#for…in" class="headerlink" title="for…in"></a>for…in</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> arr) &#123;</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">&quot;for...in遍历：&quot;</span> + arr[i] + <span class="string">&quot;,&quot;</span> + i + <span class="string">&quot;&lt;br/&gt;&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="forEach"><a href="#forEach" class="headerlink" title="forEach"></a>forEach</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">arr.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">item, index</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">&quot;forEach遍历：&quot;</span> + arr[i] + <span class="string">&quot;,&quot;</span> + i + <span class="string">&quot;&lt;br/&gt;&quot;</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h2 id="for…of"><a href="#for…of" class="headerlink" title="for…of"></a>for…of</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> item <span class="keyword">of</span> arr) &#123;</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">&quot;for...of遍历：&quot;</span> + item + <span class="string">&quot;&lt;br/&gt;&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h1><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// for...in</span></span><br><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">    username: <span class="string">&quot;哪吒&quot;</span>,</span><br><span class="line">    age: <span class="number">20</span>,</span><br><span class="line">    sex: <span class="string">&quot;男&quot;</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> attr <span class="keyword">in</span> person) &#123;</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">&quot;对象：&quot;</span> + attr + person[attr] + <span class="string">&quot;&lt;br/&gt;&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h1><h2 id="set"><a href="#set" class="headerlink" title="set"></a>set</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> imgs.keys()) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(item);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> imgs.values()) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(item);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> imgs.entries()) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(item);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> [key, value] <span class="keyword">of</span> map) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(key, value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>JavaScript</tag>
       </tags>
   </entry>
   <entry>
@@ -2755,7 +2755,7 @@ npm run lint  代码检测工具
     1.优点：可以配置多个代理，且可以灵活的控制请求是否走代理。
     2.缺点：配置略微繁琐，请求资源时必须加前缀。
 </code></pre>
-<h3 id="Vue项目中常用的2个Ajax库"><a href="#Vue项目中常用的2个Ajax库" class="headerlink" title="Vue项目中常用的2个Ajax库"></a>Vue项目中常用的2个Ajax库</h3><pre><code>1.axios
+<h3 id="Vue中常用的2个Ajax库"><a href="#Vue中常用的2个Ajax库" class="headerlink" title="Vue中常用的2个Ajax库"></a>Vue中常用的2个Ajax库</h3><pre><code>1.axios
     通用的Ajax请求库，官方推荐，使用广泛。
 2.vue-resource
     vue插件库，vue1.x使用广泛，官方已不维护。
@@ -2965,6 +2965,72 @@ npm run lint  代码检测工具
     &#125;
 注：mapActions与mapMutations使用时，若需要传递参数需要：在模板中绑定事件时传递好参数，否则参数是事件对象。
 </code></pre>
+<h2 id="模块化-命名空间"><a href="#模块化-命名空间" class="headerlink" title="模块化+命名空间"></a>模块化+命名空间</h2><pre><code>1.目的：让代码更好维护，让多种数据分类更加明确。
+2.修改store.js
+    const countAbout = &#123;
+        namespaced: true, // 开启命名空间
+        state:&#123;x:1&#125;,
+        mutations: &#123; ... &#125;,
+        actions: &#123; ... &#125;,
+        getters: &#123;
+            bigSum(state)&#123;
+                return state.sum * 10
+            &#125;
+        &#125;
+    &#125;
+
+    const personAbout = &#123;
+        namespaced: true, // 开启命名空间
+        state:&#123; ... &#125;,
+        mutations: &#123; ... &#125;,
+        actions: &#123; ... &#125;,
+    &#125;
+
+    const store = new Vuex.Store(&#123;
+        modules: &#123;
+            countAbout,
+            personAbout
+        &#125;
+    &#125;)
+3.开启命名空间后，组件中读取state数据：
+    // 方式一：直接读取
+    this.$store.state.personAbout.list
+    // 方式二：借助mapState读取
+    ...mapState(&#39;countAbout&#39;,[&#39;sum&#39;]),
+4.开启命名空间后，组件中读取getters数据：
+    // 方式一：直接读取
+    this.$store.getters[&#39;personAbout/firstPersonName&#39;]
+    // 方式二：借助mapState读取
+    ...mapGetters(&#39;countAbout&#39;,[&#39;bigSum&#39;]),
+5.开启命名空间后，组件中调用dispatch：
+    // 方式一：直接dispatch
+    this.$store.dispatch[&#39;personAbout/addPersonWang&#39;,person]
+    // 方式二：借助mapActions
+    ...mapActions(&#39;countAbout&#39;,&#123;incrementOdd:&#39;Odd&#39;,incrementWait:&#39;Wait&#39;&#125;),
+6.开启命名空间后，组件中调用commit：
+    // 方式一：直接commit
+    this.$store.commit[&#39;personAbout/ADD_PERSON&#39;,person]
+    // 方式二：借助mapMutations:
+    ...mapMutations(&#39;countAbout&#39;,&#123;increment:&#39;ODD&#39;,decrement:&#39;WAIT&#39;&#125;)
+</code></pre>
+<h1 id="Vue路由"><a href="#Vue路由" class="headerlink" title="Vue路由"></a>Vue路由</h1><h2 id="vue-router是什么"><a href="#vue-router是什么" class="headerlink" title="vue-router是什么"></a>vue-router是什么</h2><pre><code>vue的一个插件库，用来实现SPA应用。
+SPA应用是什么？
+    1.单页Web应用（single page web application, SPA）。
+    2.整个应用只有一个完整的页面。
+    3.点击页面中的导航链接不会刷新页面，只会做页面的局部更新。
+    4.数据需要通过ajax请求获取。
+什么是路由？
+    1.一个路由就是一种=组映射关系（key-value）。
+    2.key为路径，value可能是function或component。
+路由的分类：
+    后端路由：
+        value是function，用于处理客户端提交的请求。
+        工作过程：服务器接收到一个请求时，根据请求路径找到匹配的函数来处理请求，返回响应数据。
+    前端路由：
+        value是component，用于展示页面内容。
+        工作过程：当浏览器的路径改变时，对应的组件就会显示。
+    
+</code></pre>
 <h1 id="axios与fetch实现数据请求"><a href="#axios与fetch实现数据请求" class="headerlink" title="axios与fetch实现数据请求"></a>axios与fetch实现数据请求</h1><pre><code>[axios](https://github.com/axios/axios)
     返回的数据会被包装
     data:真实后端数据
@@ -2972,37 +3038,6 @@ npm run lint  代码检测工具
 Fetch请求默认不带cookie,需要设置fetch(url,&#123;credrntials:&quot;include&quot;&#125;)
 </code></pre>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id=<span class="string">&quot;box&quot;</span>&gt;</span><br><span class="line">        &lt;button @click=<span class="string">&quot;handleClick()&quot;</span>&gt;获取数据&lt;/button&gt;</span><br><span class="line">        &lt;ul&gt;</span><br><span class="line">            &lt;li v-<span class="keyword">for</span>=<span class="string">&quot;data in datalist&quot;</span>&gt;</span><br><span class="line">                &lt;h1&gt;城市名：&#123;&#123;data.properties.name&#125;&#125;&lt;/h1&gt;</span><br><span class="line">                &lt;h2&gt;城市编码:&#123;&#123;data.properties.adcode&#125;&#125;&lt;/h2&gt;</span><br><span class="line"></span><br><span class="line">            &lt;/li&gt;</span><br><span class="line">        &lt;/ul&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">            el: <span class="string">&quot;#box&quot;</span>,</span><br><span class="line">            data: &#123;</span><br><span class="line">                datalist: []</span><br><span class="line">            &#125;,</span><br><span class="line">            methods: &#123;</span><br><span class="line">                <span class="function"><span class="title">handleClick</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">                    fetch(<span class="string">&quot;https://geo.datav.aliyun.com/areas_v3/bound/440000_full.json&quot;</span>).then(<span class="function"><span class="params">res</span> =&gt;</span> res.json()).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">                        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; res.features.length; i++) &#123;</span><br><span class="line">                            <span class="built_in">console</span>.log(res.features[i].properties.name)</span><br><span class="line">                        &#125;</span><br><span class="line">                        <span class="built_in">this</span>.datalist = res.features</span><br><span class="line"></span><br><span class="line">                    &#125;)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
-<h1 id="Mixins"><a href="#Mixins" class="headerlink" title="Mixins"></a>Mixins</h1><pre><code>混入(Mixins)是一种分发Vue组件中可复用功能的非常灵活的方式
-混入对象可以包含任意组件选项
-当组件使用混入对象时,所有混入对象的选项将被混入该组件本身的选项
-</code></pre>
-<h1 id="组件化开发"><a href="#组件化开发" class="headerlink" title="组件化开发"></a>组件化开发</h1><pre><code>概念：扩展HTML元素,封装可重用的代码
-
-组件注册方式：
-    1.全局组件 Vue.component
-    2.局部组件
-
-组件编写方式：
-    1.自定义组件需要有一个root element
-    2.父子组件的data无法共享
-    3.组件可以有data,methods,computed... 但是data必须是一个函数
-</code></pre>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id=<span class="string">&quot;box&quot;</span>&gt;</span><br><span class="line">        &lt;navbar&gt;&lt;/navbar&gt;</span><br><span class="line">        &lt;sidebar&gt;&lt;/sidebar&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        <span class="comment">// 全局定义组件(作用域隔离)</span></span><br><span class="line">        Vue.component(<span class="string">&#x27;navbar&#x27;</span>, &#123;</span><br><span class="line">            template: <span class="string">`</span></span><br><span class="line"><span class="string">            &lt;div style=&quot;background:blue&quot;&gt;</span></span><br><span class="line"><span class="string">                &lt;button @click=&quot;handleback()&quot;&gt;返回&lt;/button&gt;</span></span><br><span class="line"><span class="string">                navbar</span></span><br><span class="line"><span class="string">                &lt;button&gt;主页&lt;/button&gt;</span></span><br><span class="line"><span class="string">                &lt;child&gt;&lt;/child&gt;</span></span><br><span class="line"><span class="string">                &lt;navbarchild&gt;&lt;/navbarchild&gt;</span></span><br><span class="line"><span class="string">            &lt;/div&gt;</span></span><br><span class="line"><span class="string">            `</span>,</span><br><span class="line">            methods: &#123;</span><br><span class="line">                <span class="function"><span class="title">handleback</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">                    <span class="built_in">console</span>.log(<span class="string">&quot;back&quot;</span>)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="comment">// 局部定义组件</span></span><br><span class="line">            components: &#123;</span><br><span class="line">                navbarchild: &#123;</span><br><span class="line">                    template: <span class="string">`&lt;div&gt;navbarchild只能在navbar组件中使用&lt;/div&gt;`</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        Vue.component(<span class="string">&#x27;child&#x27;</span>, &#123;</span><br><span class="line">            template: <span class="string">`&lt;div&gt;child组件全局定义&lt;/div&gt;`</span></span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        Vue.component(<span class="string">&#x27;sidebar&#x27;</span>, &#123;</span><br><span class="line">            template: <span class="string">`&lt;div style=&quot;background:pink&quot;&gt;</span></span><br><span class="line"><span class="string">                    sider组件</span></span><br><span class="line"><span class="string">                    &lt;child&gt;&lt;/child&gt;</span></span><br><span class="line"><span class="string">                    &lt;navbarchild&gt;&lt;/navbarchild&gt;</span></span><br><span class="line"><span class="string">                &lt;/div&gt;`</span></span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">            el: <span class="string">&quot;#box&quot;</span></span><br><span class="line">        &#125;) <span class="comment">// root component</span></span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h1 id="动态组件"><a href="#动态组件" class="headerlink" title="动态组件"></a>动态组件</h1><pre><code>&lt;component&gt;元素,动态地绑定多个组件到它的is属性
-&lt;keep-alive&gt;保留状态,避免重新渲染
-</code></pre>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id=<span class="string">&quot;box&quot;</span>&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!-- 切换多个组件的时候保留输入框的内容 --&gt;</span><br><span class="line">        &lt;keep-alive&gt;</span><br><span class="line">            &lt;component :is=<span class="string">&quot;who&quot;</span>&gt;&lt;/component&gt; &lt;!-- 动态绑定多个组件 --&gt;</span><br><span class="line">        &lt;/keep-alive&gt;</span><br><span class="line"></span><br><span class="line">        &lt;footer&gt;</span><br><span class="line">            &lt;ul&gt;</span><br><span class="line">                &lt;li&gt;<span class="xml"><span class="tag">&lt;<span class="name">a</span> @<span class="attr">click</span>=<span class="string">&quot;who=&#x27;home&#x27;&quot;</span>&gt;</span>首页<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span>&lt;/li&gt;</span><br><span class="line">                &lt;li&gt;<span class="xml"><span class="tag">&lt;<span class="name">a</span> @<span class="attr">click</span>=<span class="string">&quot;who=&#x27;list&#x27;&quot;</span>&gt;</span>列表<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span>&lt;/li&gt;</span><br><span class="line">                &lt;li&gt;<span class="xml"><span class="tag">&lt;<span class="name">a</span> @<span class="attr">click</span>=<span class="string">&quot;who=&#x27;shopcar&#x27;&quot;</span>&gt;</span>购物车<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span>&lt;/li&gt;</span><br><span class="line">            &lt;/ul&gt;</span><br><span class="line">        &lt;/footer&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        <span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">            el: <span class="string">&quot;#box&quot;</span>,</span><br><span class="line">            data: &#123;</span><br><span class="line">                who: <span class="string">&#x27;home&#x27;</span></span><br><span class="line">            &#125;,</span><br><span class="line">            components: &#123;</span><br><span class="line">                <span class="string">&quot;home&quot;</span>: &#123;</span><br><span class="line">                    template: <span class="string">`&lt;div&gt;home&lt;input type=&quot;text&quot;&gt;&lt;/div&gt;`</span></span><br><span class="line">                &#125;,</span><br><span class="line">                <span class="string">&quot;list&quot;</span>: &#123;</span><br><span class="line">                    template: <span class="string">`&lt;div&gt;list&lt;/div&gt;`</span></span><br><span class="line">                &#125;,</span><br><span class="line">                <span class="string">&quot;shopcar&quot;</span>: &#123;</span><br><span class="line">                    template: <span class="string">`&lt;div&gt;shopcar&lt;/div&gt;`</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
-<h1 id="脚手架"><a href="#脚手架" class="headerlink" title="脚手架"></a>脚手架</h1><h2 id="文件组件"><a href="#文件组件" class="headerlink" title="文件组件"></a>文件组件</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    html代码,最多可以包含一个</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    js代码,最多可以包含一个</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    export default &#123;</span><br><span class="line">        mounted() &#123;&#125;,</span><br><span class="line">        &#x2F;&#x2F; 局部注册组件</span><br><span class="line">        components: &#123;</span><br><span class="line">            navbar: navbar,</span><br><span class="line">            sidebar: sidebar,</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">    css代码,可以包含多个,src的路径是相对的</span><br><span class="line">    加上scoped属性,css局部生效</span><br><span class="line">    加上lang&#x3D;&quot;scss&quot;,支持scss</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    html代码</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line">&lt;script src&#x3D;&quot;相对路径的外部的js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;style src&#x3D;&quot;相对路径的外部的js&quot;&gt;&lt;&#x2F;style&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 全局注册组件</span><br><span class="line">&#x2F;* import Vue from &quot;vue&quot;;</span><br><span class="line">Vue.component(&quot;navbar&quot;, navbar);</span><br><span class="line">Vue.component(&quot;sidebar&quot;, sidebar); *&#x2F;</span><br></pre></td></tr></table></figure>
-<h2 id="反向代理配置-跨域"><a href="#反向代理配置-跨域" class="headerlink" title="反向代理配置-跨域"></a>反向代理配置-跨域</h2><pre><code>设置成功需要重启终端才会生效
-</code></pre>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; vue.config.js</span><br><span class="line">module.exports &#x3D; &#123;</span><br><span class="line">    devServer: &#123;</span><br><span class="line">        proxy: &#123;</span><br><span class="line">            &#39;&#x2F;ajax&#39;: &#123;</span><br><span class="line">                target: &#39;https:&#x2F;&#x2F;m.maoyan.com&#x2F;&#39;,</span><br><span class="line">                &#x2F;&#x2F; ws: true,</span><br><span class="line">                changeOrigin: true</span><br><span class="line">            &#125;,</span><br><span class="line">            &#x2F;* &#39;&#x2F;foo&#39;: &#123;</span><br><span class="line">              target: &#39;&lt;other_url&gt;&#39;</span><br><span class="line">            &#125; *&#x2F;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; app.vue</span><br><span class="line">&#x2F;&#x2F; 引入模块</span><br><span class="line">import axios from &quot;axios&quot;;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  mounted() &#123;</span><br><span class="line">    axios.get(&quot;&#x2F;ajax&#x2F;movieOnInfoList?token&#x3D;&quot;).then((res) &#x3D;&gt; &#123;</span><br><span class="line">      console.log(res.data);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
 <h2 id="vue-router"><a href="#vue-router" class="headerlink" title="vue-router"></a>vue-router</h2><pre><code>路由原理
     1.hash路由
         location.hash 切换
