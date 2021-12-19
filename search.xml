@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>CSS新特性</title>
+    <url>/2021/06/09/CSS_New_features/</url>
+    <content><![CDATA[<h1 id="自定义属性"><a href="#自定义属性" class="headerlink" title="自定义属性"></a>自定义属性</h1><p>CSS自定义属性(也称为”CSS变量”),在目前所有的现代浏览器都得到了支持。</p>
+<h2 id="定义与使用"><a href="#定义与使用" class="headerlink" title="定义与使用"></a>定义与使用</h2><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span>&#123;</span><br><span class="line">    --<span class="attribute">color</span> : red;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#box</span>&#123;</span><br><span class="line">    <span class="attribute">background</span> : <span class="built_in">var</span>(--color);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="计算"><a href="#计算" class="headerlink" title="计算"></a>计算</h2><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span>&#123;</span><br><span class="line">    --number : <span class="number">100px</span>;</span><br><span class="line">    --number2 : <span class="number">100</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#box</span>&#123;</span><br><span class="line">    <span class="attribute">width</span> : <span class="built_in">var</span>(--number); // 正常显示</span><br><span class="line">    <span class="attribute">height</span> : <span class="built_in">calc</span>(<span class="built_in">var</span>(--number2) * <span class="number">1px</span>); // 需要配合calc使用</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="默认值"><a href="#默认值" class="headerlink" title="默认值"></a>默认值</h2><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span>&#123;</span><br><span class="line">    <span class="comment">/* --size : 50px; */</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#box</span>&#123;</span><br><span class="line">    <span class="attribute">font-size</span> : <span class="built_in">var</span>(--size , <span class="number">100px</span>); // 当size找不到会以<span class="number">100px</span>为默认值</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    --<span class="attribute">color</span> : yellow;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-pseudo">:root</span>&#123;</span><br><span class="line">    --<span class="attribute">color</span> : red;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#box</span>&#123;</span><br><span class="line">    --<span class="attribute">color</span> : blue;</span><br><span class="line">    <span class="attribute">background</span> : <span class="built_in">var</span>(--color); // 就近原则和选择器优先级</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="shapes"><a href="#shapes" class="headerlink" title="shapes"></a>shapes</h1><p>CSS shapes布局可以实现不规则的文字环绕效果,需要和浮动配合使用。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    #parent &#123;</span><br><span class="line">        width: 300px;</span><br><span class="line">        height: 300px;</span><br><span class="line">        border: 1px solid black;</span><br><span class="line">        margin: 20px;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    #shape &#123;</span><br><span class="line">        width: 100px;</span><br><span class="line">        height: 100px;</span><br><span class="line">        padding: 10px;</span><br><span class="line">        border: 10px solid black;</span><br><span class="line">        margin: 10px;</span><br><span class="line">        float: left;</span><br><span class="line">        background: red;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        clip-path: polygon(0 0, 0 100px, 100px 100px); &#x2F;&#x2F; 剪切路径</span><br><span class="line">        shape-outside: polygon(0 0, 0 100px, 100px 100px); &#x2F;&#x2F; 环绕效果 none margin-box border-box padding-box content-box</span><br><span class="line">        shape-margin: 15px; &#x2F;&#x2F; 环绕的距离</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;parent&quot;&gt;</span><br><span class="line">        &lt;div id&#x3D;&quot;shape&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">        CSS shapes布局可以实现不规则的文字环绕效果,需要和浮动配合使用。</span><br><span class="line">        CSS shapes布局可以实现不规则的文字环绕效果,需要和浮动配合使用。</span><br><span class="line">        CSS shapes布局可以实现不规则的文字环绕效果,需要和浮动配合使用。</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="scrollbar"><a href="#scrollbar" class="headerlink" title="scrollbar"></a>scrollbar</h1><p>CSS scrollbar用于实现自定义滚动条</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">        <span class="attribute">height</span>: <span class="number">2000px</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="selector-tag">html</span>::-webkit-scrollbar &#123;</span><br><span class="line">        width: <span class="number">10px</span>;</span><br><span class="line">        <span class="comment">/* height: 1px; */</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="selector-tag">html</span>::-webkit-scrollbar-thumb &#123;</span><br><span class="line">        background: <span class="number">#f90</span>;</span><br><span class="line">        <span class="attribute">border-radius</span>: <span class="number">15px</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="selector-tag">html</span>::-webkit-scrollbar-track &#123;</span><br><span class="line">        background: <span class="number">#dedede</span>;</span><br><span class="line">        <span class="attribute">box-shadow</span>: inset <span class="number">0</span> <span class="number">0</span> <span class="number">5px</span> gray;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h1 id="Scroll-Snap"><a href="#Scroll-Snap" class="headerlink" title="Scroll Snap"></a>Scroll Snap</h1><p>CSS Scroll Snap(CSS 滚动捕捉)可以在用户完成滚动后多锁定特定的元素或位置。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    ul &#123;</span><br><span class="line">        list-style: none;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    #main &#123;</span><br><span class="line">        width: 600px;</span><br><span class="line">        height: 100px;</span><br><span class="line">        border: 1px black solid;</span><br><span class="line">        margin: 100px;</span><br><span class="line">        overflow: auto;</span><br><span class="line">        scroll-snap-type: x mandatory;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    #main ul &#123;</span><br><span class="line">        width: 4000px;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    #main li &#123;</span><br><span class="line">        width: 300px;</span><br><span class="line">        height: 100px;</span><br><span class="line">        background: red;</span><br><span class="line">        float: left;</span><br><span class="line">        margin: 0 100px;</span><br><span class="line">        scroll-snap-align: end;</span><br><span class="line">        &#x2F;* start center end *&#x2F;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;main&quot;&gt;</span><br><span class="line">        &lt;ul&gt;</span><br><span class="line">            &lt;li&gt;1&lt;&#x2F;li&gt;</span><br><span class="line">            &lt;li&gt;2&lt;&#x2F;li&gt;</span><br><span class="line">            &lt;li&gt;3&lt;&#x2F;li&gt;</span><br><span class="line">            &lt;li&gt;4&lt;&#x2F;li&gt;</span><br><span class="line">            &lt;li&gt;5&lt;&#x2F;li&gt;</span><br><span class="line">        &lt;&#x2F;ul&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>CSS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>HTML+CSS练手小功能</title>
     <url>/2021/04/24/CSS%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%BA%9B%E6%95%88%E6%9E%9C/</url>
     <content><![CDATA[<h3 id="边框实现三角形"><a href="#边框实现三角形" class="headerlink" title="边框实现三角形"></a>边框实现三角形</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    div &#123;</span><br><span class="line">        width: 0px;</span><br><span class="line">        height: 0px;</span><br><span class="line">        border: 30px solid;</span><br><span class="line">        border-color: transparent transparent red;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div&gt;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
@@ -15,6 +34,24 @@
 ]]></content>
       <tags>
         <tag>练手项目</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>闭包</title>
+    <url>/2021/07/09/Closure/</url>
+    <content><![CDATA[<pre><code>满足以下特点的叫做闭包：
+    1.函数嵌套函数
+    2.内部函数使用外部函数的形参和变量
+    3.被引用的形参和变量不会被垃圾回收机制所回收
+好处：
+    1.可以让一个变量常驻在内存当中
+    2.避免全局变量污染和声明全局变量
+    3.可以声明私有成员
+</code></pre>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">show</span>(<span class="params">res</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> num = <span class="number">10</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(num + <span class="string">&quot;,&quot;</span> + res); <span class="comment">// 10,20</span></span><br><span class="line">&#125;</span><br><span class="line">show(<span class="number">20</span>);</span><br><span class="line"><span class="comment">// console.log(num); 报错：未定义</span></span><br><span class="line"><span class="comment">// console.log(res); 报错：未定义</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 闭包</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">aaa</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">bbb</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        a++;</span><br><span class="line">        <span class="built_in">console</span>.log(a);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> bbb;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> ccc = aaa();</span><br><span class="line">ccc(); <span class="comment">// 3</span></span><br><span class="line">ccc(); <span class="comment">// 4</span></span><br><span class="line"><span class="comment">// console.log(a); // 报错：未定义</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 立即执行函数写法,前面函数执行,后面函数调用</span></span><br><span class="line"><span class="keyword">var</span> ccc = (<span class="function"><span class="keyword">function</span> <span class="title">aaa</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="title">bbb</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        a++;</span><br><span class="line">        <span class="built_in">console</span>.log(a);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)();</span><br><span class="line">ccc(); <span class="comment">// 3</span></span><br><span class="line">ccc(); <span class="comment">// 4</span></span><br><span class="line"><span class="comment">// console.log(a); // 报错：未定义</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>JavaScript</tag>
       </tags>
   </entry>
   <entry>
@@ -95,53 +132,6 @@ map和object的区别：
         <tag>JavaScript</tag>
         <tag>ECMAScript</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>CSS新特性</title>
-    <url>/2021/06/09/CSS_New_features/</url>
-    <content><![CDATA[<h1 id="自定义属性"><a href="#自定义属性" class="headerlink" title="自定义属性"></a>自定义属性</h1><p>CSS自定义属性(也称为”CSS变量”),在目前所有的现代浏览器都得到了支持。</p>
-<h2 id="定义与使用"><a href="#定义与使用" class="headerlink" title="定义与使用"></a>定义与使用</h2><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span>&#123;</span><br><span class="line">    --<span class="attribute">color</span> : red;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#box</span>&#123;</span><br><span class="line">    <span class="attribute">background</span> : <span class="built_in">var</span>(--color);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="计算"><a href="#计算" class="headerlink" title="计算"></a>计算</h2><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span>&#123;</span><br><span class="line">    --number : <span class="number">100px</span>;</span><br><span class="line">    --number2 : <span class="number">100</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#box</span>&#123;</span><br><span class="line">    <span class="attribute">width</span> : <span class="built_in">var</span>(--number); // 正常显示</span><br><span class="line">    <span class="attribute">height</span> : <span class="built_in">calc</span>(<span class="built_in">var</span>(--number2) * <span class="number">1px</span>); // 需要配合calc使用</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="默认值"><a href="#默认值" class="headerlink" title="默认值"></a>默认值</h2><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span>&#123;</span><br><span class="line">    <span class="comment">/* --size : 50px; */</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#box</span>&#123;</span><br><span class="line">    <span class="attribute">font-size</span> : <span class="built_in">var</span>(--size , <span class="number">100px</span>); // 当size找不到会以<span class="number">100px</span>为默认值</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    --<span class="attribute">color</span> : yellow;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-pseudo">:root</span>&#123;</span><br><span class="line">    --<span class="attribute">color</span> : red;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#box</span>&#123;</span><br><span class="line">    --<span class="attribute">color</span> : blue;</span><br><span class="line">    <span class="attribute">background</span> : <span class="built_in">var</span>(--color); // 就近原则和选择器优先级</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="shapes"><a href="#shapes" class="headerlink" title="shapes"></a>shapes</h1><p>CSS shapes布局可以实现不规则的文字环绕效果,需要和浮动配合使用。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    #parent &#123;</span><br><span class="line">        width: 300px;</span><br><span class="line">        height: 300px;</span><br><span class="line">        border: 1px solid black;</span><br><span class="line">        margin: 20px;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    #shape &#123;</span><br><span class="line">        width: 100px;</span><br><span class="line">        height: 100px;</span><br><span class="line">        padding: 10px;</span><br><span class="line">        border: 10px solid black;</span><br><span class="line">        margin: 10px;</span><br><span class="line">        float: left;</span><br><span class="line">        background: red;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        clip-path: polygon(0 0, 0 100px, 100px 100px); &#x2F;&#x2F; 剪切路径</span><br><span class="line">        shape-outside: polygon(0 0, 0 100px, 100px 100px); &#x2F;&#x2F; 环绕效果 none margin-box border-box padding-box content-box</span><br><span class="line">        shape-margin: 15px; &#x2F;&#x2F; 环绕的距离</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;parent&quot;&gt;</span><br><span class="line">        &lt;div id&#x3D;&quot;shape&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">        CSS shapes布局可以实现不规则的文字环绕效果,需要和浮动配合使用。</span><br><span class="line">        CSS shapes布局可以实现不规则的文字环绕效果,需要和浮动配合使用。</span><br><span class="line">        CSS shapes布局可以实现不规则的文字环绕效果,需要和浮动配合使用。</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
-<h1 id="scrollbar"><a href="#scrollbar" class="headerlink" title="scrollbar"></a>scrollbar</h1><p>CSS scrollbar用于实现自定义滚动条</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">        <span class="attribute">height</span>: <span class="number">2000px</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="selector-tag">html</span>::-webkit-scrollbar &#123;</span><br><span class="line">        width: <span class="number">10px</span>;</span><br><span class="line">        <span class="comment">/* height: 1px; */</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="selector-tag">html</span>::-webkit-scrollbar-thumb &#123;</span><br><span class="line">        background: <span class="number">#f90</span>;</span><br><span class="line">        <span class="attribute">border-radius</span>: <span class="number">15px</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="selector-tag">html</span>::-webkit-scrollbar-track &#123;</span><br><span class="line">        background: <span class="number">#dedede</span>;</span><br><span class="line">        <span class="attribute">box-shadow</span>: inset <span class="number">0</span> <span class="number">0</span> <span class="number">5px</span> gray;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h1 id="Scroll-Snap"><a href="#Scroll-Snap" class="headerlink" title="Scroll Snap"></a>Scroll Snap</h1><p>CSS Scroll Snap(CSS 滚动捕捉)可以在用户完成滚动后多锁定特定的元素或位置。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    ul &#123;</span><br><span class="line">        list-style: none;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    #main &#123;</span><br><span class="line">        width: 600px;</span><br><span class="line">        height: 100px;</span><br><span class="line">        border: 1px black solid;</span><br><span class="line">        margin: 100px;</span><br><span class="line">        overflow: auto;</span><br><span class="line">        scroll-snap-type: x mandatory;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    #main ul &#123;</span><br><span class="line">        width: 4000px;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    #main li &#123;</span><br><span class="line">        width: 300px;</span><br><span class="line">        height: 100px;</span><br><span class="line">        background: red;</span><br><span class="line">        float: left;</span><br><span class="line">        margin: 0 100px;</span><br><span class="line">        scroll-snap-align: end;</span><br><span class="line">        &#x2F;* start center end *&#x2F;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;main&quot;&gt;</span><br><span class="line">        &lt;ul&gt;</span><br><span class="line">            &lt;li&gt;1&lt;&#x2F;li&gt;</span><br><span class="line">            &lt;li&gt;2&lt;&#x2F;li&gt;</span><br><span class="line">            &lt;li&gt;3&lt;&#x2F;li&gt;</span><br><span class="line">            &lt;li&gt;4&lt;&#x2F;li&gt;</span><br><span class="line">            &lt;li&gt;5&lt;&#x2F;li&gt;</span><br><span class="line">        &lt;&#x2F;ul&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <tags>
-        <tag>CSS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>闭包</title>
-    <url>/2021/07/09/Closure/</url>
-    <content><![CDATA[<pre><code>满足以下特点的叫做闭包：
-    1.函数嵌套函数
-    2.内部函数使用外部函数的形参和变量
-    3.被引用的形参和变量不会被垃圾回收机制所回收
-好处：
-    1.可以让一个变量常驻在内存当中
-    2.避免全局变量污染和声明全局变量
-    3.可以声明私有成员
-</code></pre>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">show</span>(<span class="params">res</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> num = <span class="number">10</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(num + <span class="string">&quot;,&quot;</span> + res); <span class="comment">// 10,20</span></span><br><span class="line">&#125;</span><br><span class="line">show(<span class="number">20</span>);</span><br><span class="line"><span class="comment">// console.log(num); 报错：未定义</span></span><br><span class="line"><span class="comment">// console.log(res); 报错：未定义</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 闭包</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">aaa</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">bbb</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        a++;</span><br><span class="line">        <span class="built_in">console</span>.log(a);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> bbb;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> ccc = aaa();</span><br><span class="line">ccc(); <span class="comment">// 3</span></span><br><span class="line">ccc(); <span class="comment">// 4</span></span><br><span class="line"><span class="comment">// console.log(a); // 报错：未定义</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 立即执行函数写法,前面函数执行,后面函数调用</span></span><br><span class="line"><span class="keyword">var</span> ccc = (<span class="function"><span class="keyword">function</span> <span class="title">aaa</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="title">bbb</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        a++;</span><br><span class="line">        <span class="built_in">console</span>.log(a);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)();</span><br><span class="line">ccc(); <span class="comment">// 3</span></span><br><span class="line">ccc(); <span class="comment">// 4</span></span><br><span class="line"><span class="comment">// console.log(a); // 报错：未定义</span></span><br></pre></td></tr></table></figure>
-]]></content>
-      <tags>
-        <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JavaScript 面向对象</title>
-    <url>/2021/06/30/JS_Object_Oriented/</url>
-    <content><![CDATA[<pre><code>面向对象：继承(分类更加细分的构造函数),封装(封装构造函数),多态。
-
-面向对象是一个编程思想,支撑面向对象编程思想的语法是类(ECMA6)和对象,构造函数充当类的角色。
-构造函数和对象实现面向对象程序的时候,体现出继承,封装,多态的特点。
-</code></pre>
-<h1 id="继承与原型链"><a href="#继承与原型链" class="headerlink" title="继承与原型链"></a>继承与原型链</h1><h1 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h1>]]></content>
   </entry>
   <entry>
     <title>JavaScript 正则表达式</title>
@@ -238,6 +228,30 @@ m   换行匹配
       </tags>
   </entry>
   <entry>
+    <title>JavaScript 面向对象</title>
+    <url>/2021/06/30/JS_Object_Oriented/</url>
+    <content><![CDATA[<pre><code>面向对象：继承(分类更加细分的构造函数),封装(封装构造函数),多态。
+
+面向对象是一个编程思想,支撑面向对象编程思想的语法是类(ECMA6)和对象,构造函数充当类的角色。
+构造函数和对象实现面向对象程序的时候,体现出继承,封装,多态的特点。
+</code></pre>
+<h1 id="继承与原型链"><a href="#继承与原型链" class="headerlink" title="继承与原型链"></a>继承与原型链</h1><h1 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h1>]]></content>
+  </entry>
+  <entry>
+    <title>JavaScript 遍历</title>
+    <url>/2021/06/30/JS_Traversal/</url>
+    <content><![CDATA[<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><h2 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">&quot;for循环：&quot;</span> + arr[i] + <span class="string">&quot;,&quot;</span> + i + <span class="string">&quot;&lt;br/&gt;&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="for…in"><a href="#for…in" class="headerlink" title="for…in"></a>for…in</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> arr) &#123;</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">&quot;for...in遍历：&quot;</span> + arr[i] + <span class="string">&quot;,&quot;</span> + i + <span class="string">&quot;&lt;br/&gt;&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="forEach"><a href="#forEach" class="headerlink" title="forEach"></a>forEach</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">arr.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">item, index</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">&quot;forEach遍历：&quot;</span> + arr[i] + <span class="string">&quot;,&quot;</span> + i + <span class="string">&quot;&lt;br/&gt;&quot;</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="for…of"><a href="#for…of" class="headerlink" title="for…of"></a>for…of</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> item <span class="keyword">of</span> arr) &#123;</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">&quot;for...of遍历：&quot;</span> + item + <span class="string">&quot;&lt;br/&gt;&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h1><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// for...in</span></span><br><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">    username: <span class="string">&quot;哪吒&quot;</span>,</span><br><span class="line">    age: <span class="number">20</span>,</span><br><span class="line">    sex: <span class="string">&quot;男&quot;</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> attr <span class="keyword">in</span> person) &#123;</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">&quot;对象：&quot;</span> + attr + person[attr] + <span class="string">&quot;&lt;br/&gt;&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h1><h2 id="set"><a href="#set" class="headerlink" title="set"></a>set</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> imgs.keys()) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(item);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> imgs.values()) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(item);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> imgs.entries()) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(item);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> [key, value] <span class="keyword">of</span> map) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(key, value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>移动端响应式布局</title>
     <url>/2021/06/03/Mobile_layout/</url>
     <content><![CDATA[<h3 id="Viewport视口"><a href="#Viewport视口" class="headerlink" title="Viewport视口"></a>Viewport视口</h3><p>在移动端Viewport视口是浏览器显示页面内容的屏幕区域。在Viewport中有两种视口,分别表示为：visual viewport(可视视口)和layout viewport(布局视口)。</p>
@@ -281,33 +295,6 @@ m   换行匹配
       <tags>
         <tag>VScode</tag>
         <tag>开发工具</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JavaScript 遍历</title>
-    <url>/2021/06/30/JS_Traversal/</url>
-    <content><![CDATA[<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><h2 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">&quot;for循环：&quot;</span> + arr[i] + <span class="string">&quot;,&quot;</span> + i + <span class="string">&quot;&lt;br/&gt;&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="for…in"><a href="#for…in" class="headerlink" title="for…in"></a>for…in</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> arr) &#123;</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">&quot;for...in遍历：&quot;</span> + arr[i] + <span class="string">&quot;,&quot;</span> + i + <span class="string">&quot;&lt;br/&gt;&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="forEach"><a href="#forEach" class="headerlink" title="forEach"></a>forEach</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">arr.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">item, index</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">&quot;forEach遍历：&quot;</span> + arr[i] + <span class="string">&quot;,&quot;</span> + i + <span class="string">&quot;&lt;br/&gt;&quot;</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h2 id="for…of"><a href="#for…of" class="headerlink" title="for…of"></a>for…of</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> item <span class="keyword">of</span> arr) &#123;</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">&quot;for...of遍历：&quot;</span> + item + <span class="string">&quot;&lt;br/&gt;&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h1><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// for...in</span></span><br><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">    username: <span class="string">&quot;哪吒&quot;</span>,</span><br><span class="line">    age: <span class="number">20</span>,</span><br><span class="line">    sex: <span class="string">&quot;男&quot;</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> attr <span class="keyword">in</span> person) &#123;</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">&quot;对象：&quot;</span> + attr + person[attr] + <span class="string">&quot;&lt;br/&gt;&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h1><h2 id="set"><a href="#set" class="headerlink" title="set"></a>set</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> imgs.keys()) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(item);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> imgs.values()) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(item);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> imgs.entries()) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(item);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> [key, value] <span class="keyword">of</span> map) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(key, value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>bootstrap框架</title>
-    <url>/2021/06/05/bootstrap/</url>
-    <content><![CDATA[<p>Bootstrap 是一个HTML CSS JS框架,用于开发响应式布局,移动设备的Web项目。<br>特色：<br>    1.响应式布局<br>    2.基于flex的栅格系统<br>    3.丰富的组件和工具方法<br>    4.常见交互使用<br>官网：<a href="https://www.bootcss.com/">Bootstrap中文文档</a></p>
-<p>Bootstrap元素浮动及清除浮动的class<br>class=”clearfix”  清除浮动</p>
-<p>Bootstrap设置文字的对齐方式</p>
-<p>class=”text-center”  设置居中文本<br>class=”text-right”   设置向右对齐文本<br>class =”text-left”   设置向左对齐文本</p>
-<p>Bootstrap设置各类尺寸的设备class前缀<br>超小设备手机（&lt;768px）：.col-xs-<br>小型设备平板电脑（&gt;=768px）：.col-sm-<br>中型设备台式电脑（&gt;=992px）：.col-md-<br>大型设备台式电脑（&gt;=1200px）：.col-lg-</p>
-]]></content>
-      <tags>
-        <tag>bootstrap</tag>
       </tags>
   </entry>
   <entry>
@@ -369,6 +356,19 @@ json对象：
 <h1 id="jsonp跨域语法"><a href="#jsonp跨域语法" class="headerlink" title="jsonp跨域语法"></a>jsonp跨域语法</h1><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">download</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;下载的数据:&quot;</span> + data);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">        对于计算机来说,文件后缀是没有任何用处的。</span></span><br><span class="line"><span class="comment">        后缀作用：用于给计算机的软件,快速识别应该用哪个软件打开。</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">        JSONP跨域的使用流程：</span></span><br><span class="line"><span class="comment">            1.先去声明一个函数,这个函数有一个形参,这个形参会拿到想要下载的数据,使用这个参数做后续数据的处理。</span></span><br><span class="line"><span class="comment">            2.在需要下载数据的时候,动态创建script标签,将标签src属性设置成下载数据的链接。</span></span><br><span class="line"><span class="comment">            3.当script插入到页面上的时候,就会调用已经封装好的函数,将需要的数据传过来。</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> oBtn = <span class="built_in">document</span>.getElementById(<span class="string">&quot;btn1&quot;</span>);</span><br><span class="line">        oBtn.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> oScript = <span class="built_in">document</span>.createElement(script);</span><br><span class="line">            oScript.src = <span class="string">&quot;demo.txt&quot;</span>;</span><br><span class="line">            <span class="built_in">document</span>.body.appendChild(oScript);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;button id=<span class="string">&quot;btn1&quot;</span>&gt;下载数据&lt;/button&gt;</span><br><span class="line">    &lt;!-- src 这个属性是可以完成跨源,无限制。 --&gt;</span><br><span class="line">    &lt;img src=<span class="string">&quot;https://img2.baidu.com/it/u=1127718379,2119002313&amp;fm=26&amp;fmt=auto&amp;gp=0.jpg&quot;</span>&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
         <tag>ajax</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>bootstrap框架</title>
+    <url>/2021/06/05/bootstrap/</url>
+    <content><![CDATA[<p>Bootstrap 是一个HTML CSS JS框架,用于开发响应式布局,移动设备的Web项目。<br>特色：<br>    1.响应式布局<br>    2.基于flex的栅格系统<br>    3.丰富的组件和工具方法<br>    4.常见交互使用<br>官网：<a href="https://www.bootcss.com/">Bootstrap中文文档</a></p>
+<p>Bootstrap元素浮动及清除浮动的class<br>class=”clearfix”  清除浮动</p>
+<p>Bootstrap设置文字的对齐方式</p>
+<p>class=”text-center”  设置居中文本<br>class=”text-right”   设置向右对齐文本<br>class =”text-left”   设置向左对齐文本</p>
+<p>Bootstrap设置各类尺寸的设备class前缀<br>超小设备手机（&lt;768px）：.col-xs-<br>小型设备平板电脑（&gt;=768px）：.col-sm-<br>中型设备台式电脑（&gt;=992px）：.col-md-<br>大型设备台式电脑（&gt;=1200px）：.col-lg-</p>
+]]></content>
+      <tags>
+        <tag>bootstrap</tag>
       </tags>
   </entry>
   <entry>
@@ -559,55 +559,6 @@ github配置密匙
       </tags>
   </entry>
   <entry>
-    <title>项目工具Gulp</title>
-    <url>/2021/07/11/tool-Gulp/</url>
-    <content><![CDATA[<p>官网地址 <a href="https://www.gulpjs.com.cn/">gulp.js</a></p>
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>1.下载和安装<a href="https://nodejs.org/zh-cn/">Node.js</a></p>
-<pre><code>node -v 查看node.js的版本
-</code></pre>
-<p>2.启动Node.js控制台</p>
-<pre><code>npm     下载源是国外网站
-cnpm    [淘宝镜像](https://npm.taobao.org/)
-    安装：npm install cnpm -g --registry=https://registry.npm.taobao.org
-</code></pre>
-<p>3.安装gulp到本地</p>
-<pre><code>安装：cnpm install gulp -g
-gulp -v 查看gulp的版本
-</code></pre>
-<p>4.初始化当前目录,生成package.json文件,存放项目的配置信息</p>
-<pre><code>cnpm init
-</code></pre>
-<p>5.在项目里面安装gulp到本地</p>
-<pre><code>cnpm install gulp@3.9.1 --save-dev
-    --save   将文件安装到本地的文件夹
-    -dev    将安装gulp的信息保存在package.json里面
-
-简写：cnpm i gulp@3.9.1 -D
-</code></pre>
-<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>6.创建一个gulpfile.js的文件来编写任务</p>
-<pre><code>gulp hello(第一个参数名字) 运行编写的任务
-</code></pre>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// require() 引入模块,使用模块函数</span></span><br><span class="line"><span class="keyword">const</span> gulp = <span class="built_in">require</span>(<span class="string">&quot;gulp&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// gulp.task() 编写任务</span></span><br><span class="line"><span class="comment">// 第一个参数：自定义的执行任务名字</span></span><br><span class="line"><span class="comment">// 第二个参数：回调函数,任务执行的功能</span></span><br><span class="line">gulp.task(<span class="string">&quot;hello&quot;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;hello world&quot;</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// gulp.src()      找到源文件路径</span></span><br><span class="line"><span class="comment">// gulp.dest()     找到目标文件路径,如果路径不存在,自动创建</span></span><br><span class="line"><span class="comment">// pipe()          理解程序运行管道</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 整理.html文件</span></span><br><span class="line">gulp.task(<span class="string">&quot;copy-html&quot;</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> gulp.src(<span class="string">&quot;index.html&quot;</span>)</span><br><span class="line">        .pipe(gulp.dest(<span class="string">&quot;dist/&quot;</span>))</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 拷贝图片</span></span><br><span class="line">gulp.task(<span class="string">&quot;images&quot;</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> gulp.src(<span class="string">&quot;img/**/*&quot;</span>).pipe(gulp.dest(<span class="string">&quot;dist/images&quot;</span>));</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 拷贝多个文件到一个目录</span></span><br><span class="line">gulp.task(<span class="string">&quot;data&quot;</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> gulp.src([<span class="string">&quot;json/*.json&quot;</span>, <span class="string">&quot;xml/*.xml&quot;</span>, <span class="string">&quot;!xml/06.xml&quot;</span>])</span><br><span class="line">        .pipe(gulp.dest(<span class="string">&quot;dist/data&quot;</span>))</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 一次执行多个任务</span></span><br><span class="line">gulp.task(<span class="string">&quot;build&quot;</span>, [<span class="string">&quot;copy-html&quot;</span>, <span class="string">&quot;images&quot;</span>, <span class="string">&quot;data&quot;</span>], <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;执行完毕&quot;</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h1 id="监听"><a href="#监听" class="headerlink" title="监听"></a>监听</h1><p>7.监听到文件有改变,会自动去执行对应的任务,更新数据</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// gulp.watch()</span></span><br><span class="line"><span class="comment">// 第一个参数,文件监听的路径 </span></span><br><span class="line"><span class="comment">// 第二个参数,执行的任务</span></span><br><span class="line">gulp.task(<span class="string">&quot;watch&quot;</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    gulp.watch(<span class="string">&quot;index.html&quot;</span>, [<span class="string">&quot;copy-html&quot;</span>]);</span><br><span class="line">    gulp.watch(<span class="string">&quot;img/**/*&quot;</span>, [<span class="string">&quot;images&quot;</span>]);</span><br><span class="line">    gulp.watch([<span class="string">&quot;json/*.json&quot;</span>, <span class="string">&quot;xml/*.xml&quot;</span>, <span class="string">&quot;!xml/06.xml&quot;</span>],[<span class="string">&quot;data&quot;</span>]);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h1 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h1><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 启动一个服务器 gulp-connect</span></span><br><span class="line"><span class="comment">// 需要在每一条任务后面加上 .pipe(connect.reload()); 来实时刷新</span></span><br><span class="line"><span class="keyword">const</span> GulpClient = <span class="built_in">require</span>(<span class="string">&quot;gulp&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> connect = <span class="built_in">require</span>(<span class="string">&quot;gulp-connect&quot;</span>);</span><br><span class="line">GulpClient.task(<span class="string">&quot;server&quot;</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    connect.server(&#123;</span><br><span class="line">        root: <span class="string">&quot;dist&quot;</span>,</span><br><span class="line">        port: <span class="number">8887</span>,  <span class="comment">//0~65535</span></span><br><span class="line">        livereload: <span class="literal">true</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 启动一个默认的任务,同时启动监听和服务器,直接使用gulp命令启动</span></span><br><span class="line">gulp.task(<span class="string">&quot;default&quot;</span>, [<span class="string">&quot;watch&quot;</span>, <span class="string">&quot;server&quot;</span>]);</span><br></pre></td></tr></table></figure>
-<h1 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h1><p><a href="https://gulpjs.com/plugins/">gulp插件</a></p>
-<pre><code>commonJS规范：
-    1.安装插件
-        cnpm install 插件名字 --save-dev
-        cnpm i 插件名字 -D
-
-    2.通过require()引入文件
-
-    3.查阅文档,插件的用法
-</code></pre>
-]]></content>
-      <tags>
-        <tag>项目工具</tag>
-        <tag>Gulp</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>React学习笔记</title>
     <url>/2021/09/13/react/</url>
     <content><![CDATA[<h1 id="React-初识"><a href="#React-初识" class="headerlink" title="React 初识"></a>React 初识</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><blockquote><p>React是Facebook开发出的一款声明式，高效且灵活的用于构建用户界面的JavaScript库。使用React可以将一些简短、独立的代码片段组合成复杂的UI界面，这些代码片段被称为”组件”。</p>
@@ -724,41 +675,52 @@ create-react-app my-app (my-app为项目名称)
       </tags>
   </entry>
   <entry>
-    <title>网页布局的方法</title>
-    <url>/2021/05/30/wybj/</url>
-    <content><![CDATA[<h3 id="等高布局"><a href="#等高布局" class="headerlink" title="等高布局"></a>等高布局</h3><p>利用margin-bottom负值和padding-bottom配合使用。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    *&#123;margin: 0;padding: 0;&#125;</span><br><span class="line">    #parent&#123;border: 10px black solid;overflow: hidden;&#125;</span><br><span class="line">    #box1&#123;float: left;width: 100px;background: red;margin-bottom: -2000px;padding-bottom: 2000px;&#125;</span><br><span class="line">    #box2&#123;float: right;width: 100px;background: blue;margin-bottom: -2000px;padding-bottom: 2000px;&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;parent&quot;&gt;</span><br><span class="line">        &lt;div id&#x3D;&quot;box1&quot;&gt;</span><br><span class="line">            &lt;p&gt;1&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p&gt;1&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p&gt;1&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p&gt;1&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p&gt;1&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p&gt;1&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p&gt;1&lt;&#x2F;p&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line">        &lt;div id&#x3D;&quot;box2&quot;&gt;</span><br><span class="line">            &lt;p&gt;2&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p&gt;2&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p&gt;2&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p&gt;2&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p&gt;2&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p&gt;2&lt;&#x2F;p&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="三列布局"><a href="#三列布局" class="headerlink" title="三列布局"></a>三列布局</h3><p>左右固定,中间自适应：<br>    1.BFC方式<br>    2.定位<br>    3.浮动(双飞翼布局,圣杯布局),margin负值<br>    4.flex弹性</p>
-<h4 id="双飞翼布局"><a href="#双飞翼布局" class="headerlink" title="双飞翼布局"></a>双飞翼布局</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    * &#123;margin: 0;padding: 0;&#125;</span><br><span class="line">    .header&#123;height: 100px;background: red;&#125;</span><br><span class="line">    .container .center&#123;height: 200px;float: left;width: 100%;&#125;</span><br><span class="line">    .container .center p&#123;background: yellow;height: 100%;margin: 0 150px 0 100px;&#125;</span><br><span class="line">    .container .left&#123;float: left;width: 100px;height: 200px;background: blue;margin-left: -100%;&#125;</span><br><span class="line">    .container .right&#123;float: left;width: 150px;height: 200px;background: green;margin-left: -150px;&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;header&quot;&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;container&quot;&gt;</span><br><span class="line">            &lt;div class&#x3D;&quot;center&quot;&gt;</span><br><span class="line">                &lt;p&gt;内容部分&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;&#x2F;div&gt;</span><br><span class="line">            &lt;div class&#x3D;&quot;left&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">            &lt;div class&#x3D;&quot;right&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
-<h4 id="圣杯布局"><a href="#圣杯布局" class="headerlink" title="圣杯布局"></a>圣杯布局</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    * &#123;margin: 0;padding: 0;&#125;</span><br><span class="line">    .clear::after&#123;content: &quot;&quot;;display: block;clear: both;&#125;</span><br><span class="line">    .header&#123;height: 100px;background: red;&#125;</span><br><span class="line">    .container&#123;background: yellow;margin: 0 150px 0 100px;&#125;</span><br><span class="line">    .container .center&#123;height: 200px;float: left;width: 100%;&#125;</span><br><span class="line">    .container .left&#123;float: left;width: 100px;height: 200px;background: blue;margin-left: -100%;position: relative;left: -100px;&#125;</span><br><span class="line">    .container .right&#123;float: left;width: 150px;height: 200px;background: green;margin-left: -150px;position: relative;right: -150px;&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;header&quot;&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;container clear&quot;&gt;</span><br><span class="line">            &lt;div class&#x3D;&quot;center&quot;&gt;</span><br><span class="line">                内容部分</span><br><span class="line">            &lt;&#x2F;div&gt;</span><br><span class="line">            &lt;div class&#x3D;&quot;left&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">            &lt;div class&#x3D;&quot;right&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="flex弹性布局"><a href="#flex弹性布局" class="headerlink" title="flex弹性布局"></a>flex弹性布局</h3><p><a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html">Flex 布局教程</a></p>
-<p><img src="flex.PNG" alt="flex弹性布局"></p>
-<h4 id="flex-direction"><a href="#flex-direction" class="headerlink" title="flex-direction"></a>flex-direction</h4><p>flex-direction用来控制子项整体布局方向,是从左往右还是从右往左,是从上往下还是从下往上。<br><img src="flex-direction.PNG" alt="flex弹性布局"></p>
-<h4 id="flex-wrap"><a href="#flex-wrap" class="headerlink" title="flex-wrap"></a>flex-wrap</h4><p>flex-wrap用来控制子项整体单行显示还是换行显示。<br><img src="flex-wrap.PNG" alt="flex弹性布局"></p>
-<h4 id="flex-flow"><a href="#flex-flow" class="headerlink" title="flex-flow"></a>flex-flow</h4><p>flex-flow属性是flex-direction和flex-wrap的复合写法,表示flex布局的flow流动特性。<br>第一个值表示方向,第二个值表示换行,中间使用空格隔开。</p>
-<h4 id="justify-content"><a href="#justify-content" class="headerlink" title="justify-content"></a>justify-content</h4><p>justify-content属性决定了主轴方向上子项的对齐和分布方式。<br><img src="justify-content.PNG" alt="flex弹性布局"></p>
-<h4 id="align-items"><a href="#align-items" class="headerlink" title="align-items"></a>align-items</h4><p>align-items中的items指的是flex子项,因此align-items指的是fiex子项相对于flex容器在侧轴方向上的对齐方式。<br><img src="align-items.PNG" alt="flex弹性布局"></p>
-<h4 id="align-content"><a href="#align-content" class="headerlink" title="align-content"></a>align-content</h4><p>align-content可以看成和justify-content是相似且对立的属性,如果所有flex子项只有一行,则align-content属性没有任何效果。<br><img src="align-content.PNG" alt="flex弹性布局"></p>
-<h4 id="作用在flex子项的属性"><a href="#作用在flex子项的属性" class="headerlink" title="作用在flex子项的属性"></a>作用在flex子项的属性</h4><p><img src="flexzixiang.PNG" alt="flex弹性布局"></p>
-<h3 id="grid网格布局"><a href="#grid网格布局" class="headerlink" title="grid网格布局"></a>grid网格布局</h3><p>grid网格布局是一个二维的布局方法,纵横两个方向总是同时存在。</p>
-<p><img src="grid.PNG" alt="grid网格布局"></p>
-<h4 id="grid-template-columns和grid-template-rows"><a href="#grid-template-columns和grid-template-rows" class="headerlink" title="grid-template-columns和grid-template-rows"></a>grid-template-columns和grid-template-rows</h4><p>对网格进行横纵划分,形成二维布局。单位可以是像素,百分比,自适应以及fr单位(网格剩余空间比列单位)。<br>有时候,网格的划分是很规律的,如果需要添加多个横纵网格时,可以利用repeat(个数,单位)语法进行简化操作。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">div &#123;</span><br><span class="line">        display: grid;</span><br><span class="line">        grid-template-columns: repeat(3, 1fr);</span><br><span class="line">        grid-template-rows: repeat(3, 1fr);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h4 id="grid-template-areas和grid-template"><a href="#grid-template-areas和grid-template" class="headerlink" title="grid-template-areas和grid-template"></a>grid-template-areas和grid-template</h4><p>area是区域的意思,grid-template-areas就是给网格划分区域的。此时grid子项只要使用grid-area属性指定其隶属于哪个区域。<br>grid-template是grid-template-rows,grid-template-columns和grid-template-areas属性的复合写法</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">div &#123;</span><br><span class="line">        display: grid;</span><br><span class="line">        grid-template-areas:</span><br><span class="line">            &#39;a1 a1 a1&#39; 1fr</span><br><span class="line">            &#39;a2 a2 a3&#39; 1fr</span><br><span class="line">            &#39;a2 a2 a3&#39; 1fr</span><br><span class="line">            &#x2F;1fr 1fr 1fr</span><br><span class="line">        ;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    div:nth-child(1) &#123;</span><br><span class="line">        grid-area: a1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    div:nth-child(2) &#123;</span><br><span class="line">        grid-area: a2;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    div:nth-child(3) &#123;</span><br><span class="line">        grid-area: a3;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h4 id="grid-column-gap和grid-row-gap"><a href="#grid-column-gap和grid-row-gap" class="headerlink" title="grid-column-gap和grid-row-gap"></a>grid-column-gap和grid-row-gap</h4><p>grid-column-gap和grid-row-gap属性用来定义网格中网格间隙的尺寸。<br>CSS grid-gap:row column;属性是grid-column-gap和grid-row-gap属性的复合写法。</p>
-<h4 id="justify-items和align-items"><a href="#justify-items和align-items" class="headerlink" title="justify-items和align-items"></a>justify-items和align-items</h4><p>justify-items指定了网格元素的水平呈现方式,是水平拉伸显示还是左中右对齐。<br>align-items指定了网格元素的垂直呈现方式,是垂直拉伸显示,还是上中下对齐。</p>
-<p>place-items是align-items和justify-items属性的复合写法。</p>
-<p><img src="place-items.PNG" alt="grid网格布局"></p>
-<h4 id="justify-content和align-content"><a href="#justify-content和align-content" class="headerlink" title="justify-content和align-content"></a>justify-content和align-content</h4><p>justify-content指定了网格元素的垂直分布方式。align-content指定了网格元素的水平分布方式。<br>place-content是align-content和justify-content属性的复合写法。<br><img src="place-content.PNG" alt="grid网格布局"></p>
-<h4 id="作用在grid子项的属性"><a href="#作用在grid子项的属性" class="headerlink" title="作用在grid子项的属性"></a>作用在grid子项的属性</h4><p><img src="gridzx.PNG" alt="grid网格布局"></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    #box &#123;</span><br><span class="line">        width: 300px;</span><br><span class="line">        height: 300px;</span><br><span class="line">        border: 1px gray dotted;</span><br><span class="line">        display: grid;</span><br><span class="line">        grid-template-rows: repeat(3, 1fr);</span><br><span class="line">        grid-template-columns: repeat(3, 1fr);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    #box div &#123;</span><br><span class="line">        background: red;</span><br><span class="line">        border: 1px black solid;</span><br><span class="line">        &#x2F;* </span><br><span class="line">        grid-column-start: 2;</span><br><span class="line">        grid-column-end: 3;</span><br><span class="line">        grid-row-start: 2;</span><br><span class="line">        grid-row-end: span 2; </span><br><span class="line">        *&#x2F;</span><br><span class="line"></span><br><span class="line">        &#x2F;* </span><br><span class="line">        grid-column: 2 &#x2F; 3;</span><br><span class="line">        grid-row: 2 &#x2F; span 2; </span><br><span class="line">        *&#x2F;</span><br><span class="line"></span><br><span class="line">        &#x2F;* grid-area 第一个值是水平的起始位置,第二个值是垂直的起始位置,第三个值是水平的结束位置,第四个值是垂直的结束位置。 *&#x2F;</span><br><span class="line">        grid-area: 3&#x2F;2&#x2F;4&#x2F;4;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;box&quot;&gt;</span><br><span class="line">        &lt;div&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="CSS布局生成工具"><a href="#CSS布局生成工具" class="headerlink" title="CSS布局生成工具"></a>CSS布局生成工具</h3><p><a href="https://cssgrid-generator.netlify.app/">CSS Grid Generator</a><br><a href="https://csslayout.io/">CSS Layout</a><br><a href="https://loading.io/flexbox/">Flexbox Generator</a><br><a href="https://grid.layoutit.com/">行数列数快速布局：cssgr.id</a></p>
+    <title>项目工具Gulp</title>
+    <url>/2021/07/11/tool-Gulp/</url>
+    <content><![CDATA[<p>官网地址 <a href="https://www.gulpjs.com.cn/">gulp.js</a></p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>1.下载和安装<a href="https://nodejs.org/zh-cn/">Node.js</a></p>
+<pre><code>node -v 查看node.js的版本
+</code></pre>
+<p>2.启动Node.js控制台</p>
+<pre><code>npm     下载源是国外网站
+cnpm    [淘宝镜像](https://npm.taobao.org/)
+    安装：npm install cnpm -g --registry=https://registry.npm.taobao.org
+</code></pre>
+<p>3.安装gulp到本地</p>
+<pre><code>安装：cnpm install gulp -g
+gulp -v 查看gulp的版本
+</code></pre>
+<p>4.初始化当前目录,生成package.json文件,存放项目的配置信息</p>
+<pre><code>cnpm init
+</code></pre>
+<p>5.在项目里面安装gulp到本地</p>
+<pre><code>cnpm install gulp@3.9.1 --save-dev
+    --save   将文件安装到本地的文件夹
+    -dev    将安装gulp的信息保存在package.json里面
+
+简写：cnpm i gulp@3.9.1 -D
+</code></pre>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>6.创建一个gulpfile.js的文件来编写任务</p>
+<pre><code>gulp hello(第一个参数名字) 运行编写的任务
+</code></pre>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// require() 引入模块,使用模块函数</span></span><br><span class="line"><span class="keyword">const</span> gulp = <span class="built_in">require</span>(<span class="string">&quot;gulp&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// gulp.task() 编写任务</span></span><br><span class="line"><span class="comment">// 第一个参数：自定义的执行任务名字</span></span><br><span class="line"><span class="comment">// 第二个参数：回调函数,任务执行的功能</span></span><br><span class="line">gulp.task(<span class="string">&quot;hello&quot;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;hello world&quot;</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// gulp.src()      找到源文件路径</span></span><br><span class="line"><span class="comment">// gulp.dest()     找到目标文件路径,如果路径不存在,自动创建</span></span><br><span class="line"><span class="comment">// pipe()          理解程序运行管道</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 整理.html文件</span></span><br><span class="line">gulp.task(<span class="string">&quot;copy-html&quot;</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> gulp.src(<span class="string">&quot;index.html&quot;</span>)</span><br><span class="line">        .pipe(gulp.dest(<span class="string">&quot;dist/&quot;</span>))</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 拷贝图片</span></span><br><span class="line">gulp.task(<span class="string">&quot;images&quot;</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> gulp.src(<span class="string">&quot;img/**/*&quot;</span>).pipe(gulp.dest(<span class="string">&quot;dist/images&quot;</span>));</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 拷贝多个文件到一个目录</span></span><br><span class="line">gulp.task(<span class="string">&quot;data&quot;</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> gulp.src([<span class="string">&quot;json/*.json&quot;</span>, <span class="string">&quot;xml/*.xml&quot;</span>, <span class="string">&quot;!xml/06.xml&quot;</span>])</span><br><span class="line">        .pipe(gulp.dest(<span class="string">&quot;dist/data&quot;</span>))</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 一次执行多个任务</span></span><br><span class="line">gulp.task(<span class="string">&quot;build&quot;</span>, [<span class="string">&quot;copy-html&quot;</span>, <span class="string">&quot;images&quot;</span>, <span class="string">&quot;data&quot;</span>], <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;执行完毕&quot;</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h1 id="监听"><a href="#监听" class="headerlink" title="监听"></a>监听</h1><p>7.监听到文件有改变,会自动去执行对应的任务,更新数据</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// gulp.watch()</span></span><br><span class="line"><span class="comment">// 第一个参数,文件监听的路径 </span></span><br><span class="line"><span class="comment">// 第二个参数,执行的任务</span></span><br><span class="line">gulp.task(<span class="string">&quot;watch&quot;</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    gulp.watch(<span class="string">&quot;index.html&quot;</span>, [<span class="string">&quot;copy-html&quot;</span>]);</span><br><span class="line">    gulp.watch(<span class="string">&quot;img/**/*&quot;</span>, [<span class="string">&quot;images&quot;</span>]);</span><br><span class="line">    gulp.watch([<span class="string">&quot;json/*.json&quot;</span>, <span class="string">&quot;xml/*.xml&quot;</span>, <span class="string">&quot;!xml/06.xml&quot;</span>],[<span class="string">&quot;data&quot;</span>]);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h1 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h1><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 启动一个服务器 gulp-connect</span></span><br><span class="line"><span class="comment">// 需要在每一条任务后面加上 .pipe(connect.reload()); 来实时刷新</span></span><br><span class="line"><span class="keyword">const</span> GulpClient = <span class="built_in">require</span>(<span class="string">&quot;gulp&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> connect = <span class="built_in">require</span>(<span class="string">&quot;gulp-connect&quot;</span>);</span><br><span class="line">GulpClient.task(<span class="string">&quot;server&quot;</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    connect.server(&#123;</span><br><span class="line">        root: <span class="string">&quot;dist&quot;</span>,</span><br><span class="line">        port: <span class="number">8887</span>,  <span class="comment">//0~65535</span></span><br><span class="line">        livereload: <span class="literal">true</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 启动一个默认的任务,同时启动监听和服务器,直接使用gulp命令启动</span></span><br><span class="line">gulp.task(<span class="string">&quot;default&quot;</span>, [<span class="string">&quot;watch&quot;</span>, <span class="string">&quot;server&quot;</span>]);</span><br></pre></td></tr></table></figure>
+<h1 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h1><p><a href="https://gulpjs.com/plugins/">gulp插件</a></p>
+<pre><code>commonJS规范：
+    1.安装插件
+        cnpm install 插件名字 --save-dev
+        cnpm i 插件名字 -D
+
+    2.通过require()引入文件
+
+    3.查阅文档,插件的用法
+</code></pre>
 ]]></content>
       <tags>
-        <tag>布局</tag>
-        <tag>flex</tag>
-        <tag>grid</tag>
+        <tag>项目工具</tag>
+        <tag>Gulp</tag>
       </tags>
   </entry>
   <entry>
@@ -1021,6 +983,44 @@ vue2不能检测以下变动的数组，vue3支持检测以下变动的数组
 </div></div>
 
 ]]></content>
+  </entry>
+  <entry>
+    <title>网页布局的方法</title>
+    <url>/2021/05/30/wybj/</url>
+    <content><![CDATA[<h3 id="等高布局"><a href="#等高布局" class="headerlink" title="等高布局"></a>等高布局</h3><p>利用margin-bottom负值和padding-bottom配合使用。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    *&#123;margin: 0;padding: 0;&#125;</span><br><span class="line">    #parent&#123;border: 10px black solid;overflow: hidden;&#125;</span><br><span class="line">    #box1&#123;float: left;width: 100px;background: red;margin-bottom: -2000px;padding-bottom: 2000px;&#125;</span><br><span class="line">    #box2&#123;float: right;width: 100px;background: blue;margin-bottom: -2000px;padding-bottom: 2000px;&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;parent&quot;&gt;</span><br><span class="line">        &lt;div id&#x3D;&quot;box1&quot;&gt;</span><br><span class="line">            &lt;p&gt;1&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p&gt;1&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p&gt;1&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p&gt;1&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p&gt;1&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p&gt;1&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p&gt;1&lt;&#x2F;p&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line">        &lt;div id&#x3D;&quot;box2&quot;&gt;</span><br><span class="line">            &lt;p&gt;2&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p&gt;2&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p&gt;2&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p&gt;2&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p&gt;2&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p&gt;2&lt;&#x2F;p&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="三列布局"><a href="#三列布局" class="headerlink" title="三列布局"></a>三列布局</h3><p>左右固定,中间自适应：<br>    1.BFC方式<br>    2.定位<br>    3.浮动(双飞翼布局,圣杯布局),margin负值<br>    4.flex弹性</p>
+<h4 id="双飞翼布局"><a href="#双飞翼布局" class="headerlink" title="双飞翼布局"></a>双飞翼布局</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    * &#123;margin: 0;padding: 0;&#125;</span><br><span class="line">    .header&#123;height: 100px;background: red;&#125;</span><br><span class="line">    .container .center&#123;height: 200px;float: left;width: 100%;&#125;</span><br><span class="line">    .container .center p&#123;background: yellow;height: 100%;margin: 0 150px 0 100px;&#125;</span><br><span class="line">    .container .left&#123;float: left;width: 100px;height: 200px;background: blue;margin-left: -100%;&#125;</span><br><span class="line">    .container .right&#123;float: left;width: 150px;height: 200px;background: green;margin-left: -150px;&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;header&quot;&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;container&quot;&gt;</span><br><span class="line">            &lt;div class&#x3D;&quot;center&quot;&gt;</span><br><span class="line">                &lt;p&gt;内容部分&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;&#x2F;div&gt;</span><br><span class="line">            &lt;div class&#x3D;&quot;left&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">            &lt;div class&#x3D;&quot;right&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="圣杯布局"><a href="#圣杯布局" class="headerlink" title="圣杯布局"></a>圣杯布局</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    * &#123;margin: 0;padding: 0;&#125;</span><br><span class="line">    .clear::after&#123;content: &quot;&quot;;display: block;clear: both;&#125;</span><br><span class="line">    .header&#123;height: 100px;background: red;&#125;</span><br><span class="line">    .container&#123;background: yellow;margin: 0 150px 0 100px;&#125;</span><br><span class="line">    .container .center&#123;height: 200px;float: left;width: 100%;&#125;</span><br><span class="line">    .container .left&#123;float: left;width: 100px;height: 200px;background: blue;margin-left: -100%;position: relative;left: -100px;&#125;</span><br><span class="line">    .container .right&#123;float: left;width: 150px;height: 200px;background: green;margin-left: -150px;position: relative;right: -150px;&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;header&quot;&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;container clear&quot;&gt;</span><br><span class="line">            &lt;div class&#x3D;&quot;center&quot;&gt;</span><br><span class="line">                内容部分</span><br><span class="line">            &lt;&#x2F;div&gt;</span><br><span class="line">            &lt;div class&#x3D;&quot;left&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">            &lt;div class&#x3D;&quot;right&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="flex弹性布局"><a href="#flex弹性布局" class="headerlink" title="flex弹性布局"></a>flex弹性布局</h3><p><a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html">Flex 布局教程</a></p>
+<p><img src="flex.PNG" alt="flex弹性布局"></p>
+<h4 id="flex-direction"><a href="#flex-direction" class="headerlink" title="flex-direction"></a>flex-direction</h4><p>flex-direction用来控制子项整体布局方向,是从左往右还是从右往左,是从上往下还是从下往上。<br><img src="flex-direction.PNG" alt="flex弹性布局"></p>
+<h4 id="flex-wrap"><a href="#flex-wrap" class="headerlink" title="flex-wrap"></a>flex-wrap</h4><p>flex-wrap用来控制子项整体单行显示还是换行显示。<br><img src="flex-wrap.PNG" alt="flex弹性布局"></p>
+<h4 id="flex-flow"><a href="#flex-flow" class="headerlink" title="flex-flow"></a>flex-flow</h4><p>flex-flow属性是flex-direction和flex-wrap的复合写法,表示flex布局的flow流动特性。<br>第一个值表示方向,第二个值表示换行,中间使用空格隔开。</p>
+<h4 id="justify-content"><a href="#justify-content" class="headerlink" title="justify-content"></a>justify-content</h4><p>justify-content属性决定了主轴方向上子项的对齐和分布方式。<br><img src="justify-content.PNG" alt="flex弹性布局"></p>
+<h4 id="align-items"><a href="#align-items" class="headerlink" title="align-items"></a>align-items</h4><p>align-items中的items指的是flex子项,因此align-items指的是fiex子项相对于flex容器在侧轴方向上的对齐方式。<br><img src="align-items.PNG" alt="flex弹性布局"></p>
+<h4 id="align-content"><a href="#align-content" class="headerlink" title="align-content"></a>align-content</h4><p>align-content可以看成和justify-content是相似且对立的属性,如果所有flex子项只有一行,则align-content属性没有任何效果。<br><img src="align-content.PNG" alt="flex弹性布局"></p>
+<h4 id="作用在flex子项的属性"><a href="#作用在flex子项的属性" class="headerlink" title="作用在flex子项的属性"></a>作用在flex子项的属性</h4><p><img src="flexzixiang.PNG" alt="flex弹性布局"></p>
+<h3 id="grid网格布局"><a href="#grid网格布局" class="headerlink" title="grid网格布局"></a>grid网格布局</h3><p>grid网格布局是一个二维的布局方法,纵横两个方向总是同时存在。</p>
+<p><img src="grid.PNG" alt="grid网格布局"></p>
+<h4 id="grid-template-columns和grid-template-rows"><a href="#grid-template-columns和grid-template-rows" class="headerlink" title="grid-template-columns和grid-template-rows"></a>grid-template-columns和grid-template-rows</h4><p>对网格进行横纵划分,形成二维布局。单位可以是像素,百分比,自适应以及fr单位(网格剩余空间比列单位)。<br>有时候,网格的划分是很规律的,如果需要添加多个横纵网格时,可以利用repeat(个数,单位)语法进行简化操作。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">div &#123;</span><br><span class="line">        display: grid;</span><br><span class="line">        grid-template-columns: repeat(3, 1fr);</span><br><span class="line">        grid-template-rows: repeat(3, 1fr);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="grid-template-areas和grid-template"><a href="#grid-template-areas和grid-template" class="headerlink" title="grid-template-areas和grid-template"></a>grid-template-areas和grid-template</h4><p>area是区域的意思,grid-template-areas就是给网格划分区域的。此时grid子项只要使用grid-area属性指定其隶属于哪个区域。<br>grid-template是grid-template-rows,grid-template-columns和grid-template-areas属性的复合写法</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">div &#123;</span><br><span class="line">        display: grid;</span><br><span class="line">        grid-template-areas:</span><br><span class="line">            &#39;a1 a1 a1&#39; 1fr</span><br><span class="line">            &#39;a2 a2 a3&#39; 1fr</span><br><span class="line">            &#39;a2 a2 a3&#39; 1fr</span><br><span class="line">            &#x2F;1fr 1fr 1fr</span><br><span class="line">        ;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    div:nth-child(1) &#123;</span><br><span class="line">        grid-area: a1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    div:nth-child(2) &#123;</span><br><span class="line">        grid-area: a2;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    div:nth-child(3) &#123;</span><br><span class="line">        grid-area: a3;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="grid-column-gap和grid-row-gap"><a href="#grid-column-gap和grid-row-gap" class="headerlink" title="grid-column-gap和grid-row-gap"></a>grid-column-gap和grid-row-gap</h4><p>grid-column-gap和grid-row-gap属性用来定义网格中网格间隙的尺寸。<br>CSS grid-gap:row column;属性是grid-column-gap和grid-row-gap属性的复合写法。</p>
+<h4 id="justify-items和align-items"><a href="#justify-items和align-items" class="headerlink" title="justify-items和align-items"></a>justify-items和align-items</h4><p>justify-items指定了网格元素的水平呈现方式,是水平拉伸显示还是左中右对齐。<br>align-items指定了网格元素的垂直呈现方式,是垂直拉伸显示,还是上中下对齐。</p>
+<p>place-items是align-items和justify-items属性的复合写法。</p>
+<p><img src="place-items.PNG" alt="grid网格布局"></p>
+<h4 id="justify-content和align-content"><a href="#justify-content和align-content" class="headerlink" title="justify-content和align-content"></a>justify-content和align-content</h4><p>justify-content指定了网格元素的垂直分布方式。align-content指定了网格元素的水平分布方式。<br>place-content是align-content和justify-content属性的复合写法。<br><img src="place-content.PNG" alt="grid网格布局"></p>
+<h4 id="作用在grid子项的属性"><a href="#作用在grid子项的属性" class="headerlink" title="作用在grid子项的属性"></a>作用在grid子项的属性</h4><p><img src="gridzx.PNG" alt="grid网格布局"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    #box &#123;</span><br><span class="line">        width: 300px;</span><br><span class="line">        height: 300px;</span><br><span class="line">        border: 1px gray dotted;</span><br><span class="line">        display: grid;</span><br><span class="line">        grid-template-rows: repeat(3, 1fr);</span><br><span class="line">        grid-template-columns: repeat(3, 1fr);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    #box div &#123;</span><br><span class="line">        background: red;</span><br><span class="line">        border: 1px black solid;</span><br><span class="line">        &#x2F;* </span><br><span class="line">        grid-column-start: 2;</span><br><span class="line">        grid-column-end: 3;</span><br><span class="line">        grid-row-start: 2;</span><br><span class="line">        grid-row-end: span 2; </span><br><span class="line">        *&#x2F;</span><br><span class="line"></span><br><span class="line">        &#x2F;* </span><br><span class="line">        grid-column: 2 &#x2F; 3;</span><br><span class="line">        grid-row: 2 &#x2F; span 2; </span><br><span class="line">        *&#x2F;</span><br><span class="line"></span><br><span class="line">        &#x2F;* grid-area 第一个值是水平的起始位置,第二个值是垂直的起始位置,第三个值是水平的结束位置,第四个值是垂直的结束位置。 *&#x2F;</span><br><span class="line">        grid-area: 3&#x2F;2&#x2F;4&#x2F;4;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;box&quot;&gt;</span><br><span class="line">        &lt;div&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="CSS布局生成工具"><a href="#CSS布局生成工具" class="headerlink" title="CSS布局生成工具"></a>CSS布局生成工具</h3><p><a href="https://cssgrid-generator.netlify.app/">CSS Grid Generator</a><br><a href="https://csslayout.io/">CSS Layout</a><br><a href="https://loading.io/flexbox/">Flexbox Generator</a><br><a href="https://grid.layoutit.com/">行数列数快速布局：cssgr.id</a></p>
+]]></content>
+      <tags>
+        <tag>布局</tag>
+        <tag>flex</tag>
+        <tag>grid</tag>
+      </tags>
   </entry>
   <entry>
     <title>CSS样式 基础知识巩固笔记</title>
@@ -3189,69 +3189,110 @@ SPA应用是什么？
     &#125;
 &#125;
 </code></pre>
-<h2 id="的replace属性"><a href="#的replace属性" class="headerlink" title="的replace属性"></a><router-link>的replace属性</h2><pre><code>1.作用：控制路由跳转是操作浏览器历史记录的模式。
+<h2 id="router-link标签的replace属性"><a href="#router-link标签的replace属性" class="headerlink" title="router-link标签的replace属性"></a>router-link标签的replace属性</h2><pre><code>1.作用：控制路由跳转是操作浏览器历史记录的模式。
 2.浏览器的历史记录有两种写入方式：分别为push和replace，push是追加历史记录，replace是替换当前记录，路由跳转时候默认为push。
 3.开启replace模式： &lt;router-link replace ......&gt;Test&lt;/router-link&gt;
 </code></pre>
-<h1 id="axios与fetch实现数据请求"><a href="#axios与fetch实现数据请求" class="headerlink" title="axios与fetch实现数据请求"></a>axios与fetch实现数据请求</h1><pre><code>[axios](https://github.com/axios/axios)
-    返回的数据会被包装
-    data:真实后端数据
+<h2 id="编程式路由导航"><a href="#编程式路由导航" class="headerlink" title="编程式路由导航"></a>编程式路由导航</h2><pre><code>1.作用：不用router-link实现路由跳转，让路由跳转更加灵活。
+2.编码：
+    // $router的两个API
+    this.$router.push(&#123;
+        name:&#39;detail&#39;,
+        params:&#123;
+            id:xxx,
+            title:xxx
+        &#125;
+    &#125;)
 
-Fetch请求默认不带cookie,需要设置fetch(url,&#123;credrntials:&quot;include&quot;&#125;)
+    this.$router.replace(&#123;
+        name:&#39;detail&#39;,
+        params:&#123;
+            id:xxx,
+            title:xxx
+        &#125;
+    &#125;)
+    this.$router.forward() // 前进
+    this.$router.back() // 后退
+    this.$router.go() // 自定义前进(参数为正数)和后退(参数为负数)
 </code></pre>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id=<span class="string">&quot;box&quot;</span>&gt;</span><br><span class="line">        &lt;button @click=<span class="string">&quot;handleClick()&quot;</span>&gt;获取数据&lt;/button&gt;</span><br><span class="line">        &lt;ul&gt;</span><br><span class="line">            &lt;li v-<span class="keyword">for</span>=<span class="string">&quot;data in datalist&quot;</span>&gt;</span><br><span class="line">                &lt;h1&gt;城市名：&#123;&#123;data.properties.name&#125;&#125;&lt;/h1&gt;</span><br><span class="line">                &lt;h2&gt;城市编码:&#123;&#123;data.properties.adcode&#125;&#125;&lt;/h2&gt;</span><br><span class="line"></span><br><span class="line">            &lt;/li&gt;</span><br><span class="line">        &lt;/ul&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">            el: <span class="string">&quot;#box&quot;</span>,</span><br><span class="line">            data: &#123;</span><br><span class="line">                datalist: []</span><br><span class="line">            &#125;,</span><br><span class="line">            methods: &#123;</span><br><span class="line">                <span class="function"><span class="title">handleClick</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">                    fetch(<span class="string">&quot;https://geo.datav.aliyun.com/areas_v3/bound/440000_full.json&quot;</span>).then(<span class="function"><span class="params">res</span> =&gt;</span> res.json()).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">                        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; res.features.length; i++) &#123;</span><br><span class="line">                            <span class="built_in">console</span>.log(res.features[i].properties.name)</span><br><span class="line">                        &#125;</span><br><span class="line">                        <span class="built_in">this</span>.datalist = res.features</span><br><span class="line"></span><br><span class="line">                    &#125;)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="vue-router"><a href="#vue-router" class="headerlink" title="vue-router"></a>vue-router</h2><pre><code>路由原理
-    1.hash路由
-        location.hash 切换
-        window.onhashchange 监听路径的切换
-    2.history路由
-        history.pushState 切换
-        window.onpopstate 监听路径的切换
+<h2 id="缓存路由组件"><a href="#缓存路由组件" class="headerlink" title="缓存路由组件"></a>缓存路由组件</h2><pre><code>1.作用：让不展示的路由组件保持挂载，不被销毁。
+2.编码：
+    // 在router-view外包裹keep-alive标签，include编写默认在当前router-view下全部保持挂载。
+    // include有多个保持挂载的组件可以用数组写法。
+    &lt;keep-alive include=&quot;组件名&quot;&gt; 
+        &lt;router-view&gt;&lt;/router-view&gt;
+    &lt;/keep-alive&gt;
+</code></pre>
+<h2 id="路由的生命周期钩子"><a href="#路由的生命周期钩子" class="headerlink" title="路由的生命周期钩子"></a>路由的生命周期钩子</h2><pre><code>路由组件独有的两钩子，用于捕获路由组件的激活状态。
+    activated()&#123;&#125; 路由组件被激活时触发。
+    deactivated()&#123;&#125; 路由组件失活时触发。
+</code></pre>
+<h2 id="路由守卫"><a href="#路由守卫" class="headerlink" title="路由守卫"></a>路由守卫</h2><pre><code>1.作用：对路由进行权限控制。
+2.分类：全局守卫，独享守卫，组件内守卫。
+3.全局守卫：
+    // 全局前置守卫，初始化时执行，每次路由切换前执行。
+    router.beforeEach((to,from,next)=&gt;&#123;
+        console.log(&#39;beforeEach&#39;,to,from)
+        // 判断当前路由是否需要进行权限控制
+        if(to.meta.isAuth)&#123;
+            // 权限控制的规则
+            if(localStorage.getItem(&#39;user&#39;) === &#39;root&#39;)&#123;
+                // 放行
+                next()
+            &#125;else&#123;
+                alert(&#39;暂无权限查看&#39;)
+            &#125;
+        &#125;
+    &#125;)
 
-&lt;!-- 声明式导航 --&gt;
-&lt;router-link to=&quot;/&quot; tag=&quot;li&quot; activeClass=&quot;style&quot;&gt;&lt;/router-link&gt;
-    to 跳转的路由地址
-    tag 渲染的标签
-    activeClass 点击添加的样式
-
-重定向和别名,不符合其他路径,会跳转到预制好的路径
-    &#123;
-        path:&quot;*&quot;,
-        redirect:&quot;/home&quot;
+    // 全局后置守卫，初始化时执行，每次路由切换后执行。
+    router.afterEach((to,from)=&gt;&#123;
+        console.log(&#39;afterEach&#39;,to,from)
+        if(to.meta.title)&#123;
+            // 根据路由的切换修改网页的title
+            document.title = to.meta.title
+        &#125;else&#123;
+            document.title = &#39;Vue&#39;
+        &#125;
+    &#125;)
+4.独享守卫：给单个路由权限
+    beforeEnter(to,from,next)&#123;
+        console.log(&#39;beforeEnter&#39;,to,from)
+        if(to.meta.isAuth)&#123;
+            // 权限控制的规则
+            if(localStorage.getItem(&#39;user&#39;) === &#39;root&#39;)&#123;
+                // 放行
+                next()
+            &#125;else&#123;
+                alert(&#39;暂无权限查看&#39;)
+            &#125;
+        &#125;else&#123;
+            next()
+        &#125;
     &#125;
+5.组件内守卫：
+    // 进入守卫，通过路由规则，进入该组件时被调用
+    beforeRouteEnter (to, from, next) &#123;
 
-嵌套路由：
-    const router = new Router(&#123;
-    routes: [
-        &#123;
-            path: &#39;/film&#39;,
-            component: Film,
-            children: [
-                &#123;
-                    path: &#39;/film/nowplaying&#39;,
-                    component: Nowplaying,
-                &#125;,
-                &#123;
-                    path: &#39;&#39;,
-                    redirect: &#39;/film/nowplaying&#39;,
-                &#125;
-            ]
-        &#125;,
-    ]
-&#125;);
+    &#125;
+    // 离开守卫，通过路由规则，离开该组件时被调用
+    beforeRouteLeave (to, from, next) &#123;
+
+    &#125;
 </code></pre>
-<h2 id="动态路由"><a href="#动态路由" class="headerlink" title="动态路由"></a>动态路由</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    Home</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">      &lt;li v-for&#x3D;&quot;data in datalist&quot; :key&#x3D;&quot;data&quot; @click&#x3D;&quot;handleChangePage(data)&quot;&gt;</span><br><span class="line">        &#123;&#123; data &#125;&#125;</span><br><span class="line">      &lt;&#x2F;li&gt;</span><br><span class="line">    &lt;&#x2F;ul&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      datalist: [&quot;111&quot;, &quot;222&quot;, &quot;333&quot;],</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    handleChangePage(id) &#123;</span><br><span class="line">      console.log(id);</span><br><span class="line">      &#x2F;* 编程式导航-路径跳转 *&#x2F;</span><br><span class="line">      &#x2F;&#x2F; this.$router.push(&#96;&#x2F;home&#x2F;$&#123;id&#125;&#96;);</span><br><span class="line"></span><br><span class="line">      &#x2F;* 编程式导航-名字跳转 *&#x2F;</span><br><span class="line">      this.$router.push(&#123;name:&quot;kerwindetail&quot;,params:&#123;id:id&#125;&#125;);</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
-<pre><code>const router = new Router(&#123;
-    mode:&#39;history&#39;, // 去掉URL#号,需要后端配置支持
-    routes: [
-        &#123;
-            path: &#39;/home/:id&#39;, // 动态路由
-            name:&quot;kerwindetail&quot;, // 命名路由
-            component: Home
-        &#125;,
-    ]
-&#125;);
+<h2 id="路由器的两种工作模式"><a href="#路由器的两种工作模式" class="headerlink" title="路由器的两种工作模式"></a>路由器的两种工作模式</h2><pre><code>1.对于一个url来说，hash值是---#及其后面的内容就是hash值。
+2.hash值不会包含在HTTP请求中，即：hash值不会带给服务器。
+3.hash模式：
+    1.地址中永远带着#号，不美观。
+    2.若以后将地址通过第三方手机app分享，若app校验严格，则地址会被标记为不合法。
+    3.兼容性较好。
+4.history模式：
+    1.地址干净，美观。
+    2.兼容性和hash模式相比略差。
+    3.应用部署上线时需要后端人员支持，解决刷新页面服务端404的问题。
 </code></pre>
+<h1 id="Vue-UI组件库"><a href="#Vue-UI组件库" class="headerlink" title="Vue UI组件库"></a>Vue UI组件库</h1><h2 id="移动端常用UI组件库"><a href="#移动端常用UI组件库" class="headerlink" title="移动端常用UI组件库"></a>移动端常用UI组件库</h2><p>1.<a href="https://youzan.github.io/vant/#/zh-CN/">Vant</a><br>2.<a href="https://didi.github.io/cube-ui/#/zh-CN">Cube UI</a><br>3.<a href="http://mint-ui.github.io/#!/zh-cn">Mint UI</a></p>
+<h2 id="PC端常用UI组件库"><a href="#PC端常用UI组件库" class="headerlink" title="PC端常用UI组件库"></a>PC端常用UI组件库</h2><p>1.<a href="https://element.eleme.cn/#/zh-CN">Element UI</a><br>2.<a href="https://iviewui.com/">IView UI</a></p>
 ]]></content>
       <tags>
         <tag>Vue</tag>
