@@ -78,6 +78,24 @@
       </tags>
   </entry>
   <entry>
+    <title>闭包</title>
+    <url>/2021/07/09/Closure/</url>
+    <content><![CDATA[<pre><code>满足以下特点的叫做闭包：
+    1.函数嵌套函数
+    2.内部函数使用外部函数的形参和变量
+    3.被引用的形参和变量不会被垃圾回收机制所回收
+好处：
+    1.可以让一个变量常驻在内存当中
+    2.避免全局变量污染和声明全局变量
+    3.可以声明私有成员
+</code></pre>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">show</span>(<span class="params">res</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> num = <span class="number">10</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(num + <span class="string">&quot;,&quot;</span> + res); <span class="comment">// 10,20</span></span><br><span class="line">&#125;</span><br><span class="line">show(<span class="number">20</span>);</span><br><span class="line"><span class="comment">// console.log(num); 报错：未定义</span></span><br><span class="line"><span class="comment">// console.log(res); 报错：未定义</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 闭包</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">aaa</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">bbb</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        a++;</span><br><span class="line">        <span class="built_in">console</span>.log(a);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> bbb;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> ccc = aaa();</span><br><span class="line">ccc(); <span class="comment">// 3</span></span><br><span class="line">ccc(); <span class="comment">// 4</span></span><br><span class="line"><span class="comment">// console.log(a); // 报错：未定义</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 立即执行函数写法,前面函数执行,后面函数调用</span></span><br><span class="line"><span class="keyword">var</span> ccc = (<span class="function"><span class="keyword">function</span> <span class="title">aaa</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="title">bbb</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        a++;</span><br><span class="line">        <span class="built_in">console</span>.log(a);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)();</span><br><span class="line">ccc(); <span class="comment">// 3</span></span><br><span class="line">ccc(); <span class="comment">// 4</span></span><br><span class="line"><span class="comment">// console.log(a); // 报错：未定义</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>HTML+CSS练手小功能</title>
     <url>/2021/04/24/CSS%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%BA%9B%E6%95%88%E6%9E%9C/</url>
     <content><![CDATA[<h3 id="边框实现三角形"><a href="#边框实现三角形" class="headerlink" title="边框实现三角形"></a>边框实现三角形</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    div &#123;</span><br><span class="line">        width: 0px;</span><br><span class="line">        height: 0px;</span><br><span class="line">        border: 30px solid;</span><br><span class="line">        border-color: transparent transparent red;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div&gt;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
@@ -95,22 +113,662 @@
       </tags>
   </entry>
   <entry>
-    <title>闭包</title>
-    <url>/2021/07/09/Closure/</url>
-    <content><![CDATA[<pre><code>满足以下特点的叫做闭包：
-    1.函数嵌套函数
-    2.内部函数使用外部函数的形参和变量
-    3.被引用的形参和变量不会被垃圾回收机制所回收
-好处：
-    1.可以让一个变量常驻在内存当中
-    2.避免全局变量污染和声明全局变量
-    3.可以声明私有成员
+    <title>JavaScript 面向对象</title>
+    <url>/2021/06/30/JS_Object_Oriented/</url>
+    <content><![CDATA[<pre><code>面向对象：继承(分类更加细分的构造函数),封装(封装构造函数),多态。
+
+面向对象是一个编程思想,支撑面向对象编程思想的语法是类(ECMA6)和对象,构造函数充当类的角色。
+构造函数和对象实现面向对象程序的时候,体现出继承,封装,多态的特点。
 </code></pre>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">show</span>(<span class="params">res</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> num = <span class="number">10</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(num + <span class="string">&quot;,&quot;</span> + res); <span class="comment">// 10,20</span></span><br><span class="line">&#125;</span><br><span class="line">show(<span class="number">20</span>);</span><br><span class="line"><span class="comment">// console.log(num); 报错：未定义</span></span><br><span class="line"><span class="comment">// console.log(res); 报错：未定义</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 闭包</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">aaa</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">bbb</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        a++;</span><br><span class="line">        <span class="built_in">console</span>.log(a);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> bbb;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> ccc = aaa();</span><br><span class="line">ccc(); <span class="comment">// 3</span></span><br><span class="line">ccc(); <span class="comment">// 4</span></span><br><span class="line"><span class="comment">// console.log(a); // 报错：未定义</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 立即执行函数写法,前面函数执行,后面函数调用</span></span><br><span class="line"><span class="keyword">var</span> ccc = (<span class="function"><span class="keyword">function</span> <span class="title">aaa</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="title">bbb</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        a++;</span><br><span class="line">        <span class="built_in">console</span>.log(a);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)();</span><br><span class="line">ccc(); <span class="comment">// 3</span></span><br><span class="line">ccc(); <span class="comment">// 4</span></span><br><span class="line"><span class="comment">// console.log(a); // 报错：未定义</span></span><br></pre></td></tr></table></figure>
+<h1 id="继承与原型链"><a href="#继承与原型链" class="headerlink" title="继承与原型链"></a>继承与原型链</h1><h1 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h1>]]></content>
+  </entry>
+  <entry>
+    <title>JS 对象学习总结</title>
+    <url>/2022/02/15/JS-Object/</url>
+    <content><![CDATA[<h1 id="JS-对象的分类"><a href="#JS-对象的分类" class="headerlink" title="JS 对象的分类"></a>JS 对象的分类</h1><div class="mermaid"> 
+graph LR
+    A[JS中的对象]&#x3D;&#x3D;&gt;C1(宿主对象)
+    A&#x3D;&#x3D;&gt;C2(JS里的对象)
+    C1&#x3D;&#x3D;&gt;D1(DOM对象)
+    C1&#x3D;&#x3D;&gt;D2(BOM对象)
+    C2&#x3D;&#x3D;&gt;ro1(内置对象)
+    C2&#x3D;&#x3D;&gt;ro2(自定义对象)</div>
+<pre><code>在js里，一切皆为或者皆可以被用作对象。
+宿主对象：浏览器提供的对象，对象不是JavaScript语言本身的，但是可以在JavaScript中使用的对象，如DOM，BOM。
+    DOM对象：HTML标签寄放在javascript中，用JavaScript可以操作HTML标签。
+    BOM对象：浏览器窗口及其浏览器的组成部分寄放在JavaScript中，可以用JavaScript操作浏览器窗口和它的组成部分。
+JS中的对象：
+    内置对象：不必明确实例化的对象，已被实例化了。如：Math。函数中的arguments和this；事件处理函数中的event对象等等，直接使用，不用new。
+    自定义对象：程序员自己创建的对象，如：Date，Array，Set，Map，XMLHttpRequest，RegExp，Promise等等要使用，必须new。
+</code></pre>
+<h1 id="内置对象"><a href="#内置对象" class="headerlink" title="内置对象"></a>内置对象</h1><div class="note blue icon flat"><i class="note-icon fas fa fa-sitemap"></i><p><code>内置对象图</code><br>    JavaScrip的所有内置对象都是继承于Object对象，继承了所有的属性和方法。<br>    对象只是一种特殊类型的数据，并拥有属性和方法，属性是与对象相关的值，方法是能够在对象上执行的动作。<br>    JS内置对象也被称为内部类。可以说，object类是所有类的基础类。JavaScript的所有类都是在object类上面派生出来的。</p>
+</div>
+<p><img src="JS%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1%E5%9B%BE.PNG" alt="内置对象图"></p>
+<table>
+<thead>
+<tr>
+<th align="center">对象名称</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>Arguments</code></td>
+<td align="center">函数参数集合</td>
+</tr>
+<tr>
+<td align="center"><code>Array</code></td>
+<td align="center">数组对象，使用单个变量来存储一系列的值。</td>
+</tr>
+<tr>
+<td align="center"><code>Boolean</code></td>
+<td align="center">布尔对象，用于将非布尔型的值转换为布尔值(true或false)</td>
+</tr>
+<tr>
+<td align="center"><code>Date</code></td>
+<td align="center">用来处理日期和时间，通过new关键字来定义Date对象。</td>
+</tr>
+<tr>
+<td align="center"><code>Function</code></td>
+<td align="center">用来表示开发者定义的任何参数。</td>
+</tr>
+<tr>
+<td align="center"><code>Math</code></td>
+<td align="center">具有数学常数和函数的属性和方法，用于执行常见的算数任务。</td>
+</tr>
+<tr>
+<td align="center"><code>Number</code></td>
+<td align="center">原始数值的包装对象，可以自动在原始数值和对象之间进行转换。</td>
+</tr>
+<tr>
+<td align="center"><code>RegExp</code></td>
+<td align="center">用于完成有关正则表达式的操作和功能。</td>
+</tr>
+<tr>
+<td align="center"><code>String</code></td>
+<td align="center">字符串对象，用于处理文本。</td>
+</tr>
+<tr>
+<td align="center"><code>Error</code></td>
+<td align="center">错误对象，用于错误处理。</td>
+</tr>
+</tbody></table>
+<h2 id="基类Object-常用属性和方法"><a href="#基类Object-常用属性和方法" class="headerlink" title="基类Object 常用属性和方法"></a>基类Object 常用属性和方法</h2><table>
+<thead>
+<tr>
+<th align="center">属性和方法</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>prototype</code>属性</td>
+<td align="center">对该对象的原型的引用。原型是一个对象，其他对象可以通过它实现属性的继承。</td>
+</tr>
+<tr>
+<td align="center"><code>constructor()</code>方法</td>
+<td align="center">构造函数，构造函数是类的一个特殊函数，当创建类的对象实例时，系统会自动调用构造函数，通过构造函数对类进行初始化操作。</td>
+</tr>
+<tr>
+<td align="center"><code>valueOf()</code></td>
+<td align="center">返回对象的原始值</td>
+</tr>
+<tr>
+<td align="center"><code>toString()</code>方法</td>
+<td align="center">返回对象的字符串表示</td>
+</tr>
+<tr>
+<td align="center"><code>toLocaleString()</code>方法</td>
+<td align="center">返回对象地方化的字符串表示</td>
+</tr>
+<tr>
+<td align="center"><code>isPrototypeOf(object)</code>方法</td>
+<td align="center">检查对象是否是指定对象的原型</td>
+</tr>
+<tr>
+<td align="center"><code>hasOwnProperty(proName)</code>方法</td>
+<td align="center">检查对象是否有局部定义的，具有特定名字的属性</td>
+</tr>
+<tr>
+<td align="center"><code>PropertyIsEnumerable(proName)</code>方法</td>
+<td align="center">返回布尔值，指出所指定的属性（proName）是否为一个对象的一部分以及该属性是否是可列举的。如果proName存在于object中并且可以使用for…in循环穷举出，那么则返回True，否则返回False</td>
+</tr>
+<tr>
+<td align="center"><code>delete</code>操作</td>
+<td align="center">删除对象的自由属性，不能删除继承属性</td>
+</tr>
+<tr>
+<td align="center"><code>assign( )</code>方法</td>
+<td align="center">用于将所有可枚举属性的值从一个或多个源对象复制到目标对象，返回目标对象。</td>
+</tr>
+<tr>
+<td align="center"><code>entries( )</code>方法</td>
+<td align="center">返回一个给定对象自身可枚举属性的键值对数组，其排列与使用for…in 循环遍历该对象时返回的顺序一致。</td>
+</tr>
+</tbody></table>
+<h2 id="继承于Object对象-常用属性和方法"><a href="#继承于Object对象-常用属性和方法" class="headerlink" title="继承于Object对象 常用属性和方法"></a>继承于Object对象 常用属性和方法</h2><h3 id="Arguments"><a href="#Arguments" class="headerlink" title="Arguments"></a>Arguments</h3><table>
+<thead>
+<tr>
+<th align="center">属性和方法</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>Arguments</code></td>
+<td align="center">一个函数的参数和其他属性。</td>
+</tr>
+<tr>
+<td align="center"><code>arguments[ ]</code></td>
+<td align="center">函数参数的数组。</td>
+</tr>
+<tr>
+<td align="center"><code>Arguments.callee</code></td>
+<td align="center">当前正在运行的函数。</td>
+</tr>
+<tr>
+<td align="center"><code>Arguments.length</code></td>
+<td align="center">传递给函数的参数个数。</td>
+</tr>
+</tbody></table>
+<h3 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h3><table>
+<thead>
+<tr>
+<th align="center">属性和方法</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>Array</code></td>
+<td align="center">对数组的内部支持。</td>
+</tr>
+<tr>
+<td align="center"><code>Array.concat( )</code></td>
+<td align="center">拷贝原数组，生成新数组。。</td>
+</tr>
+<tr>
+<td align="center"><code>Array.join( )</code></td>
+<td align="center">将数组元素连接起来以构建一个字符串。</td>
+</tr>
+<tr>
+<td align="center"><code>Array.length</code></td>
+<td align="center">数组的大小。</td>
+</tr>
+<tr>
+<td align="center"><code>Array.pop( )</code></td>
+<td align="center">从数组末尾取下一个元素。</td>
+</tr>
+<tr>
+<td align="center"><code>Array.push( )</code></td>
+<td align="center">给数组的末尾添加元素。</td>
+</tr>
+<tr>
+<td align="center"><code>Array.reverse( )</code></td>
+<td align="center">反转数组。</td>
+</tr>
+<tr>
+<td align="center"><code>Array.shift( )</code></td>
+<td align="center">从数组的头部取下一个元素。</td>
+</tr>
+<tr>
+<td align="center"><code>Array.unshift( )</code></td>
+<td align="center">从数组的头部新增元素。</td>
+</tr>
+<tr>
+<td align="center"><code>Array.slice( )</code></td>
+<td align="center">可以基于当前数组获取指定区域元素，提取出元素生成新数组。</td>
+</tr>
+<tr>
+<td align="center"><code>Array.sort( )</code></td>
+<td align="center">数组排序。默认从小到大排序,按照字符串排序。</td>
+</tr>
+<tr>
+<td align="center"><code>Array.splice( )</code></td>
+<td align="center">插入，删除或替换数组的元素。</td>
+</tr>
+<tr>
+<td align="center"><code>Array.toString( )</code></td>
+<td align="center">将数组转换成一个字符串。</td>
+</tr>
+<tr>
+<td align="center"><code>Array.toLocaleString( )</code></td>
+<td align="center">把数组转换成局部字符串。</td>
+</tr>
+<tr>
+<td align="center"><code>Array.indexOf( )</code></td>
+<td align="center">在数组中查找第一次出现的元素，返回查找到的元素下标。</td>
+</tr>
+<tr>
+<td align="center"><code>Array.forEach( )</code></td>
+<td align="center">循环数组。</td>
+</tr>
+<tr>
+<td align="center"><code>Array.map( )</code></td>
+<td align="center">映射数组。</td>
+</tr>
+<tr>
+<td align="center"><code>Array.filter( )</code></td>
+<td align="center">过滤数组元素。</td>
+</tr>
+<tr>
+<td align="center"><code>Array.some( )</code></td>
+<td align="center">在数组中查找是否有符合条件的元素,有返回true,没有返回false。</td>
+</tr>
+<tr>
+<td align="center"><code>Array.every( )</code></td>
+<td align="center">在数组中查找每一个元素是否有符合条件,符合返回true,不符合返回false。</td>
+</tr>
+<tr>
+<td align="center"><code>Array.reduce( )</code></td>
+<td align="center">归并数组。</td>
+</tr>
+</tbody></table>
+<h3 id="Boolean"><a href="#Boolean" class="headerlink" title="Boolean"></a>Boolean</h3><table>
+<thead>
+<tr>
+<th align="center">属性和方法</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>Boolean</code></td>
+<td align="center">对布尔值的支持。</td>
+</tr>
+<tr>
+<td align="center"><code>Boolean.toString( )</code></td>
+<td align="center">将布尔值转换成字符串。</td>
+</tr>
+<tr>
+<td align="center"><code>Boolean.valueOf( )</code></td>
+<td align="center">布尔对象的布尔值。</td>
+</tr>
+</tbody></table>
+<h3 id="Date"><a href="#Date" class="headerlink" title="Date"></a>Date</h3><table>
+<thead>
+<tr>
+<th align="center">属性和方法</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>Date</code></td>
+<td align="center">操作日期和时间的对象。</td>
+</tr>
+<tr>
+<td align="center"><code>Date.getDate()</code></td>
+<td align="center">返回一个月中的某一天。</td>
+</tr>
+<tr>
+<td align="center"><code>Date.getDay()</code></td>
+<td align="center">返回一周中的某一天。</td>
+</tr>
+<tr>
+<td align="center"><code>Date.getFullYear()</code></td>
+<td align="center">返回Date对象的年份字段。</td>
+</tr>
+<tr>
+<td align="center"><code>Date.getHours()</code></td>
+<td align="center">返回Date对象的小时字段。</td>
+</tr>
+</tbody></table>
+<h3 id="Function"><a href="#Function" class="headerlink" title="Function"></a>Function</h3><table>
+<thead>
+<tr>
+<th align="center">属性和方法</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>Function</code></td>
+<td align="center">JavaScript的函数。</td>
+</tr>
+<tr>
+<td align="center"><code>Function.apply( )</code></td>
+<td align="center">将函数作为一个对象的方法调用。</td>
+</tr>
+<tr>
+<td align="center"><code>Function.arguments[]</code></td>
+<td align="center">传递给函数的参数。</td>
+</tr>
+<tr>
+<td align="center"><code>Function.call( )</code></td>
+<td align="center">将函数作为对象的方法调用。</td>
+</tr>
+<tr>
+<td align="center"><code>Function.caller</code></td>
+<td align="center">调用当前函数的函数。</td>
+</tr>
+<tr>
+<td align="center"><code>Function.length</code></td>
+<td align="center">已声明的参数的个数。</td>
+</tr>
+<tr>
+<td align="center"><code>Function.prototype</code></td>
+<td align="center">对象类的原型。</td>
+</tr>
+<tr>
+<td align="center"><code>Function.toString( )</code></td>
+<td align="center">把函数转换成字符串。</td>
+</tr>
+</tbody></table>
+<h3 id="Math"><a href="#Math" class="headerlink" title="Math"></a>Math</h3><table>
+<thead>
+<tr>
+<th align="center">属性和方法</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>Math</code></td>
+<td align="center">算术函数和常量。</td>
+</tr>
+<tr>
+<td align="center"><code>Math.abs( )</code></td>
+<td align="center">计算绝对值。</td>
+</tr>
+<tr>
+<td align="center"><code>Math.acos( )</code></td>
+<td align="center">计算反余弦值。</td>
+</tr>
+<tr>
+<td align="center"><code>Math.asin( )</code></td>
+<td align="center">计算反正弦值。</td>
+</tr>
+<tr>
+<td align="center"><code>Math.atan( )</code></td>
+<td align="center">计算反正切值。</td>
+</tr>
+<tr>
+<td align="center"><code>Math.atan2( )</code></td>
+<td align="center">计算从x轴到一个点之间的角度。</td>
+</tr>
+<tr>
+<td align="center"><code>Math.ceil( )</code></td>
+<td align="center">对一个数上舍入。</td>
+</tr>
+<tr>
+<td align="center"><code>Math.cos( )</code></td>
+<td align="center">计算余弦值。</td>
+</tr>
+<tr>
+<td align="center"><code>Math.E( )</code></td>
+<td align="center">算术常量e。</td>
+</tr>
+<tr>
+<td align="center"><code>Math.exp( )</code></td>
+<td align="center">计算e^x。</td>
+</tr>
+<tr>
+<td align="center"><code>Math.floor( )</code></td>
+<td align="center">对一个数下舍入。</td>
+</tr>
+<tr>
+<td align="center"><code>Math.LN10( )</code></td>
+<td align="center">表示 10 的自然对数，约为 2.302。</td>
+</tr>
+<tr>
+<td align="center"><code>Math.PI</code></td>
+<td align="center">180弧度。</td>
+</tr>
+<tr>
+<td align="center"><code>Math.max()</code></td>
+<td align="center">返回最大的参数。</td>
+</tr>
+<tr>
+<td align="center"><code>Math.min()</code></td>
+<td align="center">返回最小的参数。</td>
+</tr>
+<tr>
+<td align="center"><code>Math.log()</code></td>
+<td align="center">计算一个数的自然对数。</td>
+</tr>
+<tr>
+<td align="center"><code>Math.pow()</code></td>
+<td align="center">计算幂。</td>
+</tr>
+<tr>
+<td align="center"><code>Math.random()</code></td>
+<td align="center">返回0-1之间的随机数。</td>
+</tr>
+<tr>
+<td align="center"><code>Math.round()</code></td>
+<td align="center">四舍五入(成整数,只看小数后一位)。</td>
+</tr>
+<tr>
+<td align="center"><code>Math.sin()</code></td>
+<td align="center">计算正弦值。</td>
+</tr>
+<tr>
+<td align="center"><code>Math.sqrt()</code></td>
+<td align="center">计算平方根。</td>
+</tr>
+</tbody></table>
+<h3 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h3><table>
+<thead>
+<tr>
+<th align="center">属性和方法</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>Number</code></td>
+<td align="center">对数字的支持。</td>
+</tr>
+<tr>
+<td align="center"><code>Number.MAX_VALUE</code></td>
+<td align="center">最大数值。</td>
+</tr>
+<tr>
+<td align="center"><code>Number.MIN_VALUE</code></td>
+<td align="center">最小数值。</td>
+</tr>
+<tr>
+<td align="center"><code>Number.NaN</code></td>
+<td align="center">特殊的非数字值。</td>
+</tr>
+<tr>
+<td align="center"><code>Number.NEGATIVE_INFINITY</code></td>
+<td align="center">负无穷大。</td>
+</tr>
+<tr>
+<td align="center"><code>Number.POSITIVE_INFINITY</code></td>
+<td align="center">正无穷大。</td>
+</tr>
+<tr>
+<td align="center"><code>Number.toExponential( )</code></td>
+<td align="center">用指数计数法格式化数字。</td>
+</tr>
+<tr>
+<td align="center"><code>Number.toFixed( )</code></td>
+<td align="center">采用定点计数法格式化数字。</td>
+</tr>
+<tr>
+<td align="center"><code>Number.toLocaleString( )</code></td>
+<td align="center">把数字转换成本地格式的字符串。</td>
+</tr>
+<tr>
+<td align="center"><code>Number.toPrecision( )</code></td>
+<td align="center">格式化数字的有效位。</td>
+</tr>
+<tr>
+<td align="center"><code>Number.toString( )</code></td>
+<td align="center">将一个数字转换成字符串。</td>
+</tr>
+<tr>
+<td align="center"><code>Number.valueOf( )</code></td>
+<td align="center">返回原始数值。</td>
+</tr>
+</tbody></table>
+<h3 id="RegExp"><a href="#RegExp" class="headerlink" title="RegExp"></a>RegExp</h3><table>
+<thead>
+<tr>
+<th align="center">属性和方法</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>RegExp</code></td>
+<td align="center">用于模式匹配的正则表达式。</td>
+</tr>
+<tr>
+<td align="center"><code>RegExp.exec( )</code></td>
+<td align="center">通用的匹配模式。</td>
+</tr>
+<tr>
+<td align="center"><code>RegExp.test( )</code></td>
+<td align="center">检测一个字符串是否匹配某个模式。</td>
+</tr>
+<tr>
+<td align="center"><code>RegExp.toString( )</code></td>
+<td align="center">把正则表达式转换为字符串。</td>
+</tr>
+<tr>
+<td align="center"><code>RegExp.global</code></td>
+<td align="center">正则表达式是否全局匹配。</td>
+</tr>
+<tr>
+<td align="center"><code>RegExp.ignoreCase</code></td>
+<td align="center">正则表达式是否区分大小写。</td>
+</tr>
+<tr>
+<td align="center"><code>RegExp.lastIndex</code></td>
+<td align="center">下次匹配的起始位置。</td>
+</tr>
+<tr>
+<td align="center"><code>RegExp.source</code></td>
+<td align="center">正则表达式的文本。</td>
+</tr>
+</tbody></table>
+<h3 id="String"><a href="#String" class="headerlink" title="String"></a>String</h3><table>
+<thead>
+<tr>
+<th align="center">属性和方法</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>String</code></td>
+<td align="center">对字符串的支持。</td>
+</tr>
+<tr>
+<td align="center"><code>String.charAt( )</code></td>
+<td align="center">返回字符串中的第n个字符。</td>
+</tr>
+<tr>
+<td align="center"><code>String.charCodeAt( )</code></td>
+<td align="center">返回字符串中的第n个字符的代码。</td>
+</tr>
+<tr>
+<td align="center"><code>String.concat( )</code></td>
+<td align="center">连接字符串。</td>
+</tr>
+<tr>
+<td align="center"><code>String.fromCharCode( )</code></td>
+<td align="center">从字符编码创建一个字符串。</td>
+</tr>
+<tr>
+<td align="center"><code>String.indexOf( )</code></td>
+<td align="center">检索字符串。</td>
+</tr>
+<tr>
+<td align="center"><code>String.lastIndexOf( )</code></td>
+<td align="center">从后向前检索一个字符串。</td>
+</tr>
+<tr>
+<td align="center"><code>String.length</code></td>
+<td align="center">字符串的长度。</td>
+</tr>
+<tr>
+<td align="center"><code>String.localeCompare( )</code></td>
+<td align="center">用本地特定的顺序来比较两个字符串。</td>
+</tr>
+<tr>
+<td align="center"><code>String.match( )</code></td>
+<td align="center">找到一个或多个正则表达式的匹配。</td>
+</tr>
+<tr>
+<td align="center"><code>String.replace( )</code></td>
+<td align="center">替换一个与正则表达式匹配的子串。</td>
+</tr>
+<tr>
+<td align="center"><code>String.search( )</code></td>
+<td align="center">检索与正则表达式相匹配的子串。</td>
+</tr>
+<tr>
+<td align="center"><code>String.slice( )</code></td>
+<td align="center">抽取一个子串。</td>
+</tr>
+<tr>
+<td align="center"><code>String.split( )</code></td>
+<td align="center">将字符串分割成字符串数组。</td>
+</tr>
+<tr>
+<td align="center"><code>String.substring( )</code></td>
+<td align="center">返回字符串的一个子串。</td>
+</tr>
+<tr>
+<td align="center"><code>String.toLocaleLowerCase( )</code></td>
+<td align="center">把字符串转换小写。</td>
+</tr>
+<tr>
+<td align="center"><code>String.toLocaleUpperCase( )</code></td>
+<td align="center">把字符串转换大写。</td>
+</tr>
+<tr>
+<td align="center"><code>String.toString( )</code></td>
+<td align="center">返回字符串。</td>
+</tr>
+<tr>
+<td align="center"><code>String.valueOf( )</code></td>
+<td align="center">返回字符串。</td>
+</tr>
+</tbody></table>
+<h3 id="Error"><a href="#Error" class="headerlink" title="Error"></a>Error</h3><table>
+<thead>
+<tr>
+<th align="center">属性和方法</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>Error</code></td>
+<td align="center">普通异常。</td>
+</tr>
+<tr>
+<td align="center"><code>Error.message</code></td>
+<td align="center">可以读取的错误信息。</td>
+</tr>
+<tr>
+<td align="center"><code>Error.name</code></td>
+<td align="center">错误的类型。</td>
+</tr>
+<tr>
+<td align="center"><code>Error.toString( )</code></td>
+<td align="center">把错误对象转换为字符串。</td>
+</tr>
+<tr>
+<td align="center"><code>EvalError</code></td>
+<td align="center">在不正确使用eval()时抛出。</td>
+</tr>
+<tr>
+<td align="center"><code>SyntaxError</code></td>
+<td align="center">抛出该错误用来通知语法错误。</td>
+</tr>
+<tr>
+<td align="center"><code>RangeError</code></td>
+<td align="center">在数字超出合法范围时抛出。</td>
+</tr>
+<tr>
+<td align="center"><code>ReferenceError</code></td>
+<td align="center">在读取不存在的变量时抛出。</td>
+</tr>
+<tr>
+<td align="center"><code>TypeError</code></td>
+<td align="center">当一个值的类型错误时，抛出该异常。</td>
+</tr>
+<tr>
+<td align="center"><code>URIError</code></td>
+<td align="center">由URI的编码和解码方法抛出。</td>
+</tr>
+</tbody></table>
 ]]></content>
-      <tags>
-        <tag>JavaScript</tag>
-      </tags>
   </entry>
   <entry>
     <title>JavaScrip ES常用新特性</title>
@@ -336,6 +994,114 @@ Object.getOwnPropertyDescriptors 方法返回指定对象所有自身属性的�
       </tags>
   </entry>
   <entry>
+    <title>JavaScript 正则表达式</title>
+    <url>/2021/06/27/JS_RE/</url>
+    <content><![CDATA[<h1 id="正则表达式概念"><a href="#正则表达式概念" class="headerlink" title="正则表达式概念"></a>正则表达式概念</h1><pre><code>正则表达式（Regular Expression）是一个描述字符模式的对象。
+ECMAScript 的 RegExp 类 表示正则表达式,
+而 String 和正则表达式都定义了进行强大的【模式匹配】和【文本检索】与【替换】的函数。
+</code></pre>
+<h1 id="创建正则表达式"><a href="#创建正则表达式" class="headerlink" title="创建正则表达式"></a>创建正则表达式</h1><p>1.通过new去声明正则表达式</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> box1 = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">&quot;hello&quot;</span>, <span class="string">&quot;ig&quot;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(box1); <span class="comment">// /hello/gi</span></span><br></pre></td></tr></table></figure>
+<p>2.省略new运算符去声明正则表达式</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> box1 = <span class="built_in">RegExp</span>(<span class="string">&quot;hello&quot;</span>, <span class="string">&quot;ig&quot;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(box1); <span class="comment">// /hello/gi</span></span><br></pre></td></tr></table></figure>
+<p>3.通过常量赋值</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> box1 = <span class="regexp">/hello/gi</span>;</span><br><span class="line"><span class="built_in">console</span>.log(box1); <span class="comment">// /hello/gi</span></span><br></pre></td></tr></table></figure>
+<h1 id="正则表达式方法"><a href="#正则表达式方法" class="headerlink" title="正则表达式方法"></a>正则表达式方法</h1><p>正则表达式对象只有两个方法:</p>
+<pre><code>test
+    格式：正则.test(字符串)
+    功能：在字符串中匹配这个正则是否存在
+    返回值：如果匹配成功返回true,匹配失败返回false
+</code></pre>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;how aRe you&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> box = <span class="regexp">/are/i</span>;</span><br><span class="line"><span class="built_in">console</span>.log(box.test(str)); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>exec
+    格式：正则.exec(字符串)
+    功能：在字符串中匹配这个正则是否存在
+    返回值：返回匹配到的串,匹配成功,返回一个装有字符串的数组。匹配失败,返回null
+</code></pre>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;how aRe you&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> box = <span class="regexp">/are/i</span>;</span><br><span class="line"><span class="built_in">console</span>.log(box.exec(str)); <span class="comment">// [&quot;aRe&quot;, index: 4, input: &quot;how aRe you&quot;, groups: undefined]</span></span><br></pre></td></tr></table></figure>
+<h1 id="字符串中使用正则的方法"><a href="#字符串中使用正则的方法" class="headerlink" title="字符串中使用正则的方法"></a>字符串中使用正则的方法</h1><p>字符串的函数：</p>
+<h2 id="match"><a href="#match" class="headerlink" title="match()"></a>match()</h2><pre><code>格式：字符串.match(正则)
+功能：在字符串匹配是否有符合正则表达式
+返回值：匹配成功,返回装有匹配到子串的数组。匹配失败,返回null
+</code></pre>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;how are Are ARE you&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> box = <span class="regexp">/are/ig</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str.match(box)); <span class="comment">// [&quot;are&quot;, &quot;Are&quot;, &quot;ARE&quot;]</span></span><br></pre></td></tr></table></figure>
+<h2 id="replace"><a href="#replace" class="headerlink" title="replace()"></a>replace()</h2><pre><code>格式：字符串.replace(oldStr/正则, newStr);
+功能：用newStr将oldStr替换
+返回值：替换成功的新字符串
+</code></pre>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;how are Are ARE you&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> newStr = str.replace(<span class="regexp">/are/ig</span>, <span class="string">&quot;*&quot;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(newStr); <span class="comment">// how * * * you</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="split"><a href="#split" class="headerlink" title="split()"></a>split()</h2><pre><code>格式：字符串.split(分割符/正则);
+功能：用分割符将原字符串进行分割
+返回值：分割剩下的子串组成的数组
+</code></pre>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;how are Are ARE you&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> arr = str.split(<span class="regexp">/are/i</span>);</span><br><span class="line"><span class="built_in">console</span>.log(arr); <span class="comment">// [&quot;how &quot;, &quot; &quot;, &quot; &quot;, &quot; you&quot;]</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="search"><a href="#search" class="headerlink" title="search()"></a>search()</h2><pre><code>格式：字符串.search(子串/正则)
+功能：找到符合条件的子串第一次出现的位置
+返回值：如果找到,返回&gt;=0的下标。否则返回-1
+</code></pre>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;how are Are ARE you&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str.search(<span class="regexp">/are/i</span>)); <span class="comment">// 4</span></span><br></pre></td></tr></table></figure>
+<h1 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a>元字符</h1><pre><code>元字符：在正则表达式中有特殊含义的字符。
+</code></pre>
+<h2 id="单个数字和字符的元字符"><a href="#单个数字和字符的元字符" class="headerlink" title="单个数字和字符的元字符"></a>单个数字和字符的元字符</h2><pre><code>.       匹配单个的任意字符
+[]      匹配单范围内的字符
+[^]     匹配任意一个除括号范围内的字符
+\w      匹配单个的数字,字母下划线 等价于[a-zA-Z0-9_]
+\W      匹配单个非数字,字母下划线
+\d      匹配单个数字,等价于[0-9] 
+\D      匹配单个非数字,等价于[^0-9]
+</code></pre>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;g_ogle&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> box = <span class="regexp">/g.ogle/</span>;</span><br><span class="line"><span class="built_in">console</span>.log(box.test(str)); <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> str1 = <span class="string">&quot;g1ogle&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> box1 = <span class="regexp">/g[^0-9]ogle/</span>;</span><br><span class="line"><span class="built_in">console</span>.log(box1.test(str1)); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<h2 id="重复字符"><a href="#重复字符" class="headerlink" title="重复字符"></a>重复字符</h2><pre><code>x       任意的单个字符
+x?      匹配0个或者1个x
+x+      匹配至少一个x字符
+x*      匹配任意个x字符
+x&#123;m,n&#125;  匹配至少m个,最多n个x字符,包括n
+x&#123;n&#125;    必须匹配n个x字符
+(xyz)+  小括号括起来的部分是当做单个字符处理
+</code></pre>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;googgle&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> box = <span class="regexp">/goog?le/</span>;</span><br><span class="line"><span class="built_in">console</span>.log(box.test(str)); <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> str1 = <span class="string">&quot;goo18148148le&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> box1 = <span class="regexp">/goo\d*le/</span>;</span><br><span class="line"><span class="built_in">console</span>.log(box1.test(str1)); <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> str2 = <span class="string">&quot;goo12le&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> box2 = <span class="regexp">/goo\d&#123;2&#125;le/</span>;</span><br><span class="line"><span class="built_in">console</span>.log(box2.test(str2)); <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> str3 = <span class="string">&quot;googabcabcle&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> box3 = <span class="regexp">/goog(abc)+le/</span>;</span><br><span class="line"><span class="built_in">console</span>.log(box3.test(str3)); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<h2 id="空白字符"><a href="#空白字符" class="headerlink" title="空白字符"></a>空白字符</h2><pre><code>\s  匹配任意单个的空白字符
+\S  匹配任意单个非空白字符
+</code></pre>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;goog le&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> box = <span class="regexp">/goog\sle/</span>;</span><br><span class="line"><span class="built_in">console</span>.log(box.test(str)); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<h2 id="锚字符"><a href="#锚字符" class="headerlink" title="锚字符"></a>锚字符</h2><pre><code>^   行首匹配    必须以这个正则开头
+$   行尾匹配    必须以这个正则结尾
+</code></pre>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;google da adad&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> box = <span class="regexp">/^google/</span>;</span><br><span class="line"><span class="built_in">console</span>.log(box.test(str)); <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> str1 = <span class="string">&quot;da adad google&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> box1 = <span class="regexp">/google$/</span>;</span><br><span class="line"><span class="built_in">console</span>.log(box1.test(str1)); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<h2 id="替代字符"><a href="#替代字符" class="headerlink" title="替代字符"></a>替代字符</h2><pre><code>|   查找任何以 | 分隔的选项
+</code></pre>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;google&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> box = <span class="regexp">/google|baidu|bing/</span>;</span><br><span class="line"><span class="built_in">console</span>.log(box.test(str)); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<h2 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h2><pre><code>i   忽略大小写
+g   全局匹配
+m   换行匹配
+
+如果在字符串,遇到换行,重新开始计算行首。
+</code></pre>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;1.go15ogle\n2.ba55idu\n3.bi78ng&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> box = <span class="regexp">/^\d/gm</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str.replace(box, <span class="string">&quot;*&quot;</span>));</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">*.go15ogle</span></span><br><span class="line"><span class="comment">*.ba55idu</span></span><br><span class="line"><span class="comment">*.bi78ng</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>正则表达式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaScript 遍历</title>
+    <url>/2021/06/30/JS_Traversal/</url>
+    <content><![CDATA[<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><h2 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">&quot;for循环：&quot;</span> + arr[i] + <span class="string">&quot;,&quot;</span> + i + <span class="string">&quot;&lt;br/&gt;&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="for…in"><a href="#for…in" class="headerlink" title="for…in"></a>for…in</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> arr) &#123;</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">&quot;for...in遍历：&quot;</span> + arr[i] + <span class="string">&quot;,&quot;</span> + i + <span class="string">&quot;&lt;br/&gt;&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="forEach"><a href="#forEach" class="headerlink" title="forEach"></a>forEach</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">arr.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">item, index</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">&quot;forEach遍历：&quot;</span> + arr[i] + <span class="string">&quot;,&quot;</span> + i + <span class="string">&quot;&lt;br/&gt;&quot;</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="for…of"><a href="#for…of" class="headerlink" title="for…of"></a>for…of</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> item <span class="keyword">of</span> arr) &#123;</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">&quot;for...of遍历：&quot;</span> + item + <span class="string">&quot;&lt;br/&gt;&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h1><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// for...in</span></span><br><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">    username: <span class="string">&quot;哪吒&quot;</span>,</span><br><span class="line">    age: <span class="number">20</span>,</span><br><span class="line">    sex: <span class="string">&quot;男&quot;</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> attr <span class="keyword">in</span> person) &#123;</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">&quot;对象：&quot;</span> + attr + person[attr] + <span class="string">&quot;&lt;br/&gt;&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h1><h2 id="set"><a href="#set" class="headerlink" title="set"></a>set</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> imgs.keys()) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(item);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> imgs.values()) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(item);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> imgs.entries()) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(item);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> [key, value] <span class="keyword">of</span> map) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(key, value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>辅助工具JQuery</title>
     <url>/2021/07/05/JQuery/</url>
     <content><![CDATA[<p><a href="https://www.w3school.com.cn/jquery/jquery_reference.asp">jQuery文档</a></p>
@@ -525,209 +1291,33 @@ $.post()
       </tags>
   </entry>
   <entry>
-    <title>JavaScript 面向对象</title>
-    <url>/2021/06/30/JS_Object_Oriented/</url>
-    <content><![CDATA[<pre><code>面向对象：继承(分类更加细分的构造函数),封装(封装构造函数),多态。
+    <title>移动端响应式布局</title>
+    <url>/2021/06/03/Mobile_layout/</url>
+    <content><![CDATA[<h3 id="Viewport视口"><a href="#Viewport视口" class="headerlink" title="Viewport视口"></a>Viewport视口</h3><p>在移动端Viewport视口是浏览器显示页面内容的屏幕区域。在Viewport中有两种视口,分别表示为：visual viewport(可视视口)和layout viewport(布局视口)。</p>
+<p>visual viewport固定大小跟屏幕大小相同,在上面。而layout viewport可改变大小,在下面。layout viewport默认大小为980像素,可通过document.documentElement.clientWidth获取。</p>
+<p>网页需要将layout viewport设置成跟visual viewport等同大小,方便进行网页制作。</p>
+<p>通过<meta>标签进行设置,name属性指定viewport值,content属性进行视口配置。<br><img src="Viewport.PNG" alt="Viewport视口"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0, user-scalable&#x3D;no&quot;&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="移动端适配方案"><a href="#移动端适配方案" class="headerlink" title="移动端适配方案"></a>移动端适配方案</h3><p>1.百分比布局,也叫流式布局。<br>    通过盒子的宽度设置成百分比来根据屏幕的宽度来进行伸缩，不受固定像素的限制，内容向两侧填充。<br>    流式布局方式是移动web开发使用的比较常见的布局方式。<br>    max-width 最大宽度(max-height最大高度)。<br>    min-width最小宽度（min-height最小高度）。<br>2.等比缩放布局,也叫rem布局。</p>
+<pre><code>单位：
+    em : 是一个相对单位,1em等于当前元素或父元素的font-size值。
+    rem : 是一个相对单位,1rem等于根元素的font-size值。
+    vw / vh : 把屏幕分为100份,1vw等于屏幕宽的1%。
 
-面向对象是一个编程思想,支撑面向对象编程思想的语法是类(ECMA6)和对象,构造函数充当类的角色。
-构造函数和对象实现面向对象程序的时候,体现出继承,封装,多态的特点。
-</code></pre>
-<h1 id="继承与原型链"><a href="#继承与原型链" class="headerlink" title="继承与原型链"></a>继承与原型链</h1><h1 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h1>]]></content>
-  </entry>
-  <entry>
-    <title>JavaScript 正则表达式</title>
-    <url>/2021/06/27/JS_RE/</url>
-    <content><![CDATA[<h1 id="正则表达式概念"><a href="#正则表达式概念" class="headerlink" title="正则表达式概念"></a>正则表达式概念</h1><pre><code>正则表达式（Regular Expression）是一个描述字符模式的对象。
-ECMAScript 的 RegExp 类 表示正则表达式,
-而 String 和正则表达式都定义了进行强大的【模式匹配】和【文本检索】与【替换】的函数。
-</code></pre>
-<h1 id="创建正则表达式"><a href="#创建正则表达式" class="headerlink" title="创建正则表达式"></a>创建正则表达式</h1><p>1.通过new去声明正则表达式</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> box1 = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">&quot;hello&quot;</span>, <span class="string">&quot;ig&quot;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(box1); <span class="comment">// /hello/gi</span></span><br></pre></td></tr></table></figure>
-<p>2.省略new运算符去声明正则表达式</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> box1 = <span class="built_in">RegExp</span>(<span class="string">&quot;hello&quot;</span>, <span class="string">&quot;ig&quot;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(box1); <span class="comment">// /hello/gi</span></span><br></pre></td></tr></table></figure>
-<p>3.通过常量赋值</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> box1 = <span class="regexp">/hello/gi</span>;</span><br><span class="line"><span class="built_in">console</span>.log(box1); <span class="comment">// /hello/gi</span></span><br></pre></td></tr></table></figure>
-<h1 id="正则表达式方法"><a href="#正则表达式方法" class="headerlink" title="正则表达式方法"></a>正则表达式方法</h1><p>正则表达式对象只有两个方法:</p>
-<pre><code>test
-    格式：正则.test(字符串)
-    功能：在字符串中匹配这个正则是否存在
-    返回值：如果匹配成功返回true,匹配失败返回false
-</code></pre>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;how aRe you&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> box = <span class="regexp">/are/i</span>;</span><br><span class="line"><span class="built_in">console</span>.log(box.test(str)); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
 
-<pre><code>exec
-    格式：正则.exec(字符串)
-    功能：在字符串中匹配这个正则是否存在
-    返回值：返回匹配到的串,匹配成功,返回一个装有字符串的数组。匹配失败,返回null
+动态设置font-size(要给body重置一下font-size: 16px;)：
+    通过JS
+    <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    var fontsize &#x3D; document.documentElement.clientWidth &#x2F; 3.75;</span><br><span class="line">    document.documentElement.style.fontSize &#x3D; fontsize + &quot;px&quot;;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+    通过VW
+    <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">html&#123;font-size: 26.666667vw;&#125;</span><br></pre></td></tr></table></figure>
 </code></pre>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;how aRe you&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> box = <span class="regexp">/are/i</span>;</span><br><span class="line"><span class="built_in">console</span>.log(box.exec(str)); <span class="comment">// [&quot;aRe&quot;, index: 4, input: &quot;how aRe you&quot;, groups: undefined]</span></span><br></pre></td></tr></table></figure>
-<h1 id="字符串中使用正则的方法"><a href="#字符串中使用正则的方法" class="headerlink" title="字符串中使用正则的方法"></a>字符串中使用正则的方法</h1><p>字符串的函数：</p>
-<h2 id="match"><a href="#match" class="headerlink" title="match()"></a>match()</h2><pre><code>格式：字符串.match(正则)
-功能：在字符串匹配是否有符合正则表达式
-返回值：匹配成功,返回装有匹配到子串的数组。匹配失败,返回null
-</code></pre>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;how are Are ARE you&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> box = <span class="regexp">/are/ig</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str.match(box)); <span class="comment">// [&quot;are&quot;, &quot;Are&quot;, &quot;ARE&quot;]</span></span><br></pre></td></tr></table></figure>
-<h2 id="replace"><a href="#replace" class="headerlink" title="replace()"></a>replace()</h2><pre><code>格式：字符串.replace(oldStr/正则, newStr);
-功能：用newStr将oldStr替换
-返回值：替换成功的新字符串
-</code></pre>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;how are Are ARE you&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> newStr = str.replace(<span class="regexp">/are/ig</span>, <span class="string">&quot;*&quot;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(newStr); <span class="comment">// how * * * you</span></span><br></pre></td></tr></table></figure>
+<h3 id="响应式布局"><a href="#响应式布局" class="headerlink" title="响应式布局"></a>响应式布局</h3><p>利用媒体查询,即media queries,可以针对不同媒体类型定义不同的样式,从而实现响应式布局。<br>媒体类型：<br><img src="mtlx.PNG" alt="Viewport视口"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@media all and(min-width: 500px) and (max-width:700px) &#123;执行的CSS代码&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;*  </span><br><span class="line">@media ： 响应式标识</span><br><span class="line">and ：选择条件    not ： 取反</span><br><span class="line">min-width max-width 最小和最大宽度</span><br><span class="line">orientation:portrait ：纵屏</span><br><span class="line">orientation:landscape ：横屏</span><br><span class="line">*&#x2F;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 引入外部的css文件做响应式</span><br><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;.css&quot; media&#x3D;&quot;all and (min-width:400px)&quot;&gt;</span><br></pre></td></tr></table></figure>
 
-<h2 id="split"><a href="#split" class="headerlink" title="split()"></a>split()</h2><pre><code>格式：字符串.split(分割符/正则);
-功能：用分割符将原字符串进行分割
-返回值：分割剩下的子串组成的数组
-</code></pre>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;how are Are ARE you&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> arr = str.split(<span class="regexp">/are/i</span>);</span><br><span class="line"><span class="built_in">console</span>.log(arr); <span class="comment">// [&quot;how &quot;, &quot; &quot;, &quot; &quot;, &quot; you&quot;]</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="search"><a href="#search" class="headerlink" title="search()"></a>search()</h2><pre><code>格式：字符串.search(子串/正则)
-功能：找到符合条件的子串第一次出现的位置
-返回值：如果找到,返回&gt;=0的下标。否则返回-1
-</code></pre>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;how are Are ARE you&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str.search(<span class="regexp">/are/i</span>)); <span class="comment">// 4</span></span><br></pre></td></tr></table></figure>
-<h1 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a>元字符</h1><pre><code>元字符：在正则表达式中有特殊含义的字符。
-</code></pre>
-<h2 id="单个数字和字符的元字符"><a href="#单个数字和字符的元字符" class="headerlink" title="单个数字和字符的元字符"></a>单个数字和字符的元字符</h2><pre><code>.       匹配单个的任意字符
-[]      匹配单范围内的字符
-[^]     匹配任意一个除括号范围内的字符
-\w      匹配单个的数字,字母下划线 等价于[a-zA-Z0-9_]
-\W      匹配单个非数字,字母下划线
-\d      匹配单个数字,等价于[0-9] 
-\D      匹配单个非数字,等价于[^0-9]
-</code></pre>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;g_ogle&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> box = <span class="regexp">/g.ogle/</span>;</span><br><span class="line"><span class="built_in">console</span>.log(box.test(str)); <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> str1 = <span class="string">&quot;g1ogle&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> box1 = <span class="regexp">/g[^0-9]ogle/</span>;</span><br><span class="line"><span class="built_in">console</span>.log(box1.test(str1)); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
-<h2 id="重复字符"><a href="#重复字符" class="headerlink" title="重复字符"></a>重复字符</h2><pre><code>x       任意的单个字符
-x?      匹配0个或者1个x
-x+      匹配至少一个x字符
-x*      匹配任意个x字符
-x&#123;m,n&#125;  匹配至少m个,最多n个x字符,包括n
-x&#123;n&#125;    必须匹配n个x字符
-(xyz)+  小括号括起来的部分是当做单个字符处理
-</code></pre>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;googgle&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> box = <span class="regexp">/goog?le/</span>;</span><br><span class="line"><span class="built_in">console</span>.log(box.test(str)); <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> str1 = <span class="string">&quot;goo18148148le&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> box1 = <span class="regexp">/goo\d*le/</span>;</span><br><span class="line"><span class="built_in">console</span>.log(box1.test(str1)); <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> str2 = <span class="string">&quot;goo12le&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> box2 = <span class="regexp">/goo\d&#123;2&#125;le/</span>;</span><br><span class="line"><span class="built_in">console</span>.log(box2.test(str2)); <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> str3 = <span class="string">&quot;googabcabcle&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> box3 = <span class="regexp">/goog(abc)+le/</span>;</span><br><span class="line"><span class="built_in">console</span>.log(box3.test(str3)); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
-<h2 id="空白字符"><a href="#空白字符" class="headerlink" title="空白字符"></a>空白字符</h2><pre><code>\s  匹配任意单个的空白字符
-\S  匹配任意单个非空白字符
-</code></pre>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;goog le&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> box = <span class="regexp">/goog\sle/</span>;</span><br><span class="line"><span class="built_in">console</span>.log(box.test(str)); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
-<h2 id="锚字符"><a href="#锚字符" class="headerlink" title="锚字符"></a>锚字符</h2><pre><code>^   行首匹配    必须以这个正则开头
-$   行尾匹配    必须以这个正则结尾
-</code></pre>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;google da adad&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> box = <span class="regexp">/^google/</span>;</span><br><span class="line"><span class="built_in">console</span>.log(box.test(str)); <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> str1 = <span class="string">&quot;da adad google&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> box1 = <span class="regexp">/google$/</span>;</span><br><span class="line"><span class="built_in">console</span>.log(box1.test(str1)); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
-<h2 id="替代字符"><a href="#替代字符" class="headerlink" title="替代字符"></a>替代字符</h2><pre><code>|   查找任何以 | 分隔的选项
-</code></pre>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;google&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> box = <span class="regexp">/google|baidu|bing/</span>;</span><br><span class="line"><span class="built_in">console</span>.log(box.test(str)); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
-<h2 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h2><pre><code>i   忽略大小写
-g   全局匹配
-m   换行匹配
-
-如果在字符串,遇到换行,重新开始计算行首。
-</code></pre>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;1.go15ogle\n2.ba55idu\n3.bi78ng&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> box = <span class="regexp">/^\d/gm</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str.replace(box, <span class="string">&quot;*&quot;</span>));</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">*.go15ogle</span></span><br><span class="line"><span class="comment">*.ba55idu</span></span><br><span class="line"><span class="comment">*.bi78ng</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
 ]]></content>
       <tags>
-        <tag>JavaScript</tag>
-        <tag>正则表达式</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JS 对象学习总结</title>
-    <url>/2022/02/15/JS-Object/</url>
-    <content><![CDATA[<h1 id="JS-对象的分类"><a href="#JS-对象的分类" class="headerlink" title="JS 对象的分类"></a>JS 对象的分类</h1><div class="mermaid"> 
-graph LR
-    A[JS中的对象]&#x3D;&#x3D;&gt;C1(宿主对象)
-    A&#x3D;&#x3D;&gt;C2(JS里的对象)
-    C1&#x3D;&#x3D;&gt;D1(DOM对象)
-    C1&#x3D;&#x3D;&gt;D2(BOM对象)
-    C2&#x3D;&#x3D;&gt;ro1(内置对象)
-    C2&#x3D;&#x3D;&gt;ro2(自定义对象)</div>
-<pre><code>在js里，一切皆为或者皆可以被用作对象。
-宿主对象：浏览器提供的对象，对象不是JavaScript语言本身的，但是可以在JavaScript中使用的对象，如DOM，BOM。
-    DOM对象：HTML标签寄放在javascript中，用JavaScript可以操作HTML标签。
-    BOM对象：浏览器窗口及其浏览器的组成部分寄放在JavaScript中，可以用JavaScript操作浏览器窗口和它的组成部分。
-JS中的对象：
-    内置对象：不必明确实例化的对象，已被实例化了。如：Math。函数中的arguments和this；事件处理函数中的event对象等等，直接使用，不用new。
-    自定义对象：程序员自己创建的对象，如：Date，Array，Set，Map，XMLHttpRequest，RegExp，Promise等等要使用，必须new。
-</code></pre>
-<h1 id="内置对象"><a href="#内置对象" class="headerlink" title="内置对象"></a>内置对象</h1><div class="note blue icon flat"><i class="note-icon fas fa fa-sitemap"></i><p><code>内置对象图</code><br>    JavaScrip的所有内置对象都是继承于Object对象，继承了所有的属性和方法。<br>    对象只是一种特殊类型的数据，并拥有属性和方法，属性是与对象相关的值，方法是能够在对象上执行的动作。<br>    JS内置对象也被称为内部类。可以说，object类是所有类的基础类。JavaScript的所有类都是在object类上面派生出来的。</p>
-</div>
-<p><img src="JS%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1%E5%9B%BE.PNG" alt="内置对象图"></p>
-<table>
-<thead>
-<tr>
-<th align="center">对象名称</th>
-<th align="center">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center"><code>Arguments</code></td>
-<td align="center">函数参数集合</td>
-</tr>
-<tr>
-<td align="center"><code>Array</code></td>
-<td align="center">数组对象，使用单个变量来存储一系列的值。</td>
-</tr>
-<tr>
-<td align="center"><code>Boolean</code></td>
-<td align="center">布尔对象，用于将非布尔型的值转换为布尔值(true或false)</td>
-</tr>
-<tr>
-<td align="center"><code>Date</code></td>
-<td align="center">用来处理日期和时间，通过new关键字来定义Date对象。</td>
-</tr>
-<tr>
-<td align="center"><code>Function</code></td>
-<td align="center">用来表示开发者定义的任何参数。</td>
-</tr>
-<tr>
-<td align="center"><code>Math</code></td>
-<td align="center">具有数学常数和函数的属性和方法，用于执行常见的算数任务。</td>
-</tr>
-<tr>
-<td align="center"><code>Number</code></td>
-<td align="center">原始数值的包装对象，可以自动在原始数值和对象之间进行转换。</td>
-</tr>
-<tr>
-<td align="center"><code>RegExp</code></td>
-<td align="center">用于完成有关正则表达式的操作和功能。</td>
-</tr>
-<tr>
-<td align="center"><code>String</code></td>
-<td align="center">字符串对象，用于处理文本。</td>
-</tr>
-<tr>
-<td align="center"><code>Error</code></td>
-<td align="center">错误对象，用于错误处理。</td>
-</tr>
-</tbody></table>
-<h2 id="基类Object-主要属性和方法"><a href="#基类Object-主要属性和方法" class="headerlink" title="基类Object 主要属性和方法"></a>基类Object 主要属性和方法</h2><table>
-<thead>
-<tr>
-<th align="center">属性和方法</th>
-<th align="center">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center"><code>prototype</code>属性</td>
-<td align="center">对该对象的原型的引用。原型是一个对象，其他对象可以通过它实现属性的继承。</td>
-</tr>
-<tr>
-<td align="center"><code>constructor()</code>方法</td>
-<td align="center">构造函数，构造函数是类的一个特殊函数，当创建类的对象实例时，系统会自动调用构造函数，通过构造函数对类进行初始化操作。</td>
-</tr>
-</tbody></table>
-]]></content>
-  </entry>
-  <entry>
-    <title>JavaScript 遍历</title>
-    <url>/2021/06/30/JS_Traversal/</url>
-    <content><![CDATA[<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><h2 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">&quot;for循环：&quot;</span> + arr[i] + <span class="string">&quot;,&quot;</span> + i + <span class="string">&quot;&lt;br/&gt;&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="for…in"><a href="#for…in" class="headerlink" title="for…in"></a>for…in</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> arr) &#123;</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">&quot;for...in遍历：&quot;</span> + arr[i] + <span class="string">&quot;,&quot;</span> + i + <span class="string">&quot;&lt;br/&gt;&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="forEach"><a href="#forEach" class="headerlink" title="forEach"></a>forEach</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">arr.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">item, index</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">&quot;forEach遍历：&quot;</span> + arr[i] + <span class="string">&quot;,&quot;</span> + i + <span class="string">&quot;&lt;br/&gt;&quot;</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h2 id="for…of"><a href="#for…of" class="headerlink" title="for…of"></a>for…of</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> item <span class="keyword">of</span> arr) &#123;</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">&quot;for...of遍历：&quot;</span> + item + <span class="string">&quot;&lt;br/&gt;&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h1><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// for...in</span></span><br><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">    username: <span class="string">&quot;哪吒&quot;</span>,</span><br><span class="line">    age: <span class="number">20</span>,</span><br><span class="line">    sex: <span class="string">&quot;男&quot;</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> attr <span class="keyword">in</span> person) &#123;</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">&quot;对象：&quot;</span> + attr + person[attr] + <span class="string">&quot;&lt;br/&gt;&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h1><h2 id="set"><a href="#set" class="headerlink" title="set"></a>set</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> imgs.keys()) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(item);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> imgs.values()) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(item);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> imgs.entries()) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(item);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> [key, value] <span class="keyword">of</span> map) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(key, value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>JavaScript</tag>
+        <tag>响应式</tag>
+        <tag>布局</tag>
       </tags>
   </entry>
   <entry>
@@ -761,36 +1351,6 @@ Webpack五个核心概念：
       </tags>
   </entry>
   <entry>
-    <title>移动端响应式布局</title>
-    <url>/2021/06/03/Mobile_layout/</url>
-    <content><![CDATA[<h3 id="Viewport视口"><a href="#Viewport视口" class="headerlink" title="Viewport视口"></a>Viewport视口</h3><p>在移动端Viewport视口是浏览器显示页面内容的屏幕区域。在Viewport中有两种视口,分别表示为：visual viewport(可视视口)和layout viewport(布局视口)。</p>
-<p>visual viewport固定大小跟屏幕大小相同,在上面。而layout viewport可改变大小,在下面。layout viewport默认大小为980像素,可通过document.documentElement.clientWidth获取。</p>
-<p>网页需要将layout viewport设置成跟visual viewport等同大小,方便进行网页制作。</p>
-<p>通过<meta>标签进行设置,name属性指定viewport值,content属性进行视口配置。<br><img src="Viewport.PNG" alt="Viewport视口"></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0, user-scalable&#x3D;no&quot;&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="移动端适配方案"><a href="#移动端适配方案" class="headerlink" title="移动端适配方案"></a>移动端适配方案</h3><p>1.百分比布局,也叫流式布局。<br>    通过盒子的宽度设置成百分比来根据屏幕的宽度来进行伸缩，不受固定像素的限制，内容向两侧填充。<br>    流式布局方式是移动web开发使用的比较常见的布局方式。<br>    max-width 最大宽度(max-height最大高度)。<br>    min-width最小宽度（min-height最小高度）。<br>2.等比缩放布局,也叫rem布局。</p>
-<pre><code>单位：
-    em : 是一个相对单位,1em等于当前元素或父元素的font-size值。
-    rem : 是一个相对单位,1rem等于根元素的font-size值。
-    vw / vh : 把屏幕分为100份,1vw等于屏幕宽的1%。
-
-
-动态设置font-size(要给body重置一下font-size: 16px;)：
-    通过JS
-    <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    var fontsize &#x3D; document.documentElement.clientWidth &#x2F; 3.75;</span><br><span class="line">    document.documentElement.style.fontSize &#x3D; fontsize + &quot;px&quot;;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
-    通过VW
-    <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">html&#123;font-size: 26.666667vw;&#125;</span><br></pre></td></tr></table></figure>
-</code></pre>
-<h3 id="响应式布局"><a href="#响应式布局" class="headerlink" title="响应式布局"></a>响应式布局</h3><p>利用媒体查询,即media queries,可以针对不同媒体类型定义不同的样式,从而实现响应式布局。<br>媒体类型：<br><img src="mtlx.PNG" alt="Viewport视口"></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@media all and(min-width: 500px) and (max-width:700px) &#123;执行的CSS代码&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;*  </span><br><span class="line">@media ： 响应式标识</span><br><span class="line">and ：选择条件    not ： 取反</span><br><span class="line">min-width max-width 最小和最大宽度</span><br><span class="line">orientation:portrait ：纵屏</span><br><span class="line">orientation:landscape ：横屏</span><br><span class="line">*&#x2F;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 引入外部的css文件做响应式</span><br><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;.css&quot; media&#x3D;&quot;all and (min-width:400px)&quot;&gt;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <tags>
-        <tag>响应式</tag>
-        <tag>布局</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>开发工具VScode</title>
     <url>/2021/04/19/Web%E5%BC%80%E5%8F%91%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6/</url>
     <content><![CDATA[<h1 id="VScode"><a href="#VScode" class="headerlink" title="VScode"></a>VScode</h1><p>VScode官网下载地址：<a href="https://code.visualstudio.com/">点我下载</a><br>常用快捷键：<br>    ctrl + s : 保存 , ctrl + a : 全选<br>    ctrl + d : 选择选中的元素相同的下一个<br>    ctrl + z : 撤销 , ctrl + y : 前进<br>    ctrl+f ： 搜索本页 , ctrl+shift+f ： 全局搜索<br>    ctrl + / : 添加当前光标注释 , shift + alt + a : 选中的会注释,没选中的会添加一个空的注释<br>    shift + end : 从头选中一行 , shift + home : 从尾部选中一行 , shift + alt + ↓ ：快速复制一行<br>    alt + ↑或↓ ：快速移动一行<br>    tab : 向后缩进 , shift + tab ：向前缩进<br>    按住alt + 鼠标左键 ：多光标</p>
@@ -804,6 +1364,23 @@ Webpack五个核心概念：
       <tags>
         <tag>VScode</tag>
         <tag>开发工具</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>BFC规范</title>
+    <url>/2021/05/25/bfc/</url>
+    <content><![CDATA[<p>Formatting context(格式化上下文)是W3C CSS2.1规范中的一个概念。它是页面中的一块渲染区域,并且有一套渲染规则,它决定了其子元素将如何定位,以及和其他元素的关系和互相作用。</p>
+<h3 id="BFC规范"><a href="#BFC规范" class="headerlink" title="BFC规范"></a>BFC规范</h3><p>BFC即Block Formatting Contexts(块级格式化上下文)。具有BFC特性的元素可以看作是隔离了的独立容器，容器里面的元素不会在布局上影响到外面的元素，并且BFC具有普通元素所没有的一些特性。</p>
+<h3 id="触发BFC"><a href="#触发BFC" class="headerlink" title="触发BFC"></a>触发BFC</h3><p>1.浮动元素：float除none以外的值</p>
+<p>2.绝对定位元素：position（absolute、fixed）</p>
+<p>3.display 为 inline-block、table-cells、flex</p>
+<p>4.overflow 除了visible以外的值（hidden、auto、scroll）</p>
+<h3 id="BFC特性以及应用"><a href="#BFC特性以及应用" class="headerlink" title="BFC特性以及应用"></a>BFC特性以及应用</h3><h2 id="1-解决margin叠加问题"><a href="#1-解决margin叠加问题" class="headerlink" title="1.解决margin叠加问题"></a>1.解决margin叠加问题</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    .div1 &#123;</span><br><span class="line">        width: 100px;</span><br><span class="line">        height: 100px;</span><br><span class="line">        background: red;</span><br><span class="line">        margin-bottom: 30px;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    .div2 &#123;</span><br><span class="line">        width: 100px;</span><br><span class="line">        height: 100px;</span><br><span class="line">        background: blue;</span><br><span class="line">        margin-top: 30px;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    .box &#123;</span><br><span class="line">        display: flex;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;box&quot;&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;div1&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;box&quot;&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;div2&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="2-解决margin传递问题"><a href="#2-解决margin传递问题" class="headerlink" title="2.解决margin传递问题"></a>2.解决margin传递问题</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    .div1 &#123;</span><br><span class="line">        width: 200px;</span><br><span class="line">        height: 200px;</span><br><span class="line">        background: red;</span><br><span class="line">        overflow: hidden;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    .div2 &#123;</span><br><span class="line">        width: 100px;</span><br><span class="line">        height: 100px;</span><br><span class="line">        background: blue;</span><br><span class="line">        margin-top: 50px;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;div1&quot;&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;div2&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="3-解决浮动问题"><a href="#3-解决浮动问题" class="headerlink" title="3.解决浮动问题"></a>3.解决浮动问题</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    .div1 &#123;</span><br><span class="line">        width: 200px;</span><br><span class="line">        border: 1px solid blue;</span><br><span class="line">        overflow: hidden;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    .div2 &#123;</span><br><span class="line">        width: 100px;</span><br><span class="line">        height: 100px;</span><br><span class="line">        background: blue;</span><br><span class="line">        float: left;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;div1&quot;&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;div2&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="4-解决覆盖问题"><a href="#4-解决覆盖问题" class="headerlink" title="4.解决覆盖问题"></a>4.解决覆盖问题</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    .div1 &#123;</span><br><span class="line">        width: 100px;</span><br><span class="line">        height: 100px;</span><br><span class="line">        background: red;</span><br><span class="line">        float: left;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    .div2 &#123;</span><br><span class="line">        height: 400px;</span><br><span class="line">        background: blue;</span><br><span class="line">        overflow: hidden;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;div1&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;div2&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>规范</tag>
       </tags>
   </entry>
   <entry>
@@ -865,23 +1442,6 @@ json对象：
 <h1 id="jsonp跨域语法"><a href="#jsonp跨域语法" class="headerlink" title="jsonp跨域语法"></a>jsonp跨域语法</h1><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">download</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;下载的数据:&quot;</span> + data);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">        对于计算机来说,文件后缀是没有任何用处的。</span></span><br><span class="line"><span class="comment">        后缀作用：用于给计算机的软件,快速识别应该用哪个软件打开。</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">        JSONP跨域的使用流程：</span></span><br><span class="line"><span class="comment">            1.先去声明一个函数,这个函数有一个形参,这个形参会拿到想要下载的数据,使用这个参数做后续数据的处理。</span></span><br><span class="line"><span class="comment">            2.在需要下载数据的时候,动态创建script标签,将标签src属性设置成下载数据的链接。</span></span><br><span class="line"><span class="comment">            3.当script插入到页面上的时候,就会调用已经封装好的函数,将需要的数据传过来。</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> oBtn = <span class="built_in">document</span>.getElementById(<span class="string">&quot;btn1&quot;</span>);</span><br><span class="line">        oBtn.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> oScript = <span class="built_in">document</span>.createElement(script);</span><br><span class="line">            oScript.src = <span class="string">&quot;demo.txt&quot;</span>;</span><br><span class="line">            <span class="built_in">document</span>.body.appendChild(oScript);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;button id=<span class="string">&quot;btn1&quot;</span>&gt;下载数据&lt;/button&gt;</span><br><span class="line">    &lt;!-- src 这个属性是可以完成跨源,无限制。 --&gt;</span><br><span class="line">    &lt;img src=<span class="string">&quot;https://img2.baidu.com/it/u=1127718379,2119002313&amp;fm=26&amp;fmt=auto&amp;gp=0.jpg&quot;</span>&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
         <tag>ajax</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>BFC规范</title>
-    <url>/2021/05/25/bfc/</url>
-    <content><![CDATA[<p>Formatting context(格式化上下文)是W3C CSS2.1规范中的一个概念。它是页面中的一块渲染区域,并且有一套渲染规则,它决定了其子元素将如何定位,以及和其他元素的关系和互相作用。</p>
-<h3 id="BFC规范"><a href="#BFC规范" class="headerlink" title="BFC规范"></a>BFC规范</h3><p>BFC即Block Formatting Contexts(块级格式化上下文)。具有BFC特性的元素可以看作是隔离了的独立容器，容器里面的元素不会在布局上影响到外面的元素，并且BFC具有普通元素所没有的一些特性。</p>
-<h3 id="触发BFC"><a href="#触发BFC" class="headerlink" title="触发BFC"></a>触发BFC</h3><p>1.浮动元素：float除none以外的值</p>
-<p>2.绝对定位元素：position（absolute、fixed）</p>
-<p>3.display 为 inline-block、table-cells、flex</p>
-<p>4.overflow 除了visible以外的值（hidden、auto、scroll）</p>
-<h3 id="BFC特性以及应用"><a href="#BFC特性以及应用" class="headerlink" title="BFC特性以及应用"></a>BFC特性以及应用</h3><h2 id="1-解决margin叠加问题"><a href="#1-解决margin叠加问题" class="headerlink" title="1.解决margin叠加问题"></a>1.解决margin叠加问题</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    .div1 &#123;</span><br><span class="line">        width: 100px;</span><br><span class="line">        height: 100px;</span><br><span class="line">        background: red;</span><br><span class="line">        margin-bottom: 30px;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    .div2 &#123;</span><br><span class="line">        width: 100px;</span><br><span class="line">        height: 100px;</span><br><span class="line">        background: blue;</span><br><span class="line">        margin-top: 30px;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    .box &#123;</span><br><span class="line">        display: flex;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;box&quot;&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;div1&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;box&quot;&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;div2&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="2-解决margin传递问题"><a href="#2-解决margin传递问题" class="headerlink" title="2.解决margin传递问题"></a>2.解决margin传递问题</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    .div1 &#123;</span><br><span class="line">        width: 200px;</span><br><span class="line">        height: 200px;</span><br><span class="line">        background: red;</span><br><span class="line">        overflow: hidden;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    .div2 &#123;</span><br><span class="line">        width: 100px;</span><br><span class="line">        height: 100px;</span><br><span class="line">        background: blue;</span><br><span class="line">        margin-top: 50px;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;div1&quot;&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;div2&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="3-解决浮动问题"><a href="#3-解决浮动问题" class="headerlink" title="3.解决浮动问题"></a>3.解决浮动问题</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    .div1 &#123;</span><br><span class="line">        width: 200px;</span><br><span class="line">        border: 1px solid blue;</span><br><span class="line">        overflow: hidden;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    .div2 &#123;</span><br><span class="line">        width: 100px;</span><br><span class="line">        height: 100px;</span><br><span class="line">        background: blue;</span><br><span class="line">        float: left;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;div1&quot;&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;div2&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="4-解决覆盖问题"><a href="#4-解决覆盖问题" class="headerlink" title="4.解决覆盖问题"></a>4.解决覆盖问题</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    .div1 &#123;</span><br><span class="line">        width: 100px;</span><br><span class="line">        height: 100px;</span><br><span class="line">        background: red;</span><br><span class="line">        float: left;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    .div2 &#123;</span><br><span class="line">        height: 400px;</span><br><span class="line">        background: blue;</span><br><span class="line">        overflow: hidden;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;div1&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;div2&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>规范</tag>
       </tags>
   </entry>
   <entry>
@@ -1361,6 +1921,85 @@ removeEventListener()
         <tag>BOM</tag>
         <tag>DOM</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>React学习笔记</title>
+    <url>/2021/09/13/react/</url>
+    <content><![CDATA[<h1 id="React-初识"><a href="#React-初识" class="headerlink" title="React 初识"></a>React 初识</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><blockquote><p>React是Facebook开发出的一款声明式，高效且灵活的用于构建用户界面的JavaScript库。使用React可以将一些简短、独立的代码片段组合成复杂的UI界面，这些代码片段被称为”组件”。</p>
+<p>React三大体系：<br>    1.React.js 用于Web开发和组件的编写。<br>    2.ReactNative 用于移动端开发<br>    3.ReactVR 用于虚拟现实技术的开发</p>
+</blockquote>
+<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><blockquote><ol>
+<li>React拥有较高的性能，代码逻辑非常简单。</li>
+<li>声明式设计（采用声明范式）。</li>
+<li>高效，通过对DOM的模拟，最大限度地减少与DOM的交互。</li>
+<li>灵活，React可以与已知的库或框架很好地配合。</li>
+<li>JSX语法，JSX是JavaScript和xml的结合。</li>
+<li>组件，通过React构建组件，使得代码更加容易得到复用，能够很好的应用在大项目的开发中。</li>
+<li>单向响应的数据流，React实现了单向相应的数据流，从而减少了重复代码。</li>
+</ol>
+</blockquote>
+<h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><p>……</p>
+<h2 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h2><blockquote><ol>
+<li>react.js (核心文件)</li>
+<li>react-dom.js (渲染页面中的DOM，依赖于react核心文件)</li>
+<li>babel.js (将ES6转换成ES5，JSX语法转换成JavaScript)</li>
+</ol>
+</blockquote>
+<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><pre><code>npm i react --s
+npm i react-dom --s
+npm i babel-standalone --s
+</code></pre>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><pre><code>#定义项目所需要的各种模块及配置信息
+    cnpm init -y 
+#安装react
+    cnpm i react react-dom babel-standalone -S
+#在项目中引入react
+    &lt;script src=&quot;node_modules/react/umd/react.development.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;node_modules/react-dom/umd/react-dom.development.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;node_modules/babel-standalone/babel.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;IE&#x3D;edge&quot;&gt;</span><br><span class="line">    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;&#x2F;title&gt;</span><br><span class="line">    &lt;script src&#x3D;&quot;node_modules&#x2F;react&#x2F;umd&#x2F;react.development.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">    &lt;script src&#x3D;&quot;node_modules&#x2F;react-dom&#x2F;umd&#x2F;react-dom.development.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">    &lt;script src&#x3D;&quot;node_modules&#x2F;babel-standalone&#x2F;babel.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;!-- 创建dom根节点 一个页面中需要有一个根节点 这个节点下的内容就会被react所管理 --&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;demoReact&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;script type&#x3D;&quot;text&#x2F;babel&quot;&gt;</span><br><span class="line">        &#x2F;&#x2F; jsx中HTML标签必须按照w3c的规范来写，标签必须闭合</span><br><span class="line">        let myDom &#x3D; &lt;h1&gt;你好，世界！&lt;&#x2F;h1&gt;; </span><br><span class="line">        ReactDOM.render(myDom,document.getElementById(&quot;demoReact&quot;));</span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="React官方开发者调试工具"><a href="#React官方开发者调试工具" class="headerlink" title="React官方开发者调试工具"></a>React官方开发者调试工具</h2><p><a href="https://www.extfans.com/web-development/fmkadmapgofadopljbjfkapdkoienihi/">下载</a><br><img src="React.PNG" alt="React官方开发者调试工具"></p>
+<h1 id="jsx语法"><a href="#jsx语法" class="headerlink" title="jsx语法"></a>jsx语法</h1><h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ReactDOM.render(</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;h1&gt;需要写在花括号中&lt;&#x2F;h1&gt;</span><br><span class="line">        &#123;&#x2F;*注释...*&#x2F;&#125;</span><br><span class="line">    &lt;&#x2F;div&gt;,</span><br><span class="line">    document.getElementById(&#39;domeReact&#39;)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h2 id="多行标签"><a href="#多行标签" class="headerlink" title="多行标签"></a>多行标签</h2><pre><code>只能有一个根标签。
+标签必须闭合。
+标签首字母：
+    1.若小写字母开头，则将改标签转为html中同名元素，若html中没有该对应的同名元素，则报错。
+    2.若大写字母开头，react就去渲染对应的组件，若组件没有定义，则报错。
+</code></pre>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ReactDOM.render(</span><br><span class="line">    (&lt;div&gt;</span><br><span class="line">        &lt;h1&gt;需要使用一个父元素包裹&lt;&#x2F;h1&gt;</span><br><span class="line">        &lt;div&gt;一个内容&lt;&#x2F;div&gt;</span><br><span class="line">        &lt;div&gt;两个内容&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;),</span><br><span class="line">    document.getElementById(&#39;domeReact&#39;)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h2 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h2><pre><code>一.表达式：一个表达式会产生一个值，可以放在任何一个需要值的地方
+    如：
+        1. a
+        2. a+b
+        3. demo(1)
+        4. arr.map()
+        5. function test () &#123;&#125;
+二.语句(代码)：
+    如：
+        1.if()&#123;&#125;
+        2.for()&#123;&#125;
+        3.switch()&#123;case:xxx&#125;
+</code></pre>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">let text &#x3D; &quot;hi~&quot;;</span><br><span class="line">let num &#x3D; 1;</span><br><span class="line">ReactDOM.render(</span><br><span class="line">&lt;div&gt;</span><br><span class="line">    &lt;h1&gt;表达式写在花括号 &#123;&#125; 中&lt;&#x2F;h1&gt;</span><br><span class="line">    &lt;p&gt;&#123; text &#125;&lt;&#x2F;p&gt;</span><br><span class="line">    &lt;div&gt;&#123; num + 1 &#125;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div&gt;&#123; num &#x3D;&#x3D; 1 ? &quot;True&quot; : &quot;False&quot; &#125;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line">,</span><br><span class="line">document.getElementById(&#39;domeReact&#39;)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h2 id="独立文件"><a href="#独立文件" class="headerlink" title="独立文件"></a>独立文件</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!-- 引入文件需要添加text&#x2F;babel --&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;babel&quot; src&#x3D;&quot;jsx.js&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="渲染数组"><a href="#渲染数组" class="headerlink" title="渲染数组"></a>渲染数组</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var arr &#x3D; [</span><br><span class="line">    &lt;p&gt;列表1&lt;&#x2F;p&gt;,</span><br><span class="line">    &lt;p&gt;列表2&lt;&#x2F;p&gt;,        </span><br><span class="line">    &lt;p&gt;列表3&lt;&#x2F;p&gt;,</span><br><span class="line">    &lt;p&gt;列表4&lt;&#x2F;p&gt;,</span><br><span class="line">    &lt;p&gt;列表5&lt;&#x2F;p&gt;,</span><br><span class="line">];</span><br><span class="line">ReactDOM.render(</span><br><span class="line">    &lt;div&gt;&#123;arr&#125;&lt;&#x2F;div&gt;,</span><br><span class="line">    document.getElementById(&#39;domeReact&#39;)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h2 id="样式属性"><a href="#样式属性" class="headerlink" title="样式属性"></a>样式属性</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!-- 在jsx中不能使用class属性，需要改为className，因为class是js的关键字 --&gt;</span><br><span class="line">var linkUrl&#x3D;&quot;http:&#x2F;&#x2F;www.baidu.com&quot;;</span><br><span class="line">var myStyle &#x3D; &#123;</span><br><span class="line">    textDecoration:&#39;none&#39;</span><br><span class="line">&#125;;</span><br><span class="line">ReactDOM.render(</span><br><span class="line">    &lt;a href &#x3D; &#123;linkUrl&#125; style &#x3D; &#123;myStyle&#125;&gt;百度&lt;&#x2F;a&gt;,</span><br><span class="line">    document.getElementById(&#39;domeReact&#39;)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;domeReact&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;babel&quot;&gt;</span><br><span class="line">    let arr &#x3D; [1,2,3,4,5,6];</span><br><span class="line">    let num &#x3D; 0;</span><br><span class="line">    function fun()&#123;</span><br><span class="line">        let myDom &#x3D; arr.map((item,index)&#x3D;&gt;&#123;</span><br><span class="line">        return (</span><br><span class="line">            &#x2F;* key是独一无二的 *&#x2F;</span><br><span class="line">            &lt;p key&#x3D;&#123;index&#125; style&#x3D;&#123;&#123;color:index&#x3D;&#x3D;num?&quot;red&quot;:&quot;&quot;&#125;&#125; onClick&#x3D;&#123;()&#x3D;&gt;&#123;num&#x3D;index;console.log(index&#x3D;&#x3D;num);render()&#125;&#125;&gt;&#123;item&#125;&lt;&#x2F;p&gt;</span><br><span class="line">            )</span><br><span class="line">        &#125;)</span><br><span class="line">        return myDom</span><br><span class="line">    &#125;</span><br><span class="line">    function render()&#123;</span><br><span class="line">        ReactDOM.render(fun(),document.getElementById(&quot;domeReact&quot;));</span><br><span class="line">    &#125;</span><br><span class="line">    render()</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="创建组件"><a href="#创建组件" class="headerlink" title="创建组件"></a>创建组件</h1><h2 id="函数式组件"><a href="#函数式组件" class="headerlink" title="函数式组件"></a>函数式组件</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;test&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;babel&quot;&gt;</span><br><span class="line">  &#x2F;&#x2F; 创建函数式组件</span><br><span class="line">  function Demo() &#123;</span><br><span class="line">    console.log(this); &#x2F;&#x2F; undefined,babel编译后开启了严格模式</span><br><span class="line">    return &lt;h2&gt;函数定义的组件-适用于简单组件(无state)的定义&lt;&#x2F;h2&gt;</span><br><span class="line">  &#125;</span><br><span class="line">  &#x2F;&#x2F; 渲染组件到页面</span><br><span class="line">  ReactDOM.render(&lt;Demo &#x2F;&gt;,document.getElementById(&quot;test&quot;))</span><br><span class="line"></span><br><span class="line">  &#x2F;* </span><br><span class="line">    执行了ReactDOM.render(&lt;Demo &#x2F;&gt;,document.getElementById(&quot;test&quot;))之后，</span><br><span class="line">    React会解析组件标签，找到Demo组件，发现组件是使用函数定义的，然后调用该函数，</span><br><span class="line">    将返回的虚拟DOM转为真实DOM，然后呈现在页面中。</span><br><span class="line">  *&#x2F;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="类式组件"><a href="#类式组件" class="headerlink" title="类式组件"></a>类式组件</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;test&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;babel&quot;&gt;</span><br><span class="line">  &#x2F;&#x2F; 创建类式组件</span><br><span class="line">  class MyComponent extends React.Component &#123;</span><br><span class="line">    render() &#123;</span><br><span class="line">      &#x2F;&#x2F; render是放在MyComponent的原型对象上，供实例使用。</span><br><span class="line">      &#x2F;&#x2F; render中的this是MyComponent的实例对象。</span><br><span class="line">      console.log(this); &#x2F;&#x2F; MyComponent</span><br><span class="line">      return &lt;h2&gt;类定义的组件-适用于复杂组件(有state)的定义&lt;&#x2F;h2&gt;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  &#x2F;&#x2F; 渲染组件到页面</span><br><span class="line">  ReactDOM.render(&lt;MyComponent &#x2F;&gt;,document.getElementById(&quot;test&quot;));</span><br><span class="line"></span><br><span class="line">  &#x2F;*  </span><br><span class="line">    执行了ReactDOM.render(&lt;Demo &#x2F;&gt;,document.getElementById(&quot;test&quot;))之后，</span><br><span class="line">      1.React解析组件标签，找到了MyComponent组件。</span><br><span class="line">      2.发现组件是使用类定义的，随后new出来该类的实例，并通过该实例调用到原型上的render方法。</span><br><span class="line">      3.将render返回的虚拟DOM转为真实DOM，随后呈现在页面中。</span><br><span class="line">  *&#x2F;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="组件实例的三大核心属性"><a href="#组件实例的三大核心属性" class="headerlink" title="组件实例的三大核心属性"></a>组件实例的三大核心属性</h2><h3 id="state"><a href="#state" class="headerlink" title="state"></a>state</h3><pre><code>1.state是组件对象最重要的属性，值是对象（可以包含多个key-value的组合）。
+2.组件被称为“状态机”，通过更新组件的state来更新对应的页面显示（重新渲染组件）。
+3.组件中render方法中的this为组件实例对象。
+4.组件自定义的方法中this为undefined，可通过强制绑定this（函数对象的bind()）或箭头函数。
+5.状态数据，不能直接修改或更新。
+</code></pre>
+<h3 id="props"><a href="#props" class="headerlink" title="props"></a>props</h3><h1 id="React-脚手架"><a href="#React-脚手架" class="headerlink" title="React 脚手架"></a>React 脚手架</h1><h2 id="下载-1"><a href="#下载-1" class="headerlink" title="下载"></a>下载</h2><pre><code>npm install -g create-react-app
+create-react-app my-app (my-app为项目名称)
+</code></pre>
+<h2 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h2><pre><code>npm start
+</code></pre>
+]]></content>
   </entry>
   <entry>
     <title>JavaScript 基础知识巩固笔记</title>
@@ -1974,242 +2613,42 @@ var timer = setInterval(function()&#123;
       </tags>
   </entry>
   <entry>
-    <title>React学习笔记</title>
-    <url>/2021/09/13/react/</url>
-    <content><![CDATA[<h1 id="React-初识"><a href="#React-初识" class="headerlink" title="React 初识"></a>React 初识</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><blockquote><p>React是Facebook开发出的一款声明式，高效且灵活的用于构建用户界面的JavaScript库。使用React可以将一些简短、独立的代码片段组合成复杂的UI界面，这些代码片段被称为”组件”。</p>
-<p>React三大体系：<br>    1.React.js 用于Web开发和组件的编写。<br>    2.ReactNative 用于移动端开发<br>    3.ReactVR 用于虚拟现实技术的开发</p>
-</blockquote>
-<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><blockquote><ol>
-<li>React拥有较高的性能，代码逻辑非常简单。</li>
-<li>声明式设计（采用声明范式）。</li>
-<li>高效，通过对DOM的模拟，最大限度地减少与DOM的交互。</li>
-<li>灵活，React可以与已知的库或框架很好地配合。</li>
-<li>JSX语法，JSX是JavaScript和xml的结合。</li>
-<li>组件，通过React构建组件，使得代码更加容易得到复用，能够很好的应用在大项目的开发中。</li>
-<li>单向响应的数据流，React实现了单向相应的数据流，从而减少了重复代码。</li>
-</ol>
-</blockquote>
-<h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><p>……</p>
-<h2 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h2><blockquote><ol>
-<li>react.js (核心文件)</li>
-<li>react-dom.js (渲染页面中的DOM，依赖于react核心文件)</li>
-<li>babel.js (将ES6转换成ES5，JSX语法转换成JavaScript)</li>
-</ol>
-</blockquote>
-<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><pre><code>npm i react --s
-npm i react-dom --s
-npm i babel-standalone --s
-</code></pre>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><pre><code>#定义项目所需要的各种模块及配置信息
-    cnpm init -y 
-#安装react
-    cnpm i react react-dom babel-standalone -S
-#在项目中引入react
-    &lt;script src=&quot;node_modules/react/umd/react.development.js&quot;&gt;&lt;/script&gt;
-    &lt;script src=&quot;node_modules/react-dom/umd/react-dom.development.js&quot;&gt;&lt;/script&gt;
-    &lt;script src=&quot;node_modules/babel-standalone/babel.min.js&quot;&gt;&lt;/script&gt;
-</code></pre>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;IE&#x3D;edge&quot;&gt;</span><br><span class="line">    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;&#x2F;title&gt;</span><br><span class="line">    &lt;script src&#x3D;&quot;node_modules&#x2F;react&#x2F;umd&#x2F;react.development.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">    &lt;script src&#x3D;&quot;node_modules&#x2F;react-dom&#x2F;umd&#x2F;react-dom.development.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">    &lt;script src&#x3D;&quot;node_modules&#x2F;babel-standalone&#x2F;babel.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;!-- 创建dom根节点 一个页面中需要有一个根节点 这个节点下的内容就会被react所管理 --&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;demoReact&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;script type&#x3D;&quot;text&#x2F;babel&quot;&gt;</span><br><span class="line">        &#x2F;&#x2F; jsx中HTML标签必须按照w3c的规范来写，标签必须闭合</span><br><span class="line">        let myDom &#x3D; &lt;h1&gt;你好，世界！&lt;&#x2F;h1&gt;; </span><br><span class="line">        ReactDOM.render(myDom,document.getElementById(&quot;demoReact&quot;));</span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="React官方开发者调试工具"><a href="#React官方开发者调试工具" class="headerlink" title="React官方开发者调试工具"></a>React官方开发者调试工具</h2><p><a href="https://www.extfans.com/web-development/fmkadmapgofadopljbjfkapdkoienihi/">下载</a><br><img src="React.PNG" alt="React官方开发者调试工具"></p>
-<h1 id="jsx语法"><a href="#jsx语法" class="headerlink" title="jsx语法"></a>jsx语法</h1><h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ReactDOM.render(</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;h1&gt;需要写在花括号中&lt;&#x2F;h1&gt;</span><br><span class="line">        &#123;&#x2F;*注释...*&#x2F;&#125;</span><br><span class="line">    &lt;&#x2F;div&gt;,</span><br><span class="line">    document.getElementById(&#39;domeReact&#39;)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<h2 id="多行标签"><a href="#多行标签" class="headerlink" title="多行标签"></a>多行标签</h2><pre><code>只能有一个根标签。
-标签必须闭合。
-标签首字母：
-    1.若小写字母开头，则将改标签转为html中同名元素，若html中没有该对应的同名元素，则报错。
-    2.若大写字母开头，react就去渲染对应的组件，若组件没有定义，则报错。
-</code></pre>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ReactDOM.render(</span><br><span class="line">    (&lt;div&gt;</span><br><span class="line">        &lt;h1&gt;需要使用一个父元素包裹&lt;&#x2F;h1&gt;</span><br><span class="line">        &lt;div&gt;一个内容&lt;&#x2F;div&gt;</span><br><span class="line">        &lt;div&gt;两个内容&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;),</span><br><span class="line">    document.getElementById(&#39;domeReact&#39;)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<h2 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h2><pre><code>一.表达式：一个表达式会产生一个值，可以放在任何一个需要值的地方
-    如：
-        1. a
-        2. a+b
-        3. demo(1)
-        4. arr.map()
-        5. function test () &#123;&#125;
-二.语句(代码)：
-    如：
-        1.if()&#123;&#125;
-        2.for()&#123;&#125;
-        3.switch()&#123;case:xxx&#125;
-</code></pre>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">let text &#x3D; &quot;hi~&quot;;</span><br><span class="line">let num &#x3D; 1;</span><br><span class="line">ReactDOM.render(</span><br><span class="line">&lt;div&gt;</span><br><span class="line">    &lt;h1&gt;表达式写在花括号 &#123;&#125; 中&lt;&#x2F;h1&gt;</span><br><span class="line">    &lt;p&gt;&#123; text &#125;&lt;&#x2F;p&gt;</span><br><span class="line">    &lt;div&gt;&#123; num + 1 &#125;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div&gt;&#123; num &#x3D;&#x3D; 1 ? &quot;True&quot; : &quot;False&quot; &#125;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line">,</span><br><span class="line">document.getElementById(&#39;domeReact&#39;)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<h2 id="独立文件"><a href="#独立文件" class="headerlink" title="独立文件"></a>独立文件</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!-- 引入文件需要添加text&#x2F;babel --&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;babel&quot; src&#x3D;&quot;jsx.js&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="渲染数组"><a href="#渲染数组" class="headerlink" title="渲染数组"></a>渲染数组</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var arr &#x3D; [</span><br><span class="line">    &lt;p&gt;列表1&lt;&#x2F;p&gt;,</span><br><span class="line">    &lt;p&gt;列表2&lt;&#x2F;p&gt;,        </span><br><span class="line">    &lt;p&gt;列表3&lt;&#x2F;p&gt;,</span><br><span class="line">    &lt;p&gt;列表4&lt;&#x2F;p&gt;,</span><br><span class="line">    &lt;p&gt;列表5&lt;&#x2F;p&gt;,</span><br><span class="line">];</span><br><span class="line">ReactDOM.render(</span><br><span class="line">    &lt;div&gt;&#123;arr&#125;&lt;&#x2F;div&gt;,</span><br><span class="line">    document.getElementById(&#39;domeReact&#39;)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<h2 id="样式属性"><a href="#样式属性" class="headerlink" title="样式属性"></a>样式属性</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!-- 在jsx中不能使用class属性，需要改为className，因为class是js的关键字 --&gt;</span><br><span class="line">var linkUrl&#x3D;&quot;http:&#x2F;&#x2F;www.baidu.com&quot;;</span><br><span class="line">var myStyle &#x3D; &#123;</span><br><span class="line">    textDecoration:&#39;none&#39;</span><br><span class="line">&#125;;</span><br><span class="line">ReactDOM.render(</span><br><span class="line">    &lt;a href &#x3D; &#123;linkUrl&#125; style &#x3D; &#123;myStyle&#125;&gt;百度&lt;&#x2F;a&gt;,</span><br><span class="line">    document.getElementById(&#39;domeReact&#39;)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;domeReact&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;babel&quot;&gt;</span><br><span class="line">    let arr &#x3D; [1,2,3,4,5,6];</span><br><span class="line">    let num &#x3D; 0;</span><br><span class="line">    function fun()&#123;</span><br><span class="line">        let myDom &#x3D; arr.map((item,index)&#x3D;&gt;&#123;</span><br><span class="line">        return (</span><br><span class="line">            &#x2F;* key是独一无二的 *&#x2F;</span><br><span class="line">            &lt;p key&#x3D;&#123;index&#125; style&#x3D;&#123;&#123;color:index&#x3D;&#x3D;num?&quot;red&quot;:&quot;&quot;&#125;&#125; onClick&#x3D;&#123;()&#x3D;&gt;&#123;num&#x3D;index;console.log(index&#x3D;&#x3D;num);render()&#125;&#125;&gt;&#123;item&#125;&lt;&#x2F;p&gt;</span><br><span class="line">            )</span><br><span class="line">        &#125;)</span><br><span class="line">        return myDom</span><br><span class="line">    &#125;</span><br><span class="line">    function render()&#123;</span><br><span class="line">        ReactDOM.render(fun(),document.getElementById(&quot;domeReact&quot;));</span><br><span class="line">    &#125;</span><br><span class="line">    render()</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
-<h1 id="创建组件"><a href="#创建组件" class="headerlink" title="创建组件"></a>创建组件</h1><h2 id="函数式组件"><a href="#函数式组件" class="headerlink" title="函数式组件"></a>函数式组件</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;test&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;babel&quot;&gt;</span><br><span class="line">  &#x2F;&#x2F; 创建函数式组件</span><br><span class="line">  function Demo() &#123;</span><br><span class="line">    console.log(this); &#x2F;&#x2F; undefined,babel编译后开启了严格模式</span><br><span class="line">    return &lt;h2&gt;函数定义的组件-适用于简单组件(无state)的定义&lt;&#x2F;h2&gt;</span><br><span class="line">  &#125;</span><br><span class="line">  &#x2F;&#x2F; 渲染组件到页面</span><br><span class="line">  ReactDOM.render(&lt;Demo &#x2F;&gt;,document.getElementById(&quot;test&quot;))</span><br><span class="line"></span><br><span class="line">  &#x2F;* </span><br><span class="line">    执行了ReactDOM.render(&lt;Demo &#x2F;&gt;,document.getElementById(&quot;test&quot;))之后，</span><br><span class="line">    React会解析组件标签，找到Demo组件，发现组件是使用函数定义的，然后调用该函数，</span><br><span class="line">    将返回的虚拟DOM转为真实DOM，然后呈现在页面中。</span><br><span class="line">  *&#x2F;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="类式组件"><a href="#类式组件" class="headerlink" title="类式组件"></a>类式组件</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;test&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;babel&quot;&gt;</span><br><span class="line">  &#x2F;&#x2F; 创建类式组件</span><br><span class="line">  class MyComponent extends React.Component &#123;</span><br><span class="line">    render() &#123;</span><br><span class="line">      &#x2F;&#x2F; render是放在MyComponent的原型对象上，供实例使用。</span><br><span class="line">      &#x2F;&#x2F; render中的this是MyComponent的实例对象。</span><br><span class="line">      console.log(this); &#x2F;&#x2F; MyComponent</span><br><span class="line">      return &lt;h2&gt;类定义的组件-适用于复杂组件(有state)的定义&lt;&#x2F;h2&gt;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  &#x2F;&#x2F; 渲染组件到页面</span><br><span class="line">  ReactDOM.render(&lt;MyComponent &#x2F;&gt;,document.getElementById(&quot;test&quot;));</span><br><span class="line"></span><br><span class="line">  &#x2F;*  </span><br><span class="line">    执行了ReactDOM.render(&lt;Demo &#x2F;&gt;,document.getElementById(&quot;test&quot;))之后，</span><br><span class="line">      1.React解析组件标签，找到了MyComponent组件。</span><br><span class="line">      2.发现组件是使用类定义的，随后new出来该类的实例，并通过该实例调用到原型上的render方法。</span><br><span class="line">      3.将render返回的虚拟DOM转为真实DOM，随后呈现在页面中。</span><br><span class="line">  *&#x2F;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="组件实例的三大核心属性"><a href="#组件实例的三大核心属性" class="headerlink" title="组件实例的三大核心属性"></a>组件实例的三大核心属性</h2><h3 id="state"><a href="#state" class="headerlink" title="state"></a>state</h3><pre><code>1.state是组件对象最重要的属性，值是对象（可以包含多个key-value的组合）。
-2.组件被称为“状态机”，通过更新组件的state来更新对应的页面显示（重新渲染组件）。
-3.组件中render方法中的this为组件实例对象。
-4.组件自定义的方法中this为undefined，可通过强制绑定this（函数对象的bind()）或箭头函数。
-5.状态数据，不能直接修改或更新。
-</code></pre>
-<h3 id="props"><a href="#props" class="headerlink" title="props"></a>props</h3><h1 id="React-脚手架"><a href="#React-脚手架" class="headerlink" title="React 脚手架"></a>React 脚手架</h1><h2 id="下载-1"><a href="#下载-1" class="headerlink" title="下载"></a>下载</h2><pre><code>npm install -g create-react-app
-create-react-app my-app (my-app为项目名称)
-</code></pre>
-<h2 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h2><pre><code>npm start
-</code></pre>
-]]></content>
-  </entry>
-  <entry>
-    <title>项目工具Gulp</title>
-    <url>/2021/07/11/tool-Gulp/</url>
-    <content><![CDATA[<p>官网地址 <a href="https://www.gulpjs.com.cn/">gulp.js</a></p>
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>1.下载和安装<a href="https://nodejs.org/zh-cn/">Node.js</a></p>
-<pre><code>node -v 查看node.js的版本
-</code></pre>
-<p>2.启动Node.js控制台</p>
-<pre><code>npm     下载源是国外网站
-cnpm    [淘宝镜像](https://npm.taobao.org/)
-    安装：npm install cnpm -g --registry=https://registry.npm.taobao.org
-</code></pre>
-<p>3.安装gulp到本地</p>
-<pre><code>安装：cnpm install gulp -g
-gulp -v 查看gulp的版本
-</code></pre>
-<p>4.初始化当前目录,生成package.json文件,存放项目的配置信息</p>
-<pre><code>cnpm init
-</code></pre>
-<p>5.在项目里面安装gulp到本地</p>
-<pre><code>cnpm install gulp@3.9.1 --save-dev
-    --save   将文件安装到本地的文件夹
-    -dev    将安装gulp的信息保存在package.json里面
-
-简写：cnpm i gulp@3.9.1 -D
-</code></pre>
-<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>6.创建一个gulpfile.js的文件来编写任务</p>
-<pre><code>gulp hello(第一个参数名字) 运行编写的任务
-</code></pre>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// require() 引入模块,使用模块函数</span></span><br><span class="line"><span class="keyword">const</span> gulp = <span class="built_in">require</span>(<span class="string">&quot;gulp&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// gulp.task() 编写任务</span></span><br><span class="line"><span class="comment">// 第一个参数：自定义的执行任务名字</span></span><br><span class="line"><span class="comment">// 第二个参数：回调函数,任务执行的功能</span></span><br><span class="line">gulp.task(<span class="string">&quot;hello&quot;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;hello world&quot;</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// gulp.src()      找到源文件路径</span></span><br><span class="line"><span class="comment">// gulp.dest()     找到目标文件路径,如果路径不存在,自动创建</span></span><br><span class="line"><span class="comment">// pipe()          理解程序运行管道</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 整理.html文件</span></span><br><span class="line">gulp.task(<span class="string">&quot;copy-html&quot;</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> gulp.src(<span class="string">&quot;index.html&quot;</span>)</span><br><span class="line">        .pipe(gulp.dest(<span class="string">&quot;dist/&quot;</span>))</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 拷贝图片</span></span><br><span class="line">gulp.task(<span class="string">&quot;images&quot;</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> gulp.src(<span class="string">&quot;img/**/*&quot;</span>).pipe(gulp.dest(<span class="string">&quot;dist/images&quot;</span>));</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 拷贝多个文件到一个目录</span></span><br><span class="line">gulp.task(<span class="string">&quot;data&quot;</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> gulp.src([<span class="string">&quot;json/*.json&quot;</span>, <span class="string">&quot;xml/*.xml&quot;</span>, <span class="string">&quot;!xml/06.xml&quot;</span>])</span><br><span class="line">        .pipe(gulp.dest(<span class="string">&quot;dist/data&quot;</span>))</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 一次执行多个任务</span></span><br><span class="line">gulp.task(<span class="string">&quot;build&quot;</span>, [<span class="string">&quot;copy-html&quot;</span>, <span class="string">&quot;images&quot;</span>, <span class="string">&quot;data&quot;</span>], <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;执行完毕&quot;</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h1 id="监听"><a href="#监听" class="headerlink" title="监听"></a>监听</h1><p>7.监听到文件有改变,会自动去执行对应的任务,更新数据</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// gulp.watch()</span></span><br><span class="line"><span class="comment">// 第一个参数,文件监听的路径 </span></span><br><span class="line"><span class="comment">// 第二个参数,执行的任务</span></span><br><span class="line">gulp.task(<span class="string">&quot;watch&quot;</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    gulp.watch(<span class="string">&quot;index.html&quot;</span>, [<span class="string">&quot;copy-html&quot;</span>]);</span><br><span class="line">    gulp.watch(<span class="string">&quot;img/**/*&quot;</span>, [<span class="string">&quot;images&quot;</span>]);</span><br><span class="line">    gulp.watch([<span class="string">&quot;json/*.json&quot;</span>, <span class="string">&quot;xml/*.xml&quot;</span>, <span class="string">&quot;!xml/06.xml&quot;</span>],[<span class="string">&quot;data&quot;</span>]);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h1 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h1><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 启动一个服务器 gulp-connect</span></span><br><span class="line"><span class="comment">// 需要在每一条任务后面加上 .pipe(connect.reload()); 来实时刷新</span></span><br><span class="line"><span class="keyword">const</span> GulpClient = <span class="built_in">require</span>(<span class="string">&quot;gulp&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> connect = <span class="built_in">require</span>(<span class="string">&quot;gulp-connect&quot;</span>);</span><br><span class="line">GulpClient.task(<span class="string">&quot;server&quot;</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    connect.server(&#123;</span><br><span class="line">        root: <span class="string">&quot;dist&quot;</span>,</span><br><span class="line">        port: <span class="number">8887</span>,  <span class="comment">//0~65535</span></span><br><span class="line">        livereload: <span class="literal">true</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 启动一个默认的任务,同时启动监听和服务器,直接使用gulp命令启动</span></span><br><span class="line">gulp.task(<span class="string">&quot;default&quot;</span>, [<span class="string">&quot;watch&quot;</span>, <span class="string">&quot;server&quot;</span>]);</span><br></pre></td></tr></table></figure>
-<h1 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h1><p><a href="https://gulpjs.com/plugins/">gulp插件</a></p>
-<pre><code>commonJS规范：
-    1.安装插件
-        cnpm install 插件名字 --save-dev
-        cnpm i 插件名字 -D
-
-    2.通过require()引入文件
-
-    3.查阅文档,插件的用法
-</code></pre>
+    <title>网页布局的方法</title>
+    <url>/2021/05/30/wybj/</url>
+    <content><![CDATA[<h3 id="等高布局"><a href="#等高布局" class="headerlink" title="等高布局"></a>等高布局</h3><p>利用margin-bottom负值和padding-bottom配合使用。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    *&#123;margin: 0;padding: 0;&#125;</span><br><span class="line">    #parent&#123;border: 10px black solid;overflow: hidden;&#125;</span><br><span class="line">    #box1&#123;float: left;width: 100px;background: red;margin-bottom: -2000px;padding-bottom: 2000px;&#125;</span><br><span class="line">    #box2&#123;float: right;width: 100px;background: blue;margin-bottom: -2000px;padding-bottom: 2000px;&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;parent&quot;&gt;</span><br><span class="line">        &lt;div id&#x3D;&quot;box1&quot;&gt;</span><br><span class="line">            &lt;p&gt;1&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p&gt;1&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p&gt;1&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p&gt;1&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p&gt;1&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p&gt;1&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p&gt;1&lt;&#x2F;p&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line">        &lt;div id&#x3D;&quot;box2&quot;&gt;</span><br><span class="line">            &lt;p&gt;2&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p&gt;2&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p&gt;2&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p&gt;2&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p&gt;2&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p&gt;2&lt;&#x2F;p&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="三列布局"><a href="#三列布局" class="headerlink" title="三列布局"></a>三列布局</h3><p>左右固定,中间自适应：<br>    1.BFC方式<br>    2.定位<br>    3.浮动(双飞翼布局,圣杯布局),margin负值<br>    4.flex弹性</p>
+<h4 id="双飞翼布局"><a href="#双飞翼布局" class="headerlink" title="双飞翼布局"></a>双飞翼布局</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    * &#123;margin: 0;padding: 0;&#125;</span><br><span class="line">    .header&#123;height: 100px;background: red;&#125;</span><br><span class="line">    .container .center&#123;height: 200px;float: left;width: 100%;&#125;</span><br><span class="line">    .container .center p&#123;background: yellow;height: 100%;margin: 0 150px 0 100px;&#125;</span><br><span class="line">    .container .left&#123;float: left;width: 100px;height: 200px;background: blue;margin-left: -100%;&#125;</span><br><span class="line">    .container .right&#123;float: left;width: 150px;height: 200px;background: green;margin-left: -150px;&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;header&quot;&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;container&quot;&gt;</span><br><span class="line">            &lt;div class&#x3D;&quot;center&quot;&gt;</span><br><span class="line">                &lt;p&gt;内容部分&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;&#x2F;div&gt;</span><br><span class="line">            &lt;div class&#x3D;&quot;left&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">            &lt;div class&#x3D;&quot;right&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="圣杯布局"><a href="#圣杯布局" class="headerlink" title="圣杯布局"></a>圣杯布局</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    * &#123;margin: 0;padding: 0;&#125;</span><br><span class="line">    .clear::after&#123;content: &quot;&quot;;display: block;clear: both;&#125;</span><br><span class="line">    .header&#123;height: 100px;background: red;&#125;</span><br><span class="line">    .container&#123;background: yellow;margin: 0 150px 0 100px;&#125;</span><br><span class="line">    .container .center&#123;height: 200px;float: left;width: 100%;&#125;</span><br><span class="line">    .container .left&#123;float: left;width: 100px;height: 200px;background: blue;margin-left: -100%;position: relative;left: -100px;&#125;</span><br><span class="line">    .container .right&#123;float: left;width: 150px;height: 200px;background: green;margin-left: -150px;position: relative;right: -150px;&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;header&quot;&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;container clear&quot;&gt;</span><br><span class="line">            &lt;div class&#x3D;&quot;center&quot;&gt;</span><br><span class="line">                内容部分</span><br><span class="line">            &lt;&#x2F;div&gt;</span><br><span class="line">            &lt;div class&#x3D;&quot;left&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">            &lt;div class&#x3D;&quot;right&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="flex弹性布局"><a href="#flex弹性布局" class="headerlink" title="flex弹性布局"></a>flex弹性布局</h3><p><a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html">Flex 布局教程</a></p>
+<p><img src="flex.PNG" alt="flex弹性布局"></p>
+<h4 id="flex-direction"><a href="#flex-direction" class="headerlink" title="flex-direction"></a>flex-direction</h4><p>flex-direction用来控制子项整体布局方向,是从左往右还是从右往左,是从上往下还是从下往上。<br><img src="flex-direction.PNG" alt="flex弹性布局"></p>
+<h4 id="flex-wrap"><a href="#flex-wrap" class="headerlink" title="flex-wrap"></a>flex-wrap</h4><p>flex-wrap用来控制子项整体单行显示还是换行显示。<br><img src="flex-wrap.PNG" alt="flex弹性布局"></p>
+<h4 id="flex-flow"><a href="#flex-flow" class="headerlink" title="flex-flow"></a>flex-flow</h4><p>flex-flow属性是flex-direction和flex-wrap的复合写法,表示flex布局的flow流动特性。<br>第一个值表示方向,第二个值表示换行,中间使用空格隔开。</p>
+<h4 id="justify-content"><a href="#justify-content" class="headerlink" title="justify-content"></a>justify-content</h4><p>justify-content属性决定了主轴方向上子项的对齐和分布方式。<br><img src="justify-content.PNG" alt="flex弹性布局"></p>
+<h4 id="align-items"><a href="#align-items" class="headerlink" title="align-items"></a>align-items</h4><p>align-items中的items指的是flex子项,因此align-items指的是fiex子项相对于flex容器在侧轴方向上的对齐方式。<br><img src="align-items.PNG" alt="flex弹性布局"></p>
+<h4 id="align-content"><a href="#align-content" class="headerlink" title="align-content"></a>align-content</h4><p>align-content可以看成和justify-content是相似且对立的属性,如果所有flex子项只有一行,则align-content属性没有任何效果。<br><img src="align-content.PNG" alt="flex弹性布局"></p>
+<h4 id="作用在flex子项的属性"><a href="#作用在flex子项的属性" class="headerlink" title="作用在flex子项的属性"></a>作用在flex子项的属性</h4><p><img src="flexzixiang.PNG" alt="flex弹性布局"></p>
+<h3 id="grid网格布局"><a href="#grid网格布局" class="headerlink" title="grid网格布局"></a>grid网格布局</h3><p>grid网格布局是一个二维的布局方法,纵横两个方向总是同时存在。</p>
+<p><img src="grid.PNG" alt="grid网格布局"></p>
+<h4 id="grid-template-columns和grid-template-rows"><a href="#grid-template-columns和grid-template-rows" class="headerlink" title="grid-template-columns和grid-template-rows"></a>grid-template-columns和grid-template-rows</h4><p>对网格进行横纵划分,形成二维布局。单位可以是像素,百分比,自适应以及fr单位(网格剩余空间比列单位)。<br>有时候,网格的划分是很规律的,如果需要添加多个横纵网格时,可以利用repeat(个数,单位)语法进行简化操作。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">div &#123;</span><br><span class="line">        display: grid;</span><br><span class="line">        grid-template-columns: repeat(3, 1fr);</span><br><span class="line">        grid-template-rows: repeat(3, 1fr);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="grid-template-areas和grid-template"><a href="#grid-template-areas和grid-template" class="headerlink" title="grid-template-areas和grid-template"></a>grid-template-areas和grid-template</h4><p>area是区域的意思,grid-template-areas就是给网格划分区域的。此时grid子项只要使用grid-area属性指定其隶属于哪个区域。<br>grid-template是grid-template-rows,grid-template-columns和grid-template-areas属性的复合写法</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">div &#123;</span><br><span class="line">        display: grid;</span><br><span class="line">        grid-template-areas:</span><br><span class="line">            &#39;a1 a1 a1&#39; 1fr</span><br><span class="line">            &#39;a2 a2 a3&#39; 1fr</span><br><span class="line">            &#39;a2 a2 a3&#39; 1fr</span><br><span class="line">            &#x2F;1fr 1fr 1fr</span><br><span class="line">        ;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    div:nth-child(1) &#123;</span><br><span class="line">        grid-area: a1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    div:nth-child(2) &#123;</span><br><span class="line">        grid-area: a2;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    div:nth-child(3) &#123;</span><br><span class="line">        grid-area: a3;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="grid-column-gap和grid-row-gap"><a href="#grid-column-gap和grid-row-gap" class="headerlink" title="grid-column-gap和grid-row-gap"></a>grid-column-gap和grid-row-gap</h4><p>grid-column-gap和grid-row-gap属性用来定义网格中网格间隙的尺寸。<br>CSS grid-gap:row column;属性是grid-column-gap和grid-row-gap属性的复合写法。</p>
+<h4 id="justify-items和align-items"><a href="#justify-items和align-items" class="headerlink" title="justify-items和align-items"></a>justify-items和align-items</h4><p>justify-items指定了网格元素的水平呈现方式,是水平拉伸显示还是左中右对齐。<br>align-items指定了网格元素的垂直呈现方式,是垂直拉伸显示,还是上中下对齐。</p>
+<p>place-items是align-items和justify-items属性的复合写法。</p>
+<p><img src="place-items.PNG" alt="grid网格布局"></p>
+<h4 id="justify-content和align-content"><a href="#justify-content和align-content" class="headerlink" title="justify-content和align-content"></a>justify-content和align-content</h4><p>justify-content指定了网格元素的垂直分布方式。align-content指定了网格元素的水平分布方式。<br>place-content是align-content和justify-content属性的复合写法。<br><img src="place-content.PNG" alt="grid网格布局"></p>
+<h4 id="作用在grid子项的属性"><a href="#作用在grid子项的属性" class="headerlink" title="作用在grid子项的属性"></a>作用在grid子项的属性</h4><p><img src="gridzx.PNG" alt="grid网格布局"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    #box &#123;</span><br><span class="line">        width: 300px;</span><br><span class="line">        height: 300px;</span><br><span class="line">        border: 1px gray dotted;</span><br><span class="line">        display: grid;</span><br><span class="line">        grid-template-rows: repeat(3, 1fr);</span><br><span class="line">        grid-template-columns: repeat(3, 1fr);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    #box div &#123;</span><br><span class="line">        background: red;</span><br><span class="line">        border: 1px black solid;</span><br><span class="line">        &#x2F;* </span><br><span class="line">        grid-column-start: 2;</span><br><span class="line">        grid-column-end: 3;</span><br><span class="line">        grid-row-start: 2;</span><br><span class="line">        grid-row-end: span 2; </span><br><span class="line">        *&#x2F;</span><br><span class="line"></span><br><span class="line">        &#x2F;* </span><br><span class="line">        grid-column: 2 &#x2F; 3;</span><br><span class="line">        grid-row: 2 &#x2F; span 2; </span><br><span class="line">        *&#x2F;</span><br><span class="line"></span><br><span class="line">        &#x2F;* grid-area 第一个值是水平的起始位置,第二个值是垂直的起始位置,第三个值是水平的结束位置,第四个值是垂直的结束位置。 *&#x2F;</span><br><span class="line">        grid-area: 3&#x2F;2&#x2F;4&#x2F;4;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;box&quot;&gt;</span><br><span class="line">        &lt;div&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="CSS布局生成工具"><a href="#CSS布局生成工具" class="headerlink" title="CSS布局生成工具"></a>CSS布局生成工具</h3><p><a href="https://cssgrid-generator.netlify.app/">CSS Grid Generator</a><br><a href="https://csslayout.io/">CSS Layout</a><br><a href="https://loading.io/flexbox/">Flexbox Generator</a><br><a href="https://grid.layoutit.com/">行数列数快速布局：cssgr.id</a></p>
 ]]></content>
       <tags>
-        <tag>项目工具</tag>
-        <tag>Gulp</tag>
+        <tag>布局</tag>
+        <tag>flex</tag>
+        <tag>grid</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>知识记录笔记</title>
-    <url>/2021/08/24/web-interview/</url>
-    <content><![CDATA[<h1 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h1><div class="note red icon flat"><i class="note-icon fas fa fa-flag"></i><p>CSS position 属性的作用</p>
-<table>
-<thead>
-<tr>
-<th align="center">值</th>
-<th align="center">作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center"><code>absolute</code></td>
-<td align="center">绝对定位，定位的元素的位置相对于最近的已定位父元素，如果元素没有已定位的父元素，那么它的位置相对于html，定位使元素的位置与文档流无关，不占据空间，定位的元素和其他元素重叠。</td>
-</tr>
-<tr>
-<td align="center"><code>relative</code></td>
-<td align="center">相对定位，相对其正常位置，移动相对定位元素，原本所占的空间不会改变，经常被用来作为绝对定位元素的容器块。</td>
-</tr>
-<tr>
-<td align="center"><code>fixed</code></td>
-<td align="center">固定定位，元素的位置相对于浏览器窗口，即使窗口是滚动的也不会移动。</td>
-</tr>
-<tr>
-<td align="center"><code>static</code></td>
-<td align="center">默认值。表示没有定位，或者说不算具有定位属性，不能通过z-index进行层次分级。</td>
-</tr>
-<tr>
-<td align="center"><code>sticky</code></td>
-<td align="center">粘性定位，定位的元素是依赖于用户的滚动。</td>
-</tr>
-<tr>
-<td align="center"><code>inherit</code></td>
-<td align="center">继承父元素定位。</td>
-</tr>
-<tr>
-<td align="center"><code>initial</code></td>
-<td align="center">设置positon的值为默认值(static)，可用于任何 HTML 元素上的任何 CSS 属性。</td>
-</tr>
-<tr>
-<td align="center"><code>unset</code></td>
-<td align="center">设置positon的值为不设置。如果属性的默认属性是继承属性(例如字体相关的默认属性基本都是继承)，等同于inherit，如果该属性的默认属性不是继承属性(例如pisition的默认属性为static)，等同于initial。</td>
-</tr>
-</tbody></table>
-</div>
-
-<h1 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h1><h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><div class="note blue icon flat"><i class="note-icon fas fa fa-flag"></i><p>JavaScript中的基本数据类型和引用数据类型。以及各个数据类型是如何存储的。</p>
-<pre><code>    基本数据类型：
-        数字(Number)
-        字符串(String)
-        布尔(Boolean)
-        对空(Null)
-        未定义(Undefined)
-        Symbol 是ES6新增的数据类型,表示独一无二的值。
-        BigInt 是ES10新增的数据类型,可以表示任意大的整数。
-
-    引用数据类型:
-        对象(Object)
-        数组(Array)
-        日期(Date)
-        函数(Function)
-        正则(RegExp)
-
-基本数据类型的数据直接存储在栈中;引用数据类型的数据存储在堆中,在栈中保存数据的引用地址。
-这个地址指向的是对应的数据,以便快速查找到堆内存中的对象。
-
-栈内存是自动分配内存的,而堆内存是动态分配内存的,不会自动释放。
-所以每次使用完对象的时候都要把它设置为null,从而减少无用内存的消耗。
-</code></pre>
-</div>
-
-<h1 id="ES6"><a href="#ES6" class="headerlink" title="ES6"></a>ES6</h1><div class="note blue icon flat"><i class="note-icon fas fa fa-flag"></i><p>var let const的区别</p>
-<pre><code>    var 
-        1.var声明的变量可进行变量提升,let和const定义的变量也会被提升,但是不会被初始化,不能被引用
-        2.var可重复声明
-        3.var在非函数作用域中定义是挂载到window上的
-
-    let
-        1.let声明的变量只在局部起作用
-        2.let防止变量污染
-        3.不可在重复声明
-    
-    const
-        1.具有let的所有特征
-        2.不可被改变,如果使用const声明的是对象的话,是可以修改对象里面的值的
-</code></pre>
-</div>
-
-
-<h1 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h1><div class="note blue icon flat"><i class="note-icon fas fa fa-flag"></i><p>Vue拦截的原理</p>
-<blockquote><p>把一个普通的JavaScript对象传入Vue实例作为data选项，Vue将遍历此对象所有的属性，并使用Object.defineProperty把这些属性全部转为getter/setter。Object.defineProperty是ES5中一个无法shim的特性，这也就是Vue不支持IE8以及更低版本浏览器的原因。</p>
-<p>每个组件实例都对应一个watcher实例，它会在组件渲染的过程中把”接触”过的数据属性记录为依赖。之后当依赖的setter触发时,会通知watcher，从而使它关联的组件重新渲染。</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;box&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var obj &#x3D; &#123;&#125;;</span><br><span class="line">    var oBox &#x3D; document.getElementById(&quot;box&quot;);</span><br><span class="line"></span><br><span class="line">    Object.defineProperty(obj,&quot;myname&quot;,&#123;</span><br><span class="line">        get()&#123;</span><br><span class="line">            console.log(&quot;被访问了&quot;);</span><br><span class="line">            return oBox.innerHTML</span><br><span class="line">        &#125;,</span><br><span class="line">        set(value)&#123;</span><br><span class="line">            console.log(&quot;修改为&quot;,value);</span><br><span class="line">            oBox.innerHTML &#x3D; value</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
-<figure class="highlight console"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> obj.myname = <span class="string">&quot;vue拦截原理&quot;</span></span></span><br><span class="line">  修改为 vue拦截原理</span><br><span class="line">&lt; &quot;vue拦截原理&quot;</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> obj.myname = <span class="string">&quot;再次改变&quot;</span></span></span><br><span class="line">  修改为 再次改变</span><br><span class="line">&lt; &quot;再次改变&quot;</span><br></pre></td></tr></table></figure>
-<div class="note orange icon flat"><i class="note-icon fas fa fa-ban"></i><p>Object.defineProperty有以下缺点：</p>
-<ol>
-<li>无法监听ES6的Set，Map变化；</li>
-<li>无法监听Class类型的数据；</li>
-<li>属性的新加或者删除也无法监听；</li>
-<li>数组元素的增加和删除也无法监听；</li>
-</ol>
-<ul>
-<li>针对Object.defineProperty的缺点，ES6 Proxy都能够完美得解决，它唯一的缺点就是，对IE不友好，所以Vue3在检测到如果是使用IE的情况下(IE11都不支持Proxy)，会自动降级为Object.defineProperty的数据监听系统。</li>
-<li>vue2对象后期添加属性拦截不到，使用Vue.set(对象,属性,true)。Vue3支持动态增加属性的拦截。</li>
-</ul>
-</div></div>
-
-]]></content>
   </entry>
   <entry>
     <title>Vue学习笔记</title>
@@ -3612,41 +4051,162 @@ markRaw：
       </tags>
   </entry>
   <entry>
-    <title>网页布局的方法</title>
-    <url>/2021/05/30/wybj/</url>
-    <content><![CDATA[<h3 id="等高布局"><a href="#等高布局" class="headerlink" title="等高布局"></a>等高布局</h3><p>利用margin-bottom负值和padding-bottom配合使用。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    *&#123;margin: 0;padding: 0;&#125;</span><br><span class="line">    #parent&#123;border: 10px black solid;overflow: hidden;&#125;</span><br><span class="line">    #box1&#123;float: left;width: 100px;background: red;margin-bottom: -2000px;padding-bottom: 2000px;&#125;</span><br><span class="line">    #box2&#123;float: right;width: 100px;background: blue;margin-bottom: -2000px;padding-bottom: 2000px;&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;parent&quot;&gt;</span><br><span class="line">        &lt;div id&#x3D;&quot;box1&quot;&gt;</span><br><span class="line">            &lt;p&gt;1&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p&gt;1&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p&gt;1&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p&gt;1&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p&gt;1&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p&gt;1&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p&gt;1&lt;&#x2F;p&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line">        &lt;div id&#x3D;&quot;box2&quot;&gt;</span><br><span class="line">            &lt;p&gt;2&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p&gt;2&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p&gt;2&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p&gt;2&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p&gt;2&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p&gt;2&lt;&#x2F;p&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="三列布局"><a href="#三列布局" class="headerlink" title="三列布局"></a>三列布局</h3><p>左右固定,中间自适应：<br>    1.BFC方式<br>    2.定位<br>    3.浮动(双飞翼布局,圣杯布局),margin负值<br>    4.flex弹性</p>
-<h4 id="双飞翼布局"><a href="#双飞翼布局" class="headerlink" title="双飞翼布局"></a>双飞翼布局</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    * &#123;margin: 0;padding: 0;&#125;</span><br><span class="line">    .header&#123;height: 100px;background: red;&#125;</span><br><span class="line">    .container .center&#123;height: 200px;float: left;width: 100%;&#125;</span><br><span class="line">    .container .center p&#123;background: yellow;height: 100%;margin: 0 150px 0 100px;&#125;</span><br><span class="line">    .container .left&#123;float: left;width: 100px;height: 200px;background: blue;margin-left: -100%;&#125;</span><br><span class="line">    .container .right&#123;float: left;width: 150px;height: 200px;background: green;margin-left: -150px;&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;header&quot;&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;container&quot;&gt;</span><br><span class="line">            &lt;div class&#x3D;&quot;center&quot;&gt;</span><br><span class="line">                &lt;p&gt;内容部分&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;&#x2F;div&gt;</span><br><span class="line">            &lt;div class&#x3D;&quot;left&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">            &lt;div class&#x3D;&quot;right&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
-<h4 id="圣杯布局"><a href="#圣杯布局" class="headerlink" title="圣杯布局"></a>圣杯布局</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    * &#123;margin: 0;padding: 0;&#125;</span><br><span class="line">    .clear::after&#123;content: &quot;&quot;;display: block;clear: both;&#125;</span><br><span class="line">    .header&#123;height: 100px;background: red;&#125;</span><br><span class="line">    .container&#123;background: yellow;margin: 0 150px 0 100px;&#125;</span><br><span class="line">    .container .center&#123;height: 200px;float: left;width: 100%;&#125;</span><br><span class="line">    .container .left&#123;float: left;width: 100px;height: 200px;background: blue;margin-left: -100%;position: relative;left: -100px;&#125;</span><br><span class="line">    .container .right&#123;float: left;width: 150px;height: 200px;background: green;margin-left: -150px;position: relative;right: -150px;&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;header&quot;&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;container clear&quot;&gt;</span><br><span class="line">            &lt;div class&#x3D;&quot;center&quot;&gt;</span><br><span class="line">                内容部分</span><br><span class="line">            &lt;&#x2F;div&gt;</span><br><span class="line">            &lt;div class&#x3D;&quot;left&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">            &lt;div class&#x3D;&quot;right&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="flex弹性布局"><a href="#flex弹性布局" class="headerlink" title="flex弹性布局"></a>flex弹性布局</h3><p><a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html">Flex 布局教程</a></p>
-<p><img src="flex.PNG" alt="flex弹性布局"></p>
-<h4 id="flex-direction"><a href="#flex-direction" class="headerlink" title="flex-direction"></a>flex-direction</h4><p>flex-direction用来控制子项整体布局方向,是从左往右还是从右往左,是从上往下还是从下往上。<br><img src="flex-direction.PNG" alt="flex弹性布局"></p>
-<h4 id="flex-wrap"><a href="#flex-wrap" class="headerlink" title="flex-wrap"></a>flex-wrap</h4><p>flex-wrap用来控制子项整体单行显示还是换行显示。<br><img src="flex-wrap.PNG" alt="flex弹性布局"></p>
-<h4 id="flex-flow"><a href="#flex-flow" class="headerlink" title="flex-flow"></a>flex-flow</h4><p>flex-flow属性是flex-direction和flex-wrap的复合写法,表示flex布局的flow流动特性。<br>第一个值表示方向,第二个值表示换行,中间使用空格隔开。</p>
-<h4 id="justify-content"><a href="#justify-content" class="headerlink" title="justify-content"></a>justify-content</h4><p>justify-content属性决定了主轴方向上子项的对齐和分布方式。<br><img src="justify-content.PNG" alt="flex弹性布局"></p>
-<h4 id="align-items"><a href="#align-items" class="headerlink" title="align-items"></a>align-items</h4><p>align-items中的items指的是flex子项,因此align-items指的是fiex子项相对于flex容器在侧轴方向上的对齐方式。<br><img src="align-items.PNG" alt="flex弹性布局"></p>
-<h4 id="align-content"><a href="#align-content" class="headerlink" title="align-content"></a>align-content</h4><p>align-content可以看成和justify-content是相似且对立的属性,如果所有flex子项只有一行,则align-content属性没有任何效果。<br><img src="align-content.PNG" alt="flex弹性布局"></p>
-<h4 id="作用在flex子项的属性"><a href="#作用在flex子项的属性" class="headerlink" title="作用在flex子项的属性"></a>作用在flex子项的属性</h4><p><img src="flexzixiang.PNG" alt="flex弹性布局"></p>
-<h3 id="grid网格布局"><a href="#grid网格布局" class="headerlink" title="grid网格布局"></a>grid网格布局</h3><p>grid网格布局是一个二维的布局方法,纵横两个方向总是同时存在。</p>
-<p><img src="grid.PNG" alt="grid网格布局"></p>
-<h4 id="grid-template-columns和grid-template-rows"><a href="#grid-template-columns和grid-template-rows" class="headerlink" title="grid-template-columns和grid-template-rows"></a>grid-template-columns和grid-template-rows</h4><p>对网格进行横纵划分,形成二维布局。单位可以是像素,百分比,自适应以及fr单位(网格剩余空间比列单位)。<br>有时候,网格的划分是很规律的,如果需要添加多个横纵网格时,可以利用repeat(个数,单位)语法进行简化操作。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">div &#123;</span><br><span class="line">        display: grid;</span><br><span class="line">        grid-template-columns: repeat(3, 1fr);</span><br><span class="line">        grid-template-rows: repeat(3, 1fr);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h4 id="grid-template-areas和grid-template"><a href="#grid-template-areas和grid-template" class="headerlink" title="grid-template-areas和grid-template"></a>grid-template-areas和grid-template</h4><p>area是区域的意思,grid-template-areas就是给网格划分区域的。此时grid子项只要使用grid-area属性指定其隶属于哪个区域。<br>grid-template是grid-template-rows,grid-template-columns和grid-template-areas属性的复合写法</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">div &#123;</span><br><span class="line">        display: grid;</span><br><span class="line">        grid-template-areas:</span><br><span class="line">            &#39;a1 a1 a1&#39; 1fr</span><br><span class="line">            &#39;a2 a2 a3&#39; 1fr</span><br><span class="line">            &#39;a2 a2 a3&#39; 1fr</span><br><span class="line">            &#x2F;1fr 1fr 1fr</span><br><span class="line">        ;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    div:nth-child(1) &#123;</span><br><span class="line">        grid-area: a1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    div:nth-child(2) &#123;</span><br><span class="line">        grid-area: a2;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    div:nth-child(3) &#123;</span><br><span class="line">        grid-area: a3;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h4 id="grid-column-gap和grid-row-gap"><a href="#grid-column-gap和grid-row-gap" class="headerlink" title="grid-column-gap和grid-row-gap"></a>grid-column-gap和grid-row-gap</h4><p>grid-column-gap和grid-row-gap属性用来定义网格中网格间隙的尺寸。<br>CSS grid-gap:row column;属性是grid-column-gap和grid-row-gap属性的复合写法。</p>
-<h4 id="justify-items和align-items"><a href="#justify-items和align-items" class="headerlink" title="justify-items和align-items"></a>justify-items和align-items</h4><p>justify-items指定了网格元素的水平呈现方式,是水平拉伸显示还是左中右对齐。<br>align-items指定了网格元素的垂直呈现方式,是垂直拉伸显示,还是上中下对齐。</p>
-<p>place-items是align-items和justify-items属性的复合写法。</p>
-<p><img src="place-items.PNG" alt="grid网格布局"></p>
-<h4 id="justify-content和align-content"><a href="#justify-content和align-content" class="headerlink" title="justify-content和align-content"></a>justify-content和align-content</h4><p>justify-content指定了网格元素的垂直分布方式。align-content指定了网格元素的水平分布方式。<br>place-content是align-content和justify-content属性的复合写法。<br><img src="place-content.PNG" alt="grid网格布局"></p>
-<h4 id="作用在grid子项的属性"><a href="#作用在grid子项的属性" class="headerlink" title="作用在grid子项的属性"></a>作用在grid子项的属性</h4><p><img src="gridzx.PNG" alt="grid网格布局"></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    #box &#123;</span><br><span class="line">        width: 300px;</span><br><span class="line">        height: 300px;</span><br><span class="line">        border: 1px gray dotted;</span><br><span class="line">        display: grid;</span><br><span class="line">        grid-template-rows: repeat(3, 1fr);</span><br><span class="line">        grid-template-columns: repeat(3, 1fr);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    #box div &#123;</span><br><span class="line">        background: red;</span><br><span class="line">        border: 1px black solid;</span><br><span class="line">        &#x2F;* </span><br><span class="line">        grid-column-start: 2;</span><br><span class="line">        grid-column-end: 3;</span><br><span class="line">        grid-row-start: 2;</span><br><span class="line">        grid-row-end: span 2; </span><br><span class="line">        *&#x2F;</span><br><span class="line"></span><br><span class="line">        &#x2F;* </span><br><span class="line">        grid-column: 2 &#x2F; 3;</span><br><span class="line">        grid-row: 2 &#x2F; span 2; </span><br><span class="line">        *&#x2F;</span><br><span class="line"></span><br><span class="line">        &#x2F;* grid-area 第一个值是水平的起始位置,第二个值是垂直的起始位置,第三个值是水平的结束位置,第四个值是垂直的结束位置。 *&#x2F;</span><br><span class="line">        grid-area: 3&#x2F;2&#x2F;4&#x2F;4;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;box&quot;&gt;</span><br><span class="line">        &lt;div&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="CSS布局生成工具"><a href="#CSS布局生成工具" class="headerlink" title="CSS布局生成工具"></a>CSS布局生成工具</h3><p><a href="https://cssgrid-generator.netlify.app/">CSS Grid Generator</a><br><a href="https://csslayout.io/">CSS Layout</a><br><a href="https://loading.io/flexbox/">Flexbox Generator</a><br><a href="https://grid.layoutit.com/">行数列数快速布局：cssgr.id</a></p>
+    <title>知识记录笔记</title>
+    <url>/2021/08/24/web-interview/</url>
+    <content><![CDATA[<h1 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h1><div class="note red icon flat"><i class="note-icon fas fa fa-flag"></i><p>CSS position 属性的作用</p>
+<table>
+<thead>
+<tr>
+<th align="center">值</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>absolute</code></td>
+<td align="center">绝对定位，定位的元素的位置相对于最近的已定位父元素，如果元素没有已定位的父元素，那么它的位置相对于html，定位使元素的位置与文档流无关，不占据空间，定位的元素和其他元素重叠。</td>
+</tr>
+<tr>
+<td align="center"><code>relative</code></td>
+<td align="center">相对定位，相对其正常位置，移动相对定位元素，原本所占的空间不会改变，经常被用来作为绝对定位元素的容器块。</td>
+</tr>
+<tr>
+<td align="center"><code>fixed</code></td>
+<td align="center">固定定位，元素的位置相对于浏览器窗口，即使窗口是滚动的也不会移动。</td>
+</tr>
+<tr>
+<td align="center"><code>static</code></td>
+<td align="center">默认值。表示没有定位，或者说不算具有定位属性，不能通过z-index进行层次分级。</td>
+</tr>
+<tr>
+<td align="center"><code>sticky</code></td>
+<td align="center">粘性定位，定位的元素是依赖于用户的滚动。</td>
+</tr>
+<tr>
+<td align="center"><code>inherit</code></td>
+<td align="center">继承父元素定位。</td>
+</tr>
+<tr>
+<td align="center"><code>initial</code></td>
+<td align="center">设置positon的值为默认值(static)，可用于任何 HTML 元素上的任何 CSS 属性。</td>
+</tr>
+<tr>
+<td align="center"><code>unset</code></td>
+<td align="center">设置positon的值为不设置。如果属性的默认属性是继承属性(例如字体相关的默认属性基本都是继承)，等同于inherit，如果该属性的默认属性不是继承属性(例如pisition的默认属性为static)，等同于initial。</td>
+</tr>
+</tbody></table>
+</div>
+
+<h1 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h1><h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><div class="note blue icon flat"><i class="note-icon fas fa fa-flag"></i><p>JavaScript中的基本数据类型和引用数据类型。以及各个数据类型是如何存储的。</p>
+<pre><code>    基本数据类型：
+        数字(Number)
+        字符串(String)
+        布尔(Boolean)
+        对空(Null)
+        未定义(Undefined)
+        Symbol 是ES6新增的数据类型,表示独一无二的值。
+        BigInt 是ES10新增的数据类型,可以表示任意大的整数。
+
+    引用数据类型:
+        对象(Object)
+        数组(Array)
+        日期(Date)
+        函数(Function)
+        正则(RegExp)
+
+基本数据类型的数据直接存储在栈中;引用数据类型的数据存储在堆中,在栈中保存数据的引用地址。
+这个地址指向的是对应的数据,以便快速查找到堆内存中的对象。
+
+栈内存是自动分配内存的,而堆内存是动态分配内存的,不会自动释放。
+所以每次使用完对象的时候都要把它设置为null,从而减少无用内存的消耗。
+</code></pre>
+</div>
+
+<h1 id="ES6"><a href="#ES6" class="headerlink" title="ES6"></a>ES6</h1><div class="note blue icon flat"><i class="note-icon fas fa fa-flag"></i><p>var let const的区别</p>
+<pre><code>    var 
+        1.var声明的变量可进行变量提升,let和const定义的变量也会被提升,但是不会被初始化,不能被引用
+        2.var可重复声明
+        3.var在非函数作用域中定义是挂载到window上的
+
+    let
+        1.let声明的变量只在局部起作用
+        2.let防止变量污染
+        3.不可在重复声明
+    
+    const
+        1.具有let的所有特征
+        2.不可被改变,如果使用const声明的是对象的话,是可以修改对象里面的值的
+</code></pre>
+</div>
+
+
+<h1 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h1><div class="note blue icon flat"><i class="note-icon fas fa fa-flag"></i><p>Vue拦截的原理</p>
+<blockquote><p>把一个普通的JavaScript对象传入Vue实例作为data选项，Vue将遍历此对象所有的属性，并使用Object.defineProperty把这些属性全部转为getter/setter。Object.defineProperty是ES5中一个无法shim的特性，这也就是Vue不支持IE8以及更低版本浏览器的原因。</p>
+<p>每个组件实例都对应一个watcher实例，它会在组件渲染的过程中把”接触”过的数据属性记录为依赖。之后当依赖的setter触发时,会通知watcher，从而使它关联的组件重新渲染。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;box&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var obj &#x3D; &#123;&#125;;</span><br><span class="line">    var oBox &#x3D; document.getElementById(&quot;box&quot;);</span><br><span class="line"></span><br><span class="line">    Object.defineProperty(obj,&quot;myname&quot;,&#123;</span><br><span class="line">        get()&#123;</span><br><span class="line">            console.log(&quot;被访问了&quot;);</span><br><span class="line">            return oBox.innerHTML</span><br><span class="line">        &#125;,</span><br><span class="line">        set(value)&#123;</span><br><span class="line">            console.log(&quot;修改为&quot;,value);</span><br><span class="line">            oBox.innerHTML &#x3D; value</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight console"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> obj.myname = <span class="string">&quot;vue拦截原理&quot;</span></span></span><br><span class="line">  修改为 vue拦截原理</span><br><span class="line">&lt; &quot;vue拦截原理&quot;</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> obj.myname = <span class="string">&quot;再次改变&quot;</span></span></span><br><span class="line">  修改为 再次改变</span><br><span class="line">&lt; &quot;再次改变&quot;</span><br></pre></td></tr></table></figure>
+<div class="note orange icon flat"><i class="note-icon fas fa fa-ban"></i><p>Object.defineProperty有以下缺点：</p>
+<ol>
+<li>无法监听ES6的Set，Map变化；</li>
+<li>无法监听Class类型的数据；</li>
+<li>属性的新加或者删除也无法监听；</li>
+<li>数组元素的增加和删除也无法监听；</li>
+</ol>
+<ul>
+<li>针对Object.defineProperty的缺点，ES6 Proxy都能够完美得解决，它唯一的缺点就是，对IE不友好，所以Vue3在检测到如果是使用IE的情况下(IE11都不支持Proxy)，会自动降级为Object.defineProperty的数据监听系统。</li>
+<li>vue2对象后期添加属性拦截不到，使用Vue.set(对象,属性,true)。Vue3支持动态增加属性的拦截。</li>
+</ul>
+</div></div>
+
+]]></content>
+  </entry>
+  <entry>
+    <title>项目工具Gulp</title>
+    <url>/2021/07/11/tool-Gulp/</url>
+    <content><![CDATA[<p>官网地址 <a href="https://www.gulpjs.com.cn/">gulp.js</a></p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>1.下载和安装<a href="https://nodejs.org/zh-cn/">Node.js</a></p>
+<pre><code>node -v 查看node.js的版本
+</code></pre>
+<p>2.启动Node.js控制台</p>
+<pre><code>npm     下载源是国外网站
+cnpm    [淘宝镜像](https://npm.taobao.org/)
+    安装：npm install cnpm -g --registry=https://registry.npm.taobao.org
+</code></pre>
+<p>3.安装gulp到本地</p>
+<pre><code>安装：cnpm install gulp -g
+gulp -v 查看gulp的版本
+</code></pre>
+<p>4.初始化当前目录,生成package.json文件,存放项目的配置信息</p>
+<pre><code>cnpm init
+</code></pre>
+<p>5.在项目里面安装gulp到本地</p>
+<pre><code>cnpm install gulp@3.9.1 --save-dev
+    --save   将文件安装到本地的文件夹
+    -dev    将安装gulp的信息保存在package.json里面
+
+简写：cnpm i gulp@3.9.1 -D
+</code></pre>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>6.创建一个gulpfile.js的文件来编写任务</p>
+<pre><code>gulp hello(第一个参数名字) 运行编写的任务
+</code></pre>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// require() 引入模块,使用模块函数</span></span><br><span class="line"><span class="keyword">const</span> gulp = <span class="built_in">require</span>(<span class="string">&quot;gulp&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// gulp.task() 编写任务</span></span><br><span class="line"><span class="comment">// 第一个参数：自定义的执行任务名字</span></span><br><span class="line"><span class="comment">// 第二个参数：回调函数,任务执行的功能</span></span><br><span class="line">gulp.task(<span class="string">&quot;hello&quot;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;hello world&quot;</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// gulp.src()      找到源文件路径</span></span><br><span class="line"><span class="comment">// gulp.dest()     找到目标文件路径,如果路径不存在,自动创建</span></span><br><span class="line"><span class="comment">// pipe()          理解程序运行管道</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 整理.html文件</span></span><br><span class="line">gulp.task(<span class="string">&quot;copy-html&quot;</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> gulp.src(<span class="string">&quot;index.html&quot;</span>)</span><br><span class="line">        .pipe(gulp.dest(<span class="string">&quot;dist/&quot;</span>))</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 拷贝图片</span></span><br><span class="line">gulp.task(<span class="string">&quot;images&quot;</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> gulp.src(<span class="string">&quot;img/**/*&quot;</span>).pipe(gulp.dest(<span class="string">&quot;dist/images&quot;</span>));</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 拷贝多个文件到一个目录</span></span><br><span class="line">gulp.task(<span class="string">&quot;data&quot;</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> gulp.src([<span class="string">&quot;json/*.json&quot;</span>, <span class="string">&quot;xml/*.xml&quot;</span>, <span class="string">&quot;!xml/06.xml&quot;</span>])</span><br><span class="line">        .pipe(gulp.dest(<span class="string">&quot;dist/data&quot;</span>))</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 一次执行多个任务</span></span><br><span class="line">gulp.task(<span class="string">&quot;build&quot;</span>, [<span class="string">&quot;copy-html&quot;</span>, <span class="string">&quot;images&quot;</span>, <span class="string">&quot;data&quot;</span>], <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;执行完毕&quot;</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h1 id="监听"><a href="#监听" class="headerlink" title="监听"></a>监听</h1><p>7.监听到文件有改变,会自动去执行对应的任务,更新数据</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// gulp.watch()</span></span><br><span class="line"><span class="comment">// 第一个参数,文件监听的路径 </span></span><br><span class="line"><span class="comment">// 第二个参数,执行的任务</span></span><br><span class="line">gulp.task(<span class="string">&quot;watch&quot;</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    gulp.watch(<span class="string">&quot;index.html&quot;</span>, [<span class="string">&quot;copy-html&quot;</span>]);</span><br><span class="line">    gulp.watch(<span class="string">&quot;img/**/*&quot;</span>, [<span class="string">&quot;images&quot;</span>]);</span><br><span class="line">    gulp.watch([<span class="string">&quot;json/*.json&quot;</span>, <span class="string">&quot;xml/*.xml&quot;</span>, <span class="string">&quot;!xml/06.xml&quot;</span>],[<span class="string">&quot;data&quot;</span>]);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h1 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h1><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 启动一个服务器 gulp-connect</span></span><br><span class="line"><span class="comment">// 需要在每一条任务后面加上 .pipe(connect.reload()); 来实时刷新</span></span><br><span class="line"><span class="keyword">const</span> GulpClient = <span class="built_in">require</span>(<span class="string">&quot;gulp&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> connect = <span class="built_in">require</span>(<span class="string">&quot;gulp-connect&quot;</span>);</span><br><span class="line">GulpClient.task(<span class="string">&quot;server&quot;</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    connect.server(&#123;</span><br><span class="line">        root: <span class="string">&quot;dist&quot;</span>,</span><br><span class="line">        port: <span class="number">8887</span>,  <span class="comment">//0~65535</span></span><br><span class="line">        livereload: <span class="literal">true</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 启动一个默认的任务,同时启动监听和服务器,直接使用gulp命令启动</span></span><br><span class="line">gulp.task(<span class="string">&quot;default&quot;</span>, [<span class="string">&quot;watch&quot;</span>, <span class="string">&quot;server&quot;</span>]);</span><br></pre></td></tr></table></figure>
+<h1 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h1><p><a href="https://gulpjs.com/plugins/">gulp插件</a></p>
+<pre><code>commonJS规范：
+    1.安装插件
+        cnpm install 插件名字 --save-dev
+        cnpm i 插件名字 -D
+
+    2.通过require()引入文件
+
+    3.查阅文档,插件的用法
+</code></pre>
 ]]></content>
       <tags>
-        <tag>布局</tag>
-        <tag>flex</tag>
-        <tag>grid</tag>
+        <tag>项目工具</tag>
+        <tag>Gulp</tag>
       </tags>
   </entry>
 </search>
