@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img1.baidu.com/it/u=3839100521,2702485679&fm=253&fmt=auto&app=120&f=JPEG?w=889&h=500">
 <meta property="article:published_time" content="2022-02-15T13:27:59.000Z">
-<meta property="article:modified_time" content="2022-02-16T15:45:19.236Z">
+<meta property="article:modified_time" content="2022-02-21T15:12:33.979Z">
 <meta property="article:author" content="周志达">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img1.baidu.com/it/u=3839100521,2702485679&fm=253&fmt=auto&app=120&f=JPEG?w=889&h=500"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://zhouzhou76.github.io/2022/02/15/JS-Object/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
@@ -56,7 +56,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2022-02-16 23:45:19'
+  postUpdate: '2022-02-21 23:12:33'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -143,7 +143,7 @@
     if (fontSizeVal !== undefined) {
       document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
     }
-    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fup.enterdesk.com%2Fedpic%2F06%2F79%2Ff8%2F0679f8a452c590b805bf3ea48662ca34.jpg&amp;refer=http%3A%2F%2Fup.enterdesk.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1644860083&amp;t=41663c5a1ed68083506c88322ae2804e" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">30</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">26</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://risingstars.js.org/2021/zh/"><i class="fa-fw fa fa-align-right"></i><span> 前端趋势</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-wrench"></i><span> 学习网站</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener" href="https://learngitbranching.js.org/?locale=zh_CN"><i class="fa-fw fa fa-tree"></i><span> Git可视化学习工具</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://codepip.com/"><i class="fa-fw fa fa-gamepad"></i><span> 通过玩游戏学习编码</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-life-ring"></i><span> 休闲娱乐</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">个人笔记</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://risingstars.js.org/2021/zh/"><i class="fa-fw fa fa-align-right"></i><span> 前端趋势</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-wrench"></i><span> 学习网站</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener" href="https://learngitbranching.js.org/?locale=zh_CN"><i class="fa-fw fa fa-tree"></i><span> Git可视化学习工具</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://codepip.com/"><i class="fa-fw fa fa-gamepad"></i><span> 通过玩游戏学习编码</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-life-ring"></i><span> 休闲娱乐</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">JS 对象学习总结</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-02-15T13:27:59.000Z" title="发表于 2022-02-15 21:27:59">2022-02-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-02-16T15:45:19.236Z" title="更新于 2022-02-16 23:45:19">2022-02-16</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>7分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="JS 对象学习总结"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div><article class="post-content" id="article-container"><h1 id="JS-对象的分类"><a href="#JS-对象的分类" class="headerlink" title="JS 对象的分类"></a>JS 对象的分类</h1><div class="mermaid"> 
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fup.enterdesk.com%2Fedpic%2F06%2F79%2Ff8%2F0679f8a452c590b805bf3ea48662ca34.jpg&amp;refer=http%3A%2F%2Fup.enterdesk.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1644860083&amp;t=41663c5a1ed68083506c88322ae2804e" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">30</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">26</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://risingstars.js.org/2021/zh/"><i class="fa-fw fa fa-align-right"></i><span> 前端趋势</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-wrench"></i><span> 学习网站</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener" href="https://learngitbranching.js.org/?locale=zh_CN"><i class="fa-fw fa fa-tree"></i><span> Git可视化学习工具</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://codepip.com/"><i class="fa-fw fa fa-gamepad"></i><span> 通过玩游戏学习编码</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-life-ring"></i><span> 休闲娱乐</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">个人笔记</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://risingstars.js.org/2021/zh/"><i class="fa-fw fa fa-align-right"></i><span> 前端趋势</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-wrench"></i><span> 学习网站</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener" href="https://learngitbranching.js.org/?locale=zh_CN"><i class="fa-fw fa fa-tree"></i><span> Git可视化学习工具</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://codepip.com/"><i class="fa-fw fa fa-gamepad"></i><span> 通过玩游戏学习编码</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-life-ring"></i><span> 休闲娱乐</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">JS 对象学习总结</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-02-15T13:27:59.000Z" title="发表于 2022-02-15 21:27:59">2022-02-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-02-21T15:12:33.979Z" title="更新于 2022-02-21 23:12:33">2022-02-21</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>9分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="JS 对象学习总结"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div><article class="post-content" id="article-container"><h1 id="JS-对象的分类"><a href="#JS-对象的分类" class="headerlink" title="JS 对象的分类"></a>JS 对象的分类</h1><div class="mermaid"> 
 graph LR
     A[JS中的对象]&#x3D;&#x3D;&gt;C1(宿主对象)
     A&#x3D;&#x3D;&gt;C2(JS里的对象)
@@ -210,6 +210,20 @@ JS中的对象：
 <td align="center">错误对象，用于错误处理。</td>
 </tr>
 </tbody></table>
+<pre><code>JavaScript的内置对象可分为以下几种：
+    数据对象：Number String Boolean
+    组合对象：Array Math Date
+    高级对象：Object Error Global Function RegExp
+</code></pre>
+<div class="note blue icon flat"><i class="note-icon fas fa fa-exclamation"></i><p><code>Global是什么？</code></p>
+<pre><code>1.Global Object是单体内置对象，即不依赖宿主环境的对象。
+2.使用Global全局对象，可以访问所有其他所有预定义的对象、函数和属性。全局对象不是任何对象的属性，所以它没有名称。
+3.全局对象是作用域链的头，所有非限定性的变量和函数名都会作为该对象的属性来查询。
+4.全局对象只是一个对象，而不是类。既没有构造函数，也无法实例化一个新的全局对象。
+5.ECMAScript 标准没有规定全局对象的类型，JavaScript 的实现或嵌入的 JavaScript 都可以把任意类型的对象作为全局对象，只要该对象定义了这里列出的基本属性和函数。
+6.在浏览器中有window对象用于挂载全局的变量（浏览器环境中，global对象指的就是window对象），而在Node中，全局变量则为global。
+</code></pre>
+</div>
 <h2 id="基类Object-常用属性和方法"><a href="#基类Object-常用属性和方法" class="headerlink" title="基类Object 常用属性和方法"></a>基类Object 常用属性和方法</h2><table>
 <thead>
 <tr>
@@ -469,7 +483,47 @@ JS中的对象：
 <h3 id="Math"><a href="#Math" class="headerlink" title="Math"></a>Math</h3><table>
 <thead>
 <tr>
-<th align="center">属性和方法</th>
+<th align="center">属性</th>
+<th align="center">说明：这些属性都是只读的，不能修改。</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>Math.E</code></td>
+<td align="center">常数e，值为2.718281828459045</td>
+</tr>
+<tr>
+<td align="center"><code>Math.LN2</code></td>
+<td align="center">2的自然对数，值为0.6931471805599453</td>
+</tr>
+<tr>
+<td align="center"><code>Math.LN10</code></td>
+<td align="center">10的自然对数，值为2.302585092994046</td>
+</tr>
+<tr>
+<td align="center"><code>Math.LOG2E</code></td>
+<td align="center">以2为底的e的对数，值为1.4426950408889634</td>
+</tr>
+<tr>
+<td align="center"><code>Math.LOG10E</code></td>
+<td align="center">以10为底的e的对数，值为0.4342944819032518</td>
+</tr>
+<tr>
+<td align="center"><code>Math.PI</code></td>
+<td align="center">常数Pi，值为3.141592653589793</td>
+</tr>
+<tr>
+<td align="center"><code>Math.SQRT1_2</code></td>
+<td align="center">0.5的平方根，值为0.7071067811865476</td>
+</tr>
+<tr>
+<td align="center"><code>Math.SQRT2</code></td>
+<td align="center">2的平方根，值为1.4142135623730951</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="center">方法</th>
 <th align="center">说明</th>
 </tr>
 </thead>
@@ -482,18 +536,6 @@ JS中的对象：
 <td align="center">计算绝对值。</td>
 </tr>
 <tr>
-<td align="center"><code>Math.acos( )</code></td>
-<td align="center">计算反余弦值。</td>
-</tr>
-<tr>
-<td align="center"><code>Math.asin( )</code></td>
-<td align="center">计算反正弦值。</td>
-</tr>
-<tr>
-<td align="center"><code>Math.atan( )</code></td>
-<td align="center">计算反正切值。</td>
-</tr>
-<tr>
 <td align="center"><code>Math.atan2( )</code></td>
 <td align="center">计算从x轴到一个点之间的角度。</td>
 </tr>
@@ -502,28 +544,12 @@ JS中的对象：
 <td align="center">对一个数上舍入。</td>
 </tr>
 <tr>
-<td align="center"><code>Math.cos( )</code></td>
-<td align="center">计算余弦值。</td>
-</tr>
-<tr>
-<td align="center"><code>Math.E( )</code></td>
-<td align="center">算术常量e。</td>
-</tr>
-<tr>
 <td align="center"><code>Math.exp( )</code></td>
 <td align="center">计算e^x。</td>
 </tr>
 <tr>
 <td align="center"><code>Math.floor( )</code></td>
 <td align="center">对一个数下舍入。</td>
-</tr>
-<tr>
-<td align="center"><code>Math.LN10( )</code></td>
-<td align="center">表示 10 的自然对数，约为 2.302。</td>
-</tr>
-<tr>
-<td align="center"><code>Math.PI</code></td>
-<td align="center">180弧度。</td>
 </tr>
 <tr>
 <td align="center"><code>Math.max()</code></td>
@@ -550,12 +576,40 @@ JS中的对象：
 <td align="center">四舍五入(成整数,只看小数后一位)。</td>
 </tr>
 <tr>
-<td align="center"><code>Math.sin()</code></td>
-<td align="center">计算正弦值。</td>
-</tr>
-<tr>
 <td align="center"><code>Math.sqrt()</code></td>
 <td align="center">计算平方根。</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="center">三角函数方法</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>Math.sin()</code></td>
+<td align="center">返回参数的正弦（参数为弧度值）</td>
+</tr>
+<tr>
+<td align="center"><code>Math.cos()</code></td>
+<td align="center">返回参数的余弦（参数为弧度值）</td>
+</tr>
+<tr>
+<td align="center"><code>Math.tan()</code></td>
+<td align="center">返回参数的正切（参数为弧度值）</td>
+</tr>
+<tr>
+<td align="center"><code>Math.asin()</code></td>
+<td align="center">返回参数的反正弦（返回值为弧度值）</td>
+</tr>
+<tr>
+<td align="center"><code>Math.acos()</code></td>
+<td align="center">返回参数的反余弦（返回值为弧度值）</td>
+</tr>
+<tr>
+<td align="center"><code>Math.atan()</code></td>
+<td align="center">返回参数的反正切（返回值为弧度值）</td>
 </tr>
 </tbody></table>
 <h3 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h3><table>
