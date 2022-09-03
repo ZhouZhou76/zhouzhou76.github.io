@@ -1,0 +1,225 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>offer | 个人笔记</title><meta name="author" content="周志达"><meta name="copyright" content="周志达"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="谈一下你对MVVM原理的理解传统的MVC指的是，用户操作会请求服务端路由，路由会调用对应的控制器来处理，控制器会获取数据，将结果返回给前端，页面重新渲染。 MVVM: 传统的前端会将数据手动渲染到页面上，MVVM模式不需要用户收到操作DOM元素，将数据绑定到viewModel层上，会自动将数据渲染到页面中，视图变化会通知viewModel层更新数据，viewModel就是我们MVVM模式中的桥梁。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="offer">
+<meta property="og:url" content="https://zhouzhou76.github.io/2022/08/23/offer/index.html">
+<meta property="og:site_name" content="个人笔记">
+<meta property="og:description" content="谈一下你对MVVM原理的理解传统的MVC指的是，用户操作会请求服务端路由，路由会调用对应的控制器来处理，控制器会获取数据，将结果返回给前端，页面重新渲染。 MVVM: 传统的前端会将数据手动渲染到页面上，MVVM模式不需要用户收到操作DOM元素，将数据绑定到viewModel层上，会自动将数据渲染到页面中，视图变化会通知viewModel层更新数据，viewModel就是我们MVVM模式中的桥梁。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg">
+<meta property="article:published_time" content="2022-08-23T15:31:25.000Z">
+<meta property="article:modified_time" content="2022-09-03T15:50:07.213Z">
+<meta property="article:author" content="周志达">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://zhouzhou76.github.io/2022/08/23/offer/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"bottom-left"},
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-09-03 23:50:07'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fup.enterdesk.com%2Fedpic%2F06%2F79%2Ff8%2F0679f8a452c590b805bf3ea48662ca34.jpg&amp;refer=http%3A%2F%2Fup.enterdesk.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1644860083&amp;t=41663c5a1ed68083506c88322ae2804e" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">33</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">26</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://risingstars.js.org/2021/zh/"><i class="fa-fw fa fa-align-right"></i><span> 前端趋势</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-wrench"></i><span> 学习网站</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener" href="https://learngitbranching.js.org/?locale=zh_CN"><i class="fa-fw fa fa-tree"></i><span> Git可视化学习工具</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://codepip.com/"><i class="fa-fw fa fa-gamepad"></i><span> 通过玩游戏学习编码</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-life-ring"></i><span> 休闲娱乐</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">个人笔记</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://risingstars.js.org/2021/zh/"><i class="fa-fw fa fa-align-right"></i><span> 前端趋势</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-wrench"></i><span> 学习网站</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener" href="https://learngitbranching.js.org/?locale=zh_CN"><i class="fa-fw fa fa-tree"></i><span> Git可视化学习工具</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://codepip.com/"><i class="fa-fw fa fa-gamepad"></i><span> 通过玩游戏学习编码</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-life-ring"></i><span> 休闲娱乐</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">offer</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-08-23T15:31:25.000Z" title="发表于 2022-08-23 23:31:25">2022-08-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-09-03T15:50:07.213Z" title="更新于 2022-09-03 23:50:07">2022-09-03</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>4分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="offer"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="谈一下你对MVVM原理的理解"><a href="#谈一下你对MVVM原理的理解" class="headerlink" title="谈一下你对MVVM原理的理解"></a>谈一下你对MVVM原理的理解</h1><pre><code>传统的MVC指的是，用户操作会请求服务端路由，路由会调用对应的控制器来处理，控制器会获取数据，将结果返回给前端，页面重新渲染。
+MVVM: 传统的前端会将数据手动渲染到页面上，MVVM模式不需要用户收到操作DOM元素，将数据绑定到viewModel层上，会自动将数据渲染到页面中，视图变化会通知viewModel层更新数据，viewModel就是我们MVVM模式中的桥梁。
+</code></pre>
+<h1 id="请说一下响应式数据的原理"><a href="#请说一下响应式数据的原理" class="headerlink" title="请说一下响应式数据的原理"></a>请说一下响应式数据的原理</h1><pre><code>理解：
+    1.核心点：object.defineProperty
+    2.默认Vue在初始化数据时，会给data中的属性使用Object.defineProperty重新定义所以属性，当页面取到对应属性时，会进行依赖收集（收集当前组件的watcher）如果属性发生变化会通知相关依赖进行更新操作。
+</code></pre>
+<h1 id="Vue中是如何检测数组变化"><a href="#Vue中是如何检测数组变化" class="headerlink" title="Vue中是如何检测数组变化"></a>Vue中是如何检测数组变化</h1><pre><code>理解：
+    1.使用函数劫持的方式，重写了数组的方法。
+    2.vue将data中的数组，进行了原型链重写，指向了自己定义的数组原型方法，这样当调用数组api时，可以通知依赖更新，如果数组中包含着引用类型，会对数组中的引用类型再次进行监控。
+</code></pre>
+<h1 id="为何Vue采用异步渲染"><a href="#为何Vue采用异步渲染" class="headerlink" title="为何Vue采用异步渲染"></a>为何Vue采用异步渲染</h1><pre><code>理解：
+    因为如果不采用异步更新，那么每次更新数据都会对当前组件进行重新渲染，所以为了性能考虑，Vue会在本轮数据更新后，再去异步更新视图。
+</code></pre>
+<h1 id="nextTick实现原理"><a href="#nextTick实现原理" class="headerlink" title="nextTick实现原理"></a>nextTick实现原理</h1><pre><code>作用：在下一次DOM更新结束后执行其指定的回调，也可获取更新后的DOM内容。
+理解：nextTick方法主要是使用了宏任务和微任务，定义了一个异步方法，多次调用nextTick会将方法存入队列中，通过这个异步方法清空当前队列，所以这个nextTick方法就是异步方法。
+</code></pre>
+<h1 id="Vue中Computed的特点"><a href="#Vue中Computed的特点" class="headerlink" title="Vue中Computed的特点"></a>Vue中Computed的特点</h1><pre><code>理解：
+    默认computed也是一个watcher，是具备缓存的，只有当前依赖的属性发生变化时才会更新视图。
+</code></pre>
+<h1 id="watch-中的deep：true是如何实现的"><a href="#watch-中的deep：true是如何实现的" class="headerlink" title="watch 中的deep：true是如何实现的"></a>watch 中的deep：true是如何实现的</h1><pre><code>理解：
+    当用户指定了watch中的deep属性为true时，如果当前监控的值是数组类型，会对对象中的每一项进行求值，此时会将当前watcher存入到对应属性的依赖中，这样数组中对象发生变化时也会通知数据更新。
+</code></pre>
+<h1 id="Vue组件的生命周期"><a href="#Vue组件的生命周期" class="headerlink" title="Vue组件的生命周期"></a>Vue组件的生命周期</h1><pre><code>什么时候被调用：
+    beforeCreate ：在实例初始化之后，数据观测（data observer)之前被调用。
+    created :实例已经创建完成之后被调用。在这一步，实例已完成以下的配置：数据观测（data observer)，属性和方法的运算，watch/event事件回调。这里没有$el。
+    beforeMount :在挂载开始之前被调用：相关的render函数首次被调用。
+    mounted :el被新创建的vm.$el替换，并挂载到实例上去之后调用该钩子。
+    beforeUpdate :数据更新时调用，发生在虚拟DOM重新渲染和打补丁之前。
+    updated :由于数据更改导致的虚拟DOM重新渲染和打补丁，在这之后会调用该钩子。
+    beforeDestroy :实例销毁之前调用，在这一步，实例仍然完全可用。
+    destroyed :Vue实例销毁后调用。调用后，vue实例指示的所有东西都会解绑定，所有的事件监听器会被移除，所有的子实例也会被销毁。该钩子在服务器端渲染期间不被调用。
+
+可以做什么事：
+    created ：实例已经创建完成，因为它是最早触发的原因可以进行一些数据，资源的请求。
+    mounted ：实例已经挂载完成，可以进行一些DOM操作。
+    beforeUpdate ：可以在这个钩子中进一步地更改状态，这不会触发附加的重渲染过程。
+    updated ：可以执行依赖于DOM的操作。然而在大多数情况下，应该避免在此期间更改状态，因为这可能会导致更新无限循环。改钩子在服务器端渲染期间不被调用。
+    beforeDestroy ：可以执行一些优化操作，清空定时器，解绑绑定事件。
+</code></pre>
+<h1 id="ajax请求放在哪个生命周期中"><a href="#ajax请求放在哪个生命周期中" class="headerlink" title="ajax请求放在哪个生命周期中"></a>ajax请求放在哪个生命周期中</h1><pre><code>理解：
+    在created的时候，视图中的DOM并没有渲染出来，所有此时如果直接去操作DOM节点，无法找到相关的元素。
+    在mounted中，由于此时DOM已经渲染出来了，所有可以直接操作DOM节点。
+    一般情况下都放到mounted中，保证逻辑的统一性，因为生命周期是同步执行的，ajax是异步执行的。
+    服务端渲染不支持mounted方法，所以在服务端渲染的情况下统一放到created中。
+</code></pre>
+<h1 id="何时需要使用beforeDestroy"><a href="#何时需要使用beforeDestroy" class="headerlink" title="何时需要使用beforeDestroy"></a>何时需要使用beforeDestroy</h1><pre><code>理解：
+    可能在当前页面中使用了$on方法，那需要在组件销毁前解绑。
+    清除自己自定义的定时器。
+    解绑事件的绑定scroll   mousemove  ...
+</code></pre>
+<h1 id="History和Hash模式有何区别？"><a href="#History和Hash模式有何区别？" class="headerlink" title="History和Hash模式有何区别？"></a>History和Hash模式有何区别？</h1><pre><code>1.vue-router有3个模式，其中history和hash更为常用，两者差别主要在显示形式和部署上。
+2.hash模式在地址栏显示的时候是已哈希的形式：#/xxx，这种方式使用和部署都比较简单；
+3.history模式url看起来更优雅美观，但是应用在部署时需要做特殊配置，web服务器需要做回退处理，否则会出现刷新页面404的问题。
+4.在实现上不管哪种模式，最终都是通过监听popstate事件触发路由跳转处理，url显示不同只是显示效果上的差异。
+
+history模式配置
+    server &#123;
+        listen: 80;
+        server_name xxx.com;
+
+        location /admin &#123;
+            root /Users/abc/www/admin;
+            index index.html;
+            try_files $url $url/ /admin/index.html
+        &#125;
+    &#125;
+</code></pre>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">周志达</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://zhouzhou76.github.io/2022/08/23/offer/">https://zhouzhou76.github.io/2022/08/23/offer/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://zhouzhou76.github.io" target="_blank">个人笔记</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2022/07/03/pinia/"><img class="next-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Pinia</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fup.enterdesk.com%2Fedpic%2F06%2F79%2Ff8%2F0679f8a452c590b805bf3ea48662ca34.jpg&amp;refer=http%3A%2F%2Fup.enterdesk.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1644860083&amp;t=41663c5a1ed68083506c88322ae2804e" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">周志达</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">33</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">26</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ZhouZhou76"><i class="fab fa-github"></i><span>GitHub</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/ZhouZhou76" target="_blank" title="Github"><i class="fab fa-github"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">━(*｀∀´*)ノ亻!</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B0%88%E4%B8%80%E4%B8%8B%E4%BD%A0%E5%AF%B9MVVM%E5%8E%9F%E7%90%86%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-number">1.</span> <span class="toc-text">谈一下你对MVVM原理的理解</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%B7%E8%AF%B4%E4%B8%80%E4%B8%8B%E5%93%8D%E5%BA%94%E5%BC%8F%E6%95%B0%E6%8D%AE%E7%9A%84%E5%8E%9F%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">请说一下响应式数据的原理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Vue%E4%B8%AD%E6%98%AF%E5%A6%82%E4%BD%95%E6%A3%80%E6%B5%8B%E6%95%B0%E7%BB%84%E5%8F%98%E5%8C%96"><span class="toc-number">3.</span> <span class="toc-text">Vue中是如何检测数组变化</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%BA%E4%BD%95Vue%E9%87%87%E7%94%A8%E5%BC%82%E6%AD%A5%E6%B8%B2%E6%9F%93"><span class="toc-number">4.</span> <span class="toc-text">为何Vue采用异步渲染</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#nextTick%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="toc-number">5.</span> <span class="toc-text">nextTick实现原理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Vue%E4%B8%ADComputed%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-number">6.</span> <span class="toc-text">Vue中Computed的特点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#watch-%E4%B8%AD%E7%9A%84deep%EF%BC%9Atrue%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%9A%84"><span class="toc-number">7.</span> <span class="toc-text">watch 中的deep：true是如何实现的</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Vue%E7%BB%84%E4%BB%B6%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">8.</span> <span class="toc-text">Vue组件的生命周期</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ajax%E8%AF%B7%E6%B1%82%E6%94%BE%E5%9C%A8%E5%93%AA%E4%B8%AA%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E4%B8%AD"><span class="toc-number">9.</span> <span class="toc-text">ajax请求放在哪个生命周期中</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%95%E6%97%B6%E9%9C%80%E8%A6%81%E4%BD%BF%E7%94%A8beforeDestroy"><span class="toc-number">10.</span> <span class="toc-text">何时需要使用beforeDestroy</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#History%E5%92%8CHash%E6%A8%A1%E5%BC%8F%E6%9C%89%E4%BD%95%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-number">11.</span> <span class="toc-text">History和Hash模式有何区别？</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/08/23/offer/" title="offer"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="offer"/></a><div class="content"><a class="title" href="/2022/08/23/offer/" title="offer">offer</a><time datetime="2022-08-23T15:31:25.000Z" title="发表于 2022-08-23 23:31:25">2022-08-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/03/pinia/" title="Pinia"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Pinia"/></a><div class="content"><a class="title" href="/2022/07/03/pinia/" title="Pinia">Pinia</a><time datetime="2022-07-03T13:52:33.000Z" title="发表于 2022-07-03 21:52:33">2022-07-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/26/react/" title="React学习笔记"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="React学习笔记"/></a><div class="content"><a class="title" href="/2022/05/26/react/" title="React学习笔记">React学习笔记</a><time datetime="2022-05-26T14:34:54.000Z" title="发表于 2022-05-26 22:34:54">2022-05-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/19/git/" title="Git"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Git"/></a><div class="content"><a class="title" href="/2022/05/19/git/" title="Git">Git</a><time datetime="2022-05-19T15:42:52.000Z" title="发表于 2022-05-19 23:42:52">2022-05-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/23/Mobile_layout/" title="移动端目前暂时最佳适配方案"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="移动端目前暂时最佳适配方案"/></a><div class="content"><a class="title" href="/2022/03/23/Mobile_layout/" title="移动端目前暂时最佳适配方案">移动端目前暂时最佳适配方案</a><time datetime="2022-03-23T12:49:16.000Z" title="发表于 2022-03-23 20:49:16">2022-03-23</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By 周志达</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>if (document.getElementsByClassName('mermaid').length) {
+  if (window.mermaidJsLoad) mermaid.init()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(() => {
+      window.mermaidJsLoad = true
+      mermaid.initialize({
+        theme: 'default',
+      })
+      false && mermaid.init()
+    })
+  }
+}</script></div><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
